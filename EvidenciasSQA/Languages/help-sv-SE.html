@@ -1,0 +1,385 @@
+
+<html>
+	<head>
+		<title>EvidenciasSQA Hj�lp</title>
+		
+		<style>
+		* {
+			font-family: Tahoma, Arial, Sans-serif;
+		}
+		h1 {font-size:16px;}
+		h2 {font-size:14px;color:#009900;margin-top:24px;}
+		h3 {font-size:12px;margin-top:18px;}
+		small {font-size:10px;}
+		p, li {font-size:12px;line-height:1.5em}
+		a:link, a:hover, a:visited, a:active {color:#009900;}
+		kbd {background-color:#dddddd;border:1px solid #bbbbbb;padding:0 2px;border-radius:2px;}
+		p.hint {background-color:#ffffdd;border:1px solid #ddddbb;padding:5px;}
+		em {padding-right:0.2em;}
+		</style>
+	</head>
+	<body>
+	<h1>EvidenciasSQA Hj�lp</h1>
+	<!-- 
+	Note to translator: uncomment entry below to have your effort honored 
+	-->
+	<small>Version 1.0 - Svensk �vers�ttning av hj�lpinneh�llet av Torsten Augustsson</small>
+	
+	<h2>Inneh�ll</h2>
+	<ol>
+		<li><a href="#screenshot">Skapa en sk�rmdump</a></li>
+		<ol>
+			<li><a href="#capture-region">Sk�rmdump av yta</a></li>
+			<li><a href="#capture-last-region">Sk�rmdump av senaste ytan</a></li>
+			<li><a href="#capture-window">Sk�rmdump av f�nster</a></li>
+			<li><a href="#capture-fullscreen">Sk�rmdump av hela sk�rmen</a></li>
+			<li><a href="#capture-ie">Sk�rmdump av Internet Explorer</a></li>
+		</ol>
+	
+		<li><a href="#editor">Anv�nda bildredigeraren</a></li>
+		<ol>
+			<li><a href="#editor-shapes">Rita former</a></li>
+			<li><a href="#editor-text">L�gga till text</a></li>
+			<li><a href="#editor-highlight">Framh�va saker</a></li>
+			<li><a href="#editor-obfuscate">Censurera saker</a></li>
+			<li><a href="#editor-effects">L�gg till effekter</a></li>
+			<li><a href="#editor-crop">Besk�ra sk�rmdumpen</a></li>
+			<li><a href="#editor-adding-graphics">L�gga till grafik till en sk�rmdump</a></li>
+			<li><a href="#editor-reuse-elements">�teranv�nda ritade element</a></li>
+			<li><a href="#editor-export">Exportera sk�rmdumpen</a></li>
+		</ol>
+		<li><a href="#settings">Inst�llningarna</a></li>
+		<ol>
+			<li><a href="#settings-general">Allm�nt</a></li>
+			<li><a href="#settings-capture">Sk�rmdump</a></li>
+			<li><a href="#settings-output">Utdata</a></li>
+			<li><a href="#settings-destination">Destination f�r sk�rmdumpar</a></li>
+			<li><a href="#settings-printer">Utskrift</a></li>
+			<li><a href="#settings-expert">Expert</a></li>
+		</ol>
+		<li><a href="#help">Vill du hj�lpa till?</a></li>
+		<ol>
+			<li><a href="#help-donate">�verv�g en donation</a></li>
+			<li><a href="#help-spread">Sprid ordet</a></li>
+			<li><a href="#help-translate">Skicka in en �vers�ttning</a></li>
+		</ol>
+	</ol>
+	
+	<a name="screenshot"></a>
+	<h2>Skapa en sk�rmdump</h2>
+	<p>
+		Du kan skapa en sk�rmdump antingen genom att anv�nda <kbd>Print</kbd>-tangenten p� ditt tangentbord, eller genom att h�gerklicka p� EvidenciasSQAikonen i aktivitetsf�ltet.<br>
+		Du kan skapa en sk�rmdump p� flera olika s�tt:
+	</p>
+	
+	<a name="capture-region"></a>
+	<h3>Sk�rmdump av yta <kbd>Print</kbd></h3>
+	<p>
+		Det h�r alternativet l�ter dig ta en sk�rmdump av en del av din sk�rm.<br>
+		Efter du startat detta l�ge kommer du se ett sikte ist�llet f�r din muspekare. Klicka och h�ll in musknappen d�r du vill att h�rnet av sk�rmdumpen ska vara. Genom att dra musen, n�r du fortfarande h�ller ner musknappen, ritar du ut en rektangel. Sl�pp musknappen n�r rektangeln t�cker den yta du vill ha i sk�rmdumpen.
+	</p>
+	<p class="hint">
+		Du kan anv�nda tangenten <kbd>Mellanslag</kbd> f�r att byta l�ge mellan yta och
+		<a href="#capture-window">f�nster</a>.
+	</p>
+	<p class="hint">
+		Om du vill att sk�rmdumpen ska inneh�lla en exakt del av sk�rmen, kan det vara enklare att markera en n�got st�rre del av sk�rmen och sedan <a href="#editor-crop">besk�ra</a> bilden i EvidenciasSQAs bildredigerare.
+	</p>
+	
+	<a name="capture-last-region"></a>
+	<h3>Sk�rmdump av senaste ytan <kbd>Shift</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Om du tidigare tagit en sk�rmdump av en <a href="#capture-region">yta</a> eller ett <a href="#capture-window">f�nster</a>, kan du ta en sk�rmdump av samma del av sk�rmen med detta alternativ.
+	</p>
+	
+	<a name="capture-window"></a>
+	<h3>Sk�rmdump av f�nster <kbd>Alt</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Skapar en sk�rmdump av det f�nster som �r aktivt.
+	</p>
+	<p class="hint">
+		Om du anv�nder Windows 7 eller Vista kan du anv�nda inst�llningarna f�r sk�rmdump av f�nster f�r att st�lla in hur EvidenciasSQA hanterar halvgenomskinliga (Aero) f�nsterkanter, t.ex. genom att byta ut dem mot en anpassningsbar f�rg.
+	</p>
+	<p class="hint">
+		I <a href="#settings">inst�llningarna</a> kan du st�lla in s� att sk�rmdumpen inte tas av det aktiva f�nstret med en g�ng, utan l�ter dig v�lja f�nster ist�llet.
+		Om detta alternativ �r valt kan du v�lja ett f�nster genom att klicka p� det (likadant som vid en <a href="#capture-region">sk�rmdump av yta</a> kommer EvidenciasSQA framh�va omr�det).<br>
+		Om du vill ta en sk�rmdump av ett underf�nster (t.ex. en webbl�sares visningsomr�de, utan verktygsf�lt o.s.v., eller en ensam ram i en webbsida som anv�nder ramar), placera muspekaren �ver f�nstret och tryck p� tangenten <kbd>PgDown</kbd>. Efter det kan du v�lja delar av f�nstret till din sk�rmdump.
+	</p>
+	<p class="hint">
+		Att ta en sk�rmdump av enbart snabbmenyer �r annorlunda. Om anv�nder kortkommandot f�r att ta en sk�rmdump av ett f�nster f�rsvinner snabbmenyn, och detsamma skulle h�nda om du anv�nde EvidenciasSQAs snabbmeny f�r att ta sk�rmdumpen. Om du vill ta en sk�rmdump av en snabbmeny du f�tt fram genom att h�gerklicka p� n�gonting, klicka p� <kbd>Print</kbd> och sedan p� <kbd>Mellanslag</kbd>.
+	</p>
+	
+	<a name="capture-fullscreen"></a>
+	<h3>Sk�rmdump av hela sk�rmen <kbd>Ctrl</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Skapar en sk�rmdump av hela sk�rmen.
+	</p>
+
+	<a name="capture-ie"></a>
+	<h3>Sk�rmdump av Internet Explorer <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Skapa enkelt en sk�rmdump av en �ppen webbsida i Internet Explorer.
+		Anv�nd EvidenciasSQAs snabbmeny f�r att v�lja flik i Internet Explorer, eller klicka p� <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Print</kbd> f�r att ta en sk�rmdump av den aktiva fliken.
+	</p>
+
+	
+	<a name="editor"></a>
+	<h2>Anv�nda bildredigeraren</h2>
+	<p>
+		EvidenciasSQA inkluderar en l�ttanv�nd bildredigerare som ger dig praktiska verktyg f�r att l�gga till kommentarer eller former p� en sk�rmdump. Den l�ter dig till och med framh�va eller censurera delar av din sk�rmdump.
+	</p>
+	<p class="hint">
+		EvidenciasSQAs bildredigerare kan anv�ndas till fler saker �n sk�rmdumpar. Du kan ocks� �ppna bilder att redigera fr�n filer eller urklippet. H�gerklicka p� EvidenciasSQAikonen i aktivitetsf�ltet och v�lj <em>�ppna bild fr�n fil</em> eller <em>�ppna bild fr�n urklipp</em>.
+	</p>
+	<p class="hint">
+		Som standard kommer bildredigeraren �ppnas n�r du tar en sk�rmdump. Om du inte vill anv�nda bildredigeraren kan du st�nga av denna funktion i <a href="#settings">inst�llningarna</a>.
+	</p>
+	
+	
+	<a name="editor-shapes"></a>
+	<h3>Rita former</h3>
+	<p>
+		V�lj ett av verktygen f�r att rita former fr�n verktygsraden i v�nstra delen av bildredigeraren, eller fr�n menyn <em>Objekt</em>. Det finns ocks� en snabbknapp du kan anv�nda f�r varje verktyg.<br>
+		De tillg�ngliga formerna �r: rektangel <kbd>R</kbd>, cirkel <kbd>E</kbd>, linje<kbd>L</kbd>,
+		pil <kbd>A</kbd> och rita p� frihand <kbd>F</kbd>.<br>
+		Klicka, h�ll nere musknappen och dra f�r attbest�mma position och storlek av formen. Sl�pp musknappen n�r du �r klar.
+	</p>
+	<p>
+		Du kan flytta eller �ndra storlek p� existerande former om du markerar dem med markeringsverktyget <kbd>Esc</kbd> fr�n verktygsraden.<br>
+		F�r varje elementtyp finns ett antal alternativ tillg�ngliga f�r att �ndra utseendet p� elementet (t.ex. linjetjocklek, linjef�rg och fyllnadsf�rg). Du kan �ndra alternativen f�r ett specifikt element genom att markera det, men ocks� f�r n�sta element som ritas efter att ha valt ett ritverktyg.
+	</p>
+	<p class="hint">
+		Du kan v�lja flera element att redigera �t g�ngen. F�r att markera flera element, h�ll ner tangenten <kbd>Shift</kbd> n�r du klickar p� elementen.
+	</p>
+	<p class="hint">
+		Om du vill rita liksidiga former (t.ex. tvinga en rektangel att vara en kvadrat), h�ll ner <kbd>Shift</kbd> n�r du ritar. N�r du ritar linjer eller pilar kommer linjens vinkel stegas i grader om 15� n�r du h�ller ner <kbd>Shift</kbd>.<br>
+		Du kan ocks� anv�nda <kbd>Shift</kbd> om du vill �ndra storlek p� ett existerande objekt och beh�lla dess proportioner.
+	</p>
+	<p class="hint">
+		N�r du ritar eller skalar objekt kan du h�lla nere <kbd>Ctrl</kbd> f�r att objektet ska ankras i dess geometriska mitt, d.v.s. att objektet ocks� �ndrar storlek i motsatt riktning. (Detta �r v�ldigt praktiskt om du vill rita en cirkel runt n�gonting p� din sk�rmdump.)
+	</p>
+	
+	<a name="editor-text"></a>
+	<h3>L�gga till text</h3>
+	<p>
+		Att anv�nda textverktyget <kbd>T</kbd> �r likt anv�ndandet av verktygen f�r att <a href="#editor-shapes">rita former</a>.
+		Rita helt enkelt ut textelementet till �nskad storlek, och skriv sedan in text.<br>
+		Dubbelklicka p� ett existerande textelement f�r att redigera text.<br>
+		Tryck p� <kbd>Return</kbd> eller <kbd>Enter</kbd> n�r du �r klar med redigeringen.
+	</p>
+	<p class="hint">
+		Om du beh�ver l�gga till radbrytningar i en textruta, tryck p� <kbd>Shift</kbd> + <kbd>Return</kbd> eller <kbd>Shift</kbd> + <kbd>Enter</kbd>.
+	</p>
+	
+	<a name="editor-highlight"></a>
+	<h3>Framh�va saker</h3>
+	<p>
+		Efter att du valt framh�vningsverktyget <kbd>H</kbd> kan du definiera ytan du vill ska framh�vas exakt p� samma s�tt du ritar en <a href="#editor-shapes">form</a>.<br>
+		Det finns flera olika alternativ f�r framh�vning, som du kan v�lja mellan genom att klicka p� knappen l�ngst till v�nster i verktygsf�ltet l�ngst upp:
+	</p>
+	<ul>
+		<li><em>Framh�v text</em>: framh�ver ett omr�de genom att l�gga till en stark f�rg, som en �verstrykningspenna</li>
+		<li><em>Framh�v omr�de</em>: l�gger till osk�rpa<a href="#hint-blur">*</a> och m�rkl�gger allting utanf�r det markerade omr�det</li>
+		<li><em>Gr�skala</em>: allting utanf�r det markerade omr�det visas i gr�skala</li>
+		<li><em>F�rstora</em>: det valda omr�det kommer visas f�rstorat</li>
+	</ul>
+	
+	<a name="editor-obfuscate"></a>
+	<h3>Censurera saker</h3>
+	<p>
+		Att censurera delar av en sk�rmdump �r en bra id� om den inneh�ller information som inte �r menad f�r andra personer, t.ex. bankuppgifter, namn, l�senord eller ansikten p� bilder.<br>
+		Anv�nd censursverktyget <kbd>O</kbd> precis p� samma s�tt som verktyget f�r <a href="#editor-highlight">framh�vning</a>.<br>
+		Tillg�ngliga alternativ f�r censur �r:
+	</p>
+	<ul>
+		<li><em>Pixelering</em>: �ka pixelstorleken f�r det valda omr�det</li>
+		<li><em>Osk�rpa</em><a href="#hint-blur">*</a>: g�r det markerade omr�det oskarpt</li>
+	</ul>
+	<a name="hint-blur"></a>
+	<p class="hint">
+		* Beroende p� din dators prestanda kan osk�rpan g�ra EvidenciasSQAs bildredigerare l�ngsam. Om du k�nner att bildredigeraren reagerar l�ngsamt s� fort en osk�rpa l�ggs till, kan du f�rs�ka minska v�rdet f�r <em>f�rhandskvalitet</em> i verktygsf�ltet eller minska v�rdet f�r <em>osk�rpans styrka</em>.<br>
+		Om prestandan vid osk�rpan fortfarande �r f�r l�g f�r dig att arbeta med, kan du ist�llet anv�nda pixeleringseffekten.
+	</p>
+	<a name="editor-effects"></a>
+	<h3>L�gga till effekter</h3>
+	<p>
+		Du kan l�gga till olika effekter till din sk�rmdump. Du kanske vill ha en kant, skugga eller rivna kanter, t.ex. f�r att visuellt separera din skr�mdump fr�n annat inneh�ll i ett dokument. Effekterna gr�skala och invertering �r fr�mst anv�ndbara innan utskrift, f�r att spara p� bl�ck eller toner n�r du skriver ut f�rgstarka eller m�rka sk�rmdumpar.
+	</p>
+	
+	<a name="editor-crop"></a>
+	<h3>Besk�ra sk�rmdumpen</h3>
+	<p>
+		Om du enbart beh�ver en del av din sk�rmdump kan du anv�nda besk�ringsverktyget <kbd>C</kbd> f�r att besk�ra den till �nskad storlek.<br>
+		Efter att du valt besk�ringsverktyget, rita en rektangel �ver det omr�de du vill ha kvar av sk�rmdumpen. Du kan �ndra storlek p� det markerade omr�det liksom alla andra element.<br>
+		N�r du �r n�jd med din markering, anv�nd knappen <em>Konfirmera</em> i verktygsf�ltet, eller tryck p� <kbd>Enter</kbd>. Du kan avbryta besk�ringen genom att klicka p� knappen <em>Avbryt</em> eller genom att klicka p� <kbd>Esc</kbd>.
+	</p>
+	<p class="hint">
+		<em>Autobesk�rning</em>: Om du beh�ver besk�ra en enf�rgad kant fr�n din sk�rmdump, kan du v�lja <em>Autobesk�ring</em> fr�n menyn <em>Redigera</em> s� att EvidenciasSQA automatiskt markerar omr�det att besk�ra.
+	</p>
+	
+	<a name="editor-rotate"></a>
+	<p class="hint">
+		Anv�nd verktygen f�r rotering f�r att rotera sk�rmdumpen med- eller moturs.
+	</p>
+
+	<a name="editor-adding-graphics"></a>
+	<h3>L�gga till grafik till en sk�rmdump</h3>
+	<p>
+		Du kan enkelt l�gga till grafik eller bilder till dina sk�rmdumpar genom att dra och sl�ppa en bildfil i redigeringsf�nstret. Du kan ocks� l�gga in sk�rmdumpar av andra f�nster genom att v�lja <em>Infoga f�nster</em> fr�n menyn <em>Redigera</em>. En lista med alla �ppna f�nster visas, d�r du kan v�lja ett att l�gga till.
+	</p>
+	
+	<a name="editor-reuse-elements"></a>
+	<h3>�teranv�nda ritade element</h3>
+	<p>
+		Om du m�rker att du anv�nder samma eller liknande element p� de flesta av dina sk�rmdumpar (t.ex. ett textf�lt inneh�llandes webbl�sartyp och -version, eller censur av samma element p� flera olika sk�rmdumpar) kan du �teranv�nda element.<br>
+		V�lj <em>Spara objekt till fil</em> fr�n menyn <em>Objekt</em> f�r att spara de nuvarande elementen f�r �teranv�ndning senare. <em>Ladda in objekt fr�n fil</em> anv�nder samma element f�r en annan sk�rmdump.
+	</p>
+	
+	<a name="editor-export"></a>
+	<h3>Exportera sk�rmdumpen</h3>
+	<p>
+		Efter redigering av sk�rmdumpen kan du exportera resultatet f�r olika �ndam�l, beroende p� dina behov. Du kommer �t alla exporteringsalternativ fr�n menyn <em>Arkiv</em>, det �versta verktygsf�ltet eller via kortkommandon:
+	</p>
+	<ul>
+		<li><em>Spara</em> <kbd>Ctrl</kbd> + <kbd>S</kbd>: sparar bilden som en fil (om bilden redan sparats, annars visas dialogrutan <em>Spara som...</em></li>
+		<li><em>Spara som...</em> <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>: l�ter dig v�lja s�kv�g, filnamn och bildformat innan du sparar</li>
+		<li><em>Kopiera till urklipp</em> <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>: l�gger en kopia av bilden i urklippet, som du kan kopiera in i andra program</li>
+		<li><em>Skriv ut...</em> <kbd>Ctrl</kbd> + <kbd>P</kbd>: skickar bilden till en skrivare</li>
+		<li><em>E-mail</em> <kbd>Ctrl</kbd> + <kbd>E</kbd>: �ppnar ett nytt meddelande i din standardklient f�r e-post och bifogar bilden</li>
+	</ul>
+	<p> 
+		Det finns insticksprogram f�r att exportera sk�rmdumpar till andra m�l, t.ex. Dropbox, Picasa och Flickr. V�lj helt enkelt l�mpliga insticksprogram under installationsprocessen.
+	</p>
+	<p class="hint">
+		Efter att du sparat en bild fr�n redigeraren kan du h�gerklicka p� statusf�ltet l�ngst ner i redigerarf�nstret f�r att antingen kopiera s�kv�gen till urklippet, eller �ppna filens mapp i Windows Utforskaren.
+	</p>
+	
+	
+	<a name="settings"></a>
+	<h2>Inst�llningarna</h2>
+	
+	<a name="settings-general"></a>
+	<h3>Allm�nt</h3>
+	<ul>
+		<li><em>Spr�k</em>: Det spr�k du f�redrar.
+			<p class="hint">
+				Du kan ladda ner ytterligare spr�kfiler f�r EvidenciasSQA <a target="_blank" href="https://evidenciassqa.com/downloads/">h�r</a>.
+			</p>
+		</li>
+		<li><em>Starta EvidenciasSQA n�r datorn startas</em>: Starta programmet n�r systemet startat upp.</li>
+		<li><em>Kortkommandon</em>: Anpassa kortkommandona som anv�nds f�r att skapa sk�rmdumpar.</li>
+		<li><em>Anv�nd systemets standardproxy</em>: EvidenciasSQA anv�nder systemets standardinst�llningar f�r proxy f�r att leta efter uppdateringar, om detta alternativ �r markerat.</li>
+		<li><em>Intervall f�r att leta efter uppdateringar i dagar</em>: EvidenciasSQA kan leta efter uppdateringar automatiskt. Anv�nd denna inst�llning f�r att st�lla in intervallen (i dagar) eller v�lj 0 f�r att st�nga av automatiska uppdateringar.</li>
+	</ul>
+
+	<a name="settings-capture"></a>
+	<h3>Sk�rmdump</h3>
+	<ul>
+		<li><em>Inkludera muspekaren</em>: Om detta alternativ �r markerat kommer muspekaren inkluderas i sk�rmdumpen. Muspekaren hanteras som ett separat element i redigeraren, s� du kan ta flytta eller ta bort den senare.</li>
+		<li><em>Spela upp kameraljud</em>: Ljudsignal vid sk�rmdump</li>
+		<li><em>F�rdr�jning i millisekunder innan sk�rmdump</em>: L�gg till en f�rdr�jning innan sk�rmdumpen faktiskt tas.</li>
+		<li><em>V�lj f�nster</em>: Ist�llet f�r att skapa en sk�rmdump av det aktiva f�nstret med en g�ng f�r du ist�llet v�lja vilket f�nster du vill att sk�rmdumpen ska best� utav. Du kan ocks� v�lja underf�nster, se <a href="#capture-window">sk�rmdump av f�nster</a>.</li>
+		<li>
+			<em>L�ge f�r sk�rmdump av f�nster</em>: Om du anv�nder EvidenciasSQA p� Windows Vista eller Windows 7 med Aero kan du v�lja hur genomskinliga f�nsterkanter hanteras vid sk�rmdumpar av f�nster. Anv�nd denna inst�llning f�r att undvika att element bakom f�nstret lyser genom kanterna.
+			<ul>
+				<li><em>Automatiskt</em>: L�t EvidenciasSQA best�mma hur genomskinlighet ska hanteras.</li>
+				<li><em>Som visat</em>: Genomskinliga kanter visas som p� sk�rmen.</li>
+				<li><em>Anv�nd standardf�rg</em>: En fast standardf�rg anv�nds ist�llet f�r genomskinlighet.</li>
+				<li><em>Anv�nd anpassad f�rg</em>: V�lj en anpassad f�rg att anv�nda ist�llet f�r genomskinlighet.</li>
+				<li><em>Bevara genomskinlighet</em>: Kanter beh�ller sin genomskinlighet, men eventuella objekt bakom f�nstret d�ljs.
+					<p class="hint">
+						Genomskinliga omr�den visas som ett rutm�nster i redigeraren. M�nstret exporteras inte n�r sk�rmdumpen sparas. T�nk p� att spara som PNG f�r fullt st�d f�r genomskinlighet.
+					</p>
+				</li>
+			</ul>
+		</li>
+		<li><em>Sk�rmdump av Internet Explorer</em>: L�ter dig enkelt skapa sk�rmdumpar av flikar i Internet Explorer.</li>
+		<li><em>Matcha bildstorlek</em>: Om detta alternativ �r markerat kommer redigerarf�nstret automatiskt matcha storleken p� sk�rmdumpen.</li>
+
+	</ul>
+	
+	<a name="settings-output"></a>
+	<h3>Utdata</h3>
+	<ul>
+		<li><em>Mapp f�r lagring</em>: L�ter dig v�lja destination(er) f�r din sk�rmdump n�r den skapats.</li>
+		<li><em>Filnamnsm�nster</em>: Filnamn som anv�nds n�r sk�rmdumpar sparas direkt eller som f�resl�s n�r sk�rmdumpar sparas med dialogruta. Klicka p� knappen <em>?</em> f�r att veta mer om platsh�llare som kan anv�ndas som filnamnsm�nster.</li>
+		<li><em>Bildformat</em>: V�lj vilket bildformat som ska anv�ndas som standard.</li>
+		<li><em>Kopiera bildens s�kv�g till urklipp varje g�ng en bild sparas</em>: Varje g�ng en sk�rmdump sparas p� h�rddisken kommer s�kv�gen till filen kopieras till utklippet.</li>
+		<li><em>JPEG-kvalitet</em>: Kvalitet som anv�nds n�r JPEG-filer sparas</li>
+		<li><em>Visa kvalitetsdialogen varje g�ng en bild sparas</em>: Du kommer f� v�lja JPEG-kvalitet varje g�ng en bild ska sparas</li>
+		<li><em>Reducera antalet f�rger till maximalt 256</em>: Bilder kommer konverteras till att enbart inneh�lla 256 f�rger.</li>
+	</ul>
+	
+	<a name="settings-destination"></a>
+	<h3>Destination f�r sk�rmdumpar</h3>
+	<p>
+		Som standard l�ter EvidenciasSQA dig v�lja en destination dynamiskt efter en sk�rmdump, genom att visa en liten meny med olika destinationer att v�lja mellan. Om du inte vill eller beh�ver v�lja mellan destinationer direkt kanske du f�redrar att konfigurera EvidenciasSQA till att exportera till en eller fler destinationer direkt, utan att visa destinationsv�ljaren.
+	</p>
+	<p class="hint">
+		Liksom <a href="#editor-export">exportering fr�n redigerarf�nstret</a> kommer de visade destinationerna variera baserat p� de insticksprogram du har installerade med EvidenciasSQA.
+	</p>
+	
+	<a name="settings-printer"></a>
+	<h3>Utskrift</h3>
+	<ul>
+		<li><em>F�rminska/anpassa utskriften till papprets storlek</em>: Om bildens storlek skulle �verstiga papprets storlek kommer den f�rminskas f�r att passa in p� sidan.</li>
+		<li><em>F�rstora/anpassa utskriften till papprets storlek</em>: Om bilden �r mindre �n papprets storlek kommer den skalas upp f�r att skrivas ut s� stor som m�jligt, inom papprets gr�nser.</li>
+		<li><em>Rotera utskriften till sidans orientering</em>: Bild i landskapsformat kommer roteras 90&deg; f�re utskrift.</li>
+		<li><em>Centrera utskriften p� sidan</em>: Bilder kommer skrivas ut i mitten p� sidan.</li>
+		<li><em>Utskriftsdatum/klockslag i sidans nedre kant</em>: Datum och klockslag kommer skrivas ut i bildens nedre kant.</li>
+		<li><em>Tvinga gr�skalig utskrift</em>: F�rger kommer konverteras till gr�skala innan utskrift.</li>
+		<li><em>Tvinga svart/vit utskrift</em>: F�rger kommer konverteras till svart/vit innan utskrift.</li>
+		<li><em>Skriv ut med inverterade f�rger</em>: Sk�rmdumpar kommer inverteras innan utskrift, anv�ndbart vid t.ex. vit text p� en svart bakgrund (f�r att spara bl�ck/toner).</li>
+	</ul>
+
+	<a name="settings-plugins"></a>
+	<h3>Insticksprogram</h3>
+	<p>
+		Visar en lista med installerade insticksprogram till EvidenciasSQA. V�lj ett fr�n listan och klicka p� <em>Konfigurera</em> f�r att komma �t insticksprogrammets konfigurationsm�jligheter.
+	</p>
+	
+	<a name="settings-expert"></a>
+	<h3>Expert</h3>
+	<p>
+		Vi menar det verkligen: du borde verkligen inte �ndra n�gonting h�r om du inte vet vad du h�ller p� med, eftersom dessa inst�llningar skulle kunna leda till ov�ntade resultat.
+	</p>
+	
+	
+	<a name="help"></a>
+	<h2>Vill du hj�lpa till?</h2>
+	
+	<p>
+		F�r nuvarande beh�ver vi ingen hj�lp med utveckling. D�remot finns det ett antal saker du skulle kunna g�ra f�r att st�dja EvidenciasSQA och utvecklingsteamet.<br>
+		Tack p� f�rhand! :)
+	</p>
+	
+	<a name="help-donate"></a>
+	<h3>�verv�g en donation</h3>
+	<p>
+		Vi l�gger ner mycket arbete p� EvidenciasSQA och spenderar en hel del tid till att tillhandah�lla ett bra program helt gratis och med �ppen k�llkod. Om du tycker att programmet g�r dig mer produktiv, om det sparar dig (eller ditt f�retag) en massa tid och pengar, eller om du helt enkelt bara tycker om EvidenciasSQA och tanken p� mjukvara med �ppen k�llkod: �verv�g att bel�na v�rt arbete genom att donera.<br>
+		Ta en titt p� v�r hemsida f�r f� reda p� hur du kan st�dja EvidenciasSQAs utvecklingsteam:<br>
+		<a target="_blank" href="https://evidenciassqa.com/support/">https://evidenciassqa.com/support/</a>
+	</p>
+	
+	<a name="help-spread"></a>
+	<h3>Sprid ordet</h3>
+	<p>
+		Om du gillar EvidenciasSQA, l�t folk veta: ber�tta f�r dina v�nner och kollegor om EvidenciasSQA. Dina f�ljare ocks�! :)<br>
+		Betygs�tt Greenshort i mjukvaruportaler eller l�nka till v�r hemsida fr�n din blogg eller hemsida.
+	</p>
+	
+	<a name="help-translate"></a>
+	<h3>Skicka in en �vers�ttning</h3>
+	<p>
+		�r inte EvidenciasSQA tillg�ngligt p� ditt spr�k? Om du k�nner dig trygg med att �vers�tta mjukvara �r du mer �n v�lkommen att g�ra s�.
+		Om du �r en registrerad anv�ndare p� sourceforge.net kan du skicka in �vers�ttningar till v�r <a target="_blank" href="https://sourceforge.net/tracker/?group_id=191585&atid=1368020">�vers�ttnings-tracker</a>.<br>
+		Se till s� att det inte finns n�gon existerande �vers�ttning till ditt spr�k p� v�r
+		<a target="_blank" href="https://evidenciassqa.com/downloads/">nerladdningssida</a>. Kolla ocks� v�r <a href="https://sourceforge.net/tracker/?group_id=191585&atid=1368020">�vers�ttnings-tracker</a>,
+		det kan finnas p�g�ende �vers�ttningar, eller i alla fall i planeringsstadiet.<br>
+		Observera att vi enbart tillhandah�ller en �vers�ttning p� v�r nerladdningssida om den blivit inskickad via ditt konto p� sourceforge.net. Eftersom vi sannolikt inte har m�jlighet att f�rst� din �vers�ttning �r det bra om andra anv�ndare p� sourceforge kan kontakta dig ang�ende f�rb�ttringar eller �ndringar om en ny version av EvidenciasSQA sl�pps.
+	</p>
+	
+	
+	
+	</body>
+</html>

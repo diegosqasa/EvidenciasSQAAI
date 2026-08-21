@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);EVIDENCIASSQA_BUILDTASKS</DefineConstants>
+    <!-- TaskHostFactory ejecuta la tarea desde bin\BuildTasks: forzar la copia de
+         dependencias (SixLabors.*) al output, tambien en builds incrementales. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" version="18.3.3">
+      <PrivateAssets>all</PrivateAssets>
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.13" />   
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\EvidenciasSQA.Editor\Controls\Emoji\Emojis.cs">
+      <Link>Emojis.cs</Link>
+    </Compile>
+  </ItemGroup>
+</Project>

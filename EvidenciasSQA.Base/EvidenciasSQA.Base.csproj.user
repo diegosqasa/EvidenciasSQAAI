@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Controls\AnimatingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\BackgroundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\EnumComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQAButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQACheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQAComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQADoubleClickButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQAForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQAGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQALabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQARadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQATabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQATextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQAToolDropDownButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQAToolStripButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQAToolStripLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\EvidenciasSQAToolStripMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\ExtendedWebBrowser.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\FormWithoutActivation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\HotkeyControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\OAuthLoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\PleaseWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\QualityDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Controls\ThumbnailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

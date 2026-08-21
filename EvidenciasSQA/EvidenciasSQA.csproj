@@ -1,0 +1,181 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    EVENCIAS SQA UNIFICADO (.NET 9 single-file).
+    Un solo ejecutable para los modulos Tray (ex-Greenshot WinForms) y Visor (WPF):
+    - UseWindowsForms + UseWPF: el proceso aloja el MainForm oculto (NotifyIcon) y la
+      ventana MainWindow del visor en el mismo Dispatcher (sin named pipes).
+    - Microsoft.Windows.Compatibility: cubre APIs Win32/COM que antes venian de la GAC
+      de .NET Framework (Accessibility, CustomMarshalers, etc.).
+    - Single-file publish: 'dotnet publish' produce un unico .exe autocontenido win-x64.
+      El RuntimeIdentifier se activa SOLO en publish (PublishDir != '') para que el build
+      normal de desarrollo conserve el layout plano bin\Debug\net9.0-windows\ (el Editor
+      .exe queda junto al tray, como antes).
+    -->
+  <PropertyGroup>
+    <RootNamespace>EvidenciasSQA</RootNamespace>
+    <AssemblyName>EvidenciasSQA</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <!-- EvidenciasSQAMain.Main es el punto de entrada real; el SDK WPF tambien genera
+         un Main para App.xaml (CS0017) -> se fija el StartupObject. -->
+    <StartupObject>EvidenciasSQA.EvidenciasSQAMain</StartupObject>
+    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icons\applicationIcon\icon.ico</ApplicationIcon>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <ApplicationManifest>evidenciassqa.manifest</ApplicationManifest>
+    <EmbeddedResourceUseDependentUponConvention>false</EmbeddedResourceUseDependentUponConvention>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <DebugType Condition="'$(Configuration)' == 'Release'">embedded</DebugType>
+
+    <!-- Consolidacion single-file (solo efectivo al publicar) -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained Condition="'$(PublishDir)' != ''">true</SelfContained>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <RuntimeIdentifier Condition="'$(PublishDir)' != ''">win-x64</RuntimeIdentifier>
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Languages\language-es-ES.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Media\SQA1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Media\SQA1.png</Link>
+    </None>
+    <None Include="..\Media\SQA1.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Media\SQA1.ico</Link>
+    </None>
+    <None Include="..\Media\SQA_ICO.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Media\SQA_ICO.ico</Link>
+    </None>
+    <None Include="..\Media\SQA_ICO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Media\SQA_ICO.png</Link>
+    </None>
+    <None Include="..\Media\Calendario.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Media\Calendario.png</Link>
+    </None>
+    <None Include="..\Media\Navegador.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Media\Navegador.png</Link>
+    </None>
+    <None Include="..\Media\SO.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Media\SO.png</Link>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapplo.Windows.AppRestartManager" Version="2.0.89" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.13" />
+    <PackageReference Include="System.CommandLine" Version="3.0.0-preview.1.26104.118" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+    <!-- Compatibilidad Win32/COM/System.Drawing completa para .NET 9 (reemplaza GAC de .NET Framework) -->
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="9.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sounds.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EvidenciasSQA.Base\EvidenciasSQA.Base.csproj" />
+    <ProjectReference Include="..\EvidenciasSQA.Editor\EvidenciasSQA.Editor.csproj" />
+    <!-- BuildTasks NO es ProjectReference: solo aporta la task EmojiDataTask, que el target
+         GenerateEmojiTestTxtFile compila bajo demanda (evita MSB4062 en limpios y MSB3027
+         por doble compilacion con la task host cargada en publish). -->
+    <!-- Modulo Visor unificado en el mismo proceso (Core = bus de eventos SqaEvents) -->
+    <ProjectReference Include="..\EvidenciasSQA.Visor\src\EvidenciasSQA.Core\EvidenciasSQA.Core.csproj" />
+    <ProjectReference Include="..\EvidenciasSQA.Visor\src\EvidenciasSQA.Wpf\EvidenciasSQA.Wpf.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="log4net-release.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <UsingTask TaskName="EmojiDataTask" TaskFactory="TaskHostFactory" AssemblyFile="$(IntermediateOutputPath)BuildTasksTask\EvidenciasSQA.BuildTasks.dll" />
+
+  <PropertyGroup>
+    <!-- Timestamps para la condicion de staleness de BuildTasks (las property functions
+         GetLastWriteTime NO son validas dentro de condiciones, solo en propiedades; se usa
+         .Ticks para comparacion numerica de strings y el operador textual LessThan). -->
+    <BuildTasksDll>..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\EvidenciasSQA.BuildTasks.dll</BuildTasksDll>
+    <BuildTasksDllStamp>$([System.IO.File]::GetLastWriteTime('$(BuildTasksDll)').Ticks)</BuildTasksDllStamp>
+    <BuildTasksCsprojStamp>$([System.IO.File]::GetLastWriteTime('..\EvidenciasSQA.BuildTasks\EvidenciasSQA.BuildTasks.csproj').Ticks)</BuildTasksCsprojStamp>
+    <EmojiDataTaskSourceStamp>$([System.IO.File]::GetLastWriteTime('..\EvidenciasSQA.BuildTasks\EmojiDataTask.cs').Ticks)</EmojiDataTaskSourceStamp>
+  </PropertyGroup>
+
+  <Target Name="GenerateEmojiTestTxtFile" BeforeTargets="BeforeBuild">
+    <!-- Orden de build garantizado: BuildTasks se referencia con ReferenceOutputAssembly=false,
+         asi que la sln puede evaluar EvidenciasSQA antes de que su dll exista (MSB4062 en
+         builds limpios). Compilamos BuildTasks explicitamente aqui (incremental, sin costo
+         si ya esta actualizada) antes de usar EmojiDataTask.
+         CONDICION DE STALENESS (los timestamps se calculan en propiedades: el parser de
+         condiciones solo admite un subconjunto de property functions): solo se recompila si
+         la dll falta o esta desactualizada respecto al csproj/fuente. Reescribir la dll
+         mientras el nodo MSBuild la tiene cargada produce "El tipo debe ser un tipo
+         proporcionado en el runtime" al instanciar EmojiDataTask (TaskHostFactory); con la
+         dll estable el nodo reutiliza la version cargada sin conflicto. Si el error
+         reaparece: dotnet build-server shutdown. -->
+    <MSBuild Projects="..\EvidenciasSQA.BuildTasks\EvidenciasSQA.BuildTasks.csproj" Targets="Build" Properties="Configuration=$(Configuration)" RemoveProperties="RuntimeIdentifier;SelfContained;PublishDir;PublishSingleFile;EnableCompressionInSingleFile;IncludeNativeLibrariesForSelfExtract;IncludeAllContentForSelfExtract;PublishTrimmed" Condition="!Exists('$(BuildTasksDll)') Or $(BuildTasksDllStamp) &lt; $(BuildTasksCsprojStamp) Or $(BuildTasksDllStamp) &lt; $(EmojiDataTaskSourceStamp)" />
+    <!-- Defensivo (builds incrementales): garantiza las deps de la task junto a su dll. -->
+    <Copy SourceFiles="..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\SixLabors.Fonts.dll;..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\SixLabors.ImageSharp.dll;..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\SixLabors.ImageSharp.Drawing.dll" DestinationFolder="..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)" SkipUnchangedFiles="true" Condition="Exists('..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\SixLabors.Fonts.dll')" />
+    <!-- COPIA ESTABLE DE LA TASK (obj\BuildTasksTask): la dll del bin\ de BuildTasks la
+         reescribe VS en cada build de la sln (proyecto de la solucion), y TaskHostFactory
+         no puede instanciar el tipo si el archivo cambio mientras el nodo la tenia cargada
+         ("El tipo debe ser un tipo proporcionado en el runtime"). Con SkipUnchangedFiles
+         esta copia solo se actualiza cuando el bin cambio de verdad: el nodo carga SIEMPRE
+         la misma version estable entre builds. -->
+    <Copy SourceFiles="..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\EvidenciasSQA.BuildTasks.dll;..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\SixLabors.Fonts.dll;..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\SixLabors.ImageSharp.dll;..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\SixLabors.ImageSharp.Drawing.dll" DestinationFolder="$(IntermediateOutputPath)BuildTasksTask" SkipUnchangedFiles="true" Condition="Exists('..\EvidenciasSQA.BuildTasks\bin\$(Configuration)\$(TargetFramework)\EvidenciasSQA.BuildTasks.dll')" />
+    <MakeDir Directories="$(OutDir)" />
+    <EmojiDataTask EmojiTestTxtFile="..\EvidenciasSQA.Editor\Controls\Emoji\emoji-test.txt" OutputFilename="$(OutDir)\emojis.xml" />
+  </Target>
+
+  <!-- Config log4net junto al exe (antes PostBuildEvent a bin\...\net480\) -->
+  <Target Name="CopyLog4NetConfig" AfterTargets="Build">
+    <Copy SourceFiles="log4net-debug.xml" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" Condition="'$(Configuration)' == 'Debug' And Exists('log4net-debug.xml')" />
+    <Copy SourceFiles="log4net-release.xml" DestinationFiles="$(OutDir)\log4net.xml" SkipUnchangedFiles="true" Condition="'$(Configuration)' == 'Release' And Exists('log4net-release.xml')" />
+  </Target>
+
+  <!--
+    Delegacion por proceso: el boton "Editar" del visor lanza EvidenciasSQA.Editor.Wpf.exe
+    con AppContext.BaseDirectory = este OutDir. El exe DEBE ir acompanado de su dll
+    (y deps/runtimeconfig): sin la dll el host muere al instante con 0x8000809A
+    ("The application to execute does not exist") y el boton parece no hacer nada.
+    La sln raiz puede compilar los proyectos del Visor en otra config (p.ej. Debug);
+    se copia desde la config real del editor existente en disco.
+    -->
+  <Target Name="CopyEditorExeToRoot" AfterTargets="Build">
+    <ItemGroup>
+      <_EditorFiles Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.exe" />
+      <_EditorFiles Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.dll" />
+      <_EditorFiles Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.deps.json" />
+      <_EditorFiles Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.runtimeconfig.json" />
+      <_EditorFilesFallback Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\Debug\net9.0-windows\EvidenciasSQA.Editor.Wpf.exe" />
+      <_EditorFilesFallback Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\Debug\net9.0-windows\EvidenciasSQA.Editor.Wpf.dll" />
+      <_EditorFilesFallback Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\Debug\net9.0-windows\EvidenciasSQA.Editor.Wpf.deps.json" />
+      <_EditorFilesFallback Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\Debug\net9.0-windows\EvidenciasSQA.Editor.Wpf.runtimeconfig.json" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_EditorFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" Condition="Exists('$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.dll')" />
+    <Copy SourceFiles="@(_EditorFilesFallback)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" Condition="!Exists('$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.dll') And Exists('$(MSBuildProjectDirectory)\..\EvidenciasSQA.Visor\src\EvidenciasSQA.Editor.Wpf\bin\Debug\net9.0-windows\EvidenciasSQA.Editor.Wpf.dll')" />
+  </Target>
+</Project>

@@ -1,0 +1,310 @@
+
+<html>
+	<head>
+		<title>EvidenciasSQA S�g�</title>
+		
+		<style>
+		* {
+			font-family: Tahoma, Arial, Sans-serif;
+		}
+		h1 {font-size:16px;}
+		h2 {font-size:14px;color:#009900;margin-top:24px;}
+		h3 {font-size:12px;margin-top:18px;}
+		small {font-size:10px;}
+		p, li {font-size:12px;line-height:1.5em}
+		a:link, a:hover, a:visited, a:active {color:#009900;}
+		kbd {background-color:#dddddd;border:1px solid #bbbbbb;padding:0 2px;border-radius:2px;}
+		p.hint {background-color:#ffffdd;border:1px solid #ddddbb;padding:5px;}
+		em {padding-right:0.2em;}
+		</style>
+	</head>
+	<body>
+	<h1>EvidenciasSQA S�g�</h1>
+	<!-- 
+	Note to translator: uncomment entry below to have your effort honored 
+	-->
+	<small>Verzi� 0.8 - A magyar ford�t�stban a seg�ts�get bordanrobert@yahoo.com ny�jtotta.</small>
+	
+	<h2>Tartalom</h2>
+	<ol>
+		<li><a href="#screenshot">K�perny�k�p l�trehoz�sa</a></li>
+		<ol>
+			<li><a href="#capture-region">Kijel�lt r�sz ment�se</a></li>
+			<li><a href="#capture-last-region">Az utolj�ra kijel�lt r�sz megjelen�t�se</a></li>
+			<li><a href="#capture-window">Az ablak ment�se</a></li>
+			<li><a href="#capture-fullscreen">A teljes k�perny� ment�se</a></li>
+		</ol>
+	
+		<li><a href="#editor">K�pszerkeszt� haszn�lata</a></li>
+		<ol>
+			<li><a href="#editor-shapes">Rajz eszk�z�k</a></li>
+			<li><a href="#editor-text">Sz�veg hozz�ad�sa</a></li>
+			<li><a href="#editor-highlight">Kiemel�s</a></li>
+			<li><a href="#editor-obfuscate">Hom�lyos�t�s</a></li>
+			<li><a href="#editor-crop">K�perny�k�p v�g�sa</a></li>
+			<li><a href="#editor-reuse-elements">Kijel�l�sek �jb�li haszn�lata</a></li>
+			<li><a href="#editor-export">K�perny�k�p kiviteli lehet�s�gek</a></li>
+		</ol>
+		<li><a href="#settings">Be�ll�t�sok</a></li>
+		<ol>
+			<li><a href="#settings-general">�ltal�nos</a></li>
+			<li><a href="#settings-output">Ment�s</a></li>
+			<li><a href="#settings-printer">Nyomtat�s</a></li>
+		</ol>
+		<li><a href="#help">Akar seg�teni?</a></li>
+		<ol>
+			<li><a href="#help-donate">Adom�nyoz�ssal</a></li>
+			<li><a href="#help-spread">Sz�jhagyom�ny �tj�n :)</a></li>
+			<li><a href="#help-translate">Ford�t�s bek�ld�s�vel</a></li>
+		</ol>
+	</ol>
+	
+	<a name="screenshot"></a>
+	<h2>K�perny�k�p l�trehoz�sa</h2>
+	<p>
+		K�perny�k�pet l�trehozni a <kbd>Print+Scrn</kbd> billenty� megnyom�s�val
+		vagy a t�lc�n tal�lhat� EvidenciasSQA ikonon az eg�r jobb gomb lenyom�s�val lehet.<br>
+		Sz�mos lehet�s�get k�n�l a k�perny�ment�s:
+	</p>
+	
+	<a name="capture-region"></a>
+	<h3>A kijel�lt r�sz <kbd>ment�se</kbd></h3>
+	<p>
+		A kijel�lt r�sz ment�se funkci� lehet�v� teszi, hogy a k�perny� b�rmely r�sz�t lements�k.<br>
+		Kiv�laszt�s ut�n megjelenik egy �c�lkereszt� az eg�r poz�ci�j�t mutatva a k�perny�n. 
+		Tetsz�leges helyen eg�r bal gombj�t lenyomva �s nyomva tartva az eg�r mozgat�s�val megjelenik egy z�ld t�glalap. 
+		Az eg�r bal gombj�t elengedve kijel�lt�k azt a r�szt, amit a k�perny�r�l szeretn�nk lementeni..
+	</p>
+	<p class="hint">
+		A <kbd>Space</kbd> billenty� seg�ts�g�vel tud a kijel�lt r�sz ment�se �s az	<a href="#capture-window">ablak ment�se</a> funkci� k�z�tt v�ltani.
+	</p>
+	<p class="hint">
+		Ha a pontos ter�letet szeretn� r�gz�teni, akkor v�lassza a teljes k�perny� ment�s�t,
+		ut�na a k�pszerkeszt�ben ki tudja <a href="#editor-crop">v�gni</a> a k�v�nt ter�letet.
+	</p>
+	
+	<a name="capture-last-region"></a>
+	<h3>Az utolj�ra kijel�lt r�sz megjelen�t�se <kbd>Shift</kbd> + <kbd>Print Scrn</kbd></h3>
+	<p>
+		Miel�tt egy �jabb <a href="#capture-region">r�szt</a> vagy <a href="#capture-window">ablakot</a> szeretn�nk kijel�lni, 
+		lehet�s�g�nk van az utolj�ra kijel�lt elem ism�telt megtekint�s�re, szerkeszt�s�re.
+	</p>
+	
+	<a name="capture-window"></a>
+	<h3>A kijel�lt ablak ment�se <kbd>Alt</kbd> + <kbd>Print Scrn</kbd></h3>
+	<p>
+		L�trehoz egy k�perny� k�pet az akt�v ablakr�l.
+	</p>
+	<p class="hint">
+	    Ha a <a href="#settings">be�ll�t�sokban</a> be�ll�tjuk az interakt�v ablak k�pment�si m�dot 
+		akkor <a href="#capture-region">a kijel�lt r�sz ment�se</a> m�dban nem menti le azonnal a k�pet. 
+		Ha az opci� be van jel�lve a kijel�lt r�sz ment�se m�dban kiemeli a menteni k�v�nt ter�letet.<br>
+		Ha szeretne ablakon bel�l kisebb ablakot lementeni (pl.: a b�ng�sz� ablakot eszk�zt�r n�lk�l, 
+		egy k�pkock�t internetes oldalr�l, vagy egy p�rbesz�d ablakr�l egy ok gombot), 
+		az eg�r mutat�val az ablakra c�lzunk �s megnyomjuk a <kbd>PageDown</kbd> gombot. 
+		Ezut�n kiv�laszthatjuk a kisebb kijel�lt ablakot, amit szeretn�nk.
+	</p>
+	
+	<a name="capture-fullscreen"></a>
+	<h3>A teljes k�perny� ment�se <kbd>Control</kbd> + <kbd>Print Scrn</kbd></h3>
+	<p>
+		A teljes k�perny�r�l l�trehoz egy k�pet.
+	</p>
+	
+	<a name="editor"></a>
+	<h2>K�pszerkeszt� haszn�lata</h2>
+	<p>
+		A EvidenciasSQA -hoz tartozik egy k�nnyen haszn�lhat� k�pszerkeszt�, amely hasznos be�ll�t�si funkci�kat ny�jt, 
+		a k�perny�k�pekhez megjegyz�seket vagy alakzatokat rendelhet�nk. Lehet�v� teszi, hogy egy k�p r�szeit kiemelj�k vagy elmossuk.
+	</p>
+	<p class="hint">
+		A EvidenciasSQA k�pszerkeszt� nem csak a lementett k�perny�k�pekhez haszn�lhat�, m�s k�pek szerkeszt�s�hez is haszn�lhatjuk. 
+		A t�lc�n tal�lhat� EvidenciasSQA ikonon jobb eg�rgomb megnyom�s�val a felugr� men�b�l kiv�laszthatjuk a
+		<em>K�p megnyit�sa f�jlb�l</em> vagy a <em>K�p megnyit�sa v�g�lapr�l</em> opci�t.
+	</p>
+	<p class="hint">
+		Alap�rtelmez�s szerint a EvidenciasSQA k�pszerkeszt� ny�lik meg, ha k�perny� k�pet k�sz�t�nk. 
+		A felugr� men� <a href="#settings">Gyors-be�ll�t�sok</a> men�pont, <em>Mit csin�ljak a k�perny�k�ppel?</em>
+		kiny�l� f�l�n lehet kiv�lasztani, hogy mi t�rt�njen a k�perny� ment�s ut�n. 
+	</p>
+	
+	
+	<a name="editor-shapes"></a>
+	<h3>Rajz eszk�z�k</h3>
+	<p>
+		V�lasszon egy rajzeszk�zt a k�pszerkeszt� bal oldal�n l�that� eszk�zeib�l vagy az <em>eszk�z�k</em> leg�rd�l� men�b�l. 
+		A bal oldalon elhelyezett eszk�z�k k�nyelmess� teszik a program haszn�lat�t. <br>
+		Rendelkez�sre �ll� eszk�z�k: n�gysz�g <kbd>R</kbd>, ellipszis <kbd>E</kbd>, vonal <kbd>L</kbd> �s a ny�l <kbd>A</kbd>. <br>
+		Az eg�r bal oldali gombj�nak nyomva tart�s�val �s az eg�r mozgat�s�val tudja kijel�lni a c�lter�letet. 
+		Az eg�r bal oldali gombj�nak elenged�se ut�n akt�v a kijel�lt ter�let.
+	</p>
+	<p>
+		Lehet�s�g van  kijel�lt ter�let mozgat�s�ra vagy �tm�retez�s�re. <br>
+		Az eszk�z�kb�l az <kbd>ESC</kbd>  gomb megnyom�s�val tudunk kil�pni �s ezzel automatikusa a kijel�l� eszk�z lesz kiv�lasztva. 
+		A kijel�lt elem minden tulajdons�g�t megv�ltoztathatjuk (pl.: vonal vastags�g, vonal sz�n, kiemel�s sz�ne). 
+		Egy m�sik elem l�trehoz�s�hoz ism�t kell egy rajzeszk�zt v�lasztani.
+	</p>
+	<p class="hint">
+		Egyszerre t�bb elem tulajdons�g�t is �ll�thatjuk. A <kbd>Shift</kbd> gomb nyomva tart�s�val �s az eg�rrel tudunk t�bb elemet kijel�lni.
+	</p>
+	
+	<a name="editor-text"></a>
+	<h3>Sz�veg hozz�ad�sa</h3>
+	<p>
+		Haszn�lja a sz�vegdoboz hozz�ad�sa <kbd>T</kbd> eszk�zt. <br>
+		�ll�tsuk be a bet�t�pust �s a bet�m�retet, jel�lj�k ki a sz�vegdobozt, ezut�n �rhatunk is bele.<br>
+		Ha a kijel�l� eszk�zzel dupl�n kattintunk egy l�tez� sz�veg elemere, akkor azt tudjuk szerkeszteni.
+	</p>
+	
+	<a name="editor-highlight"></a>
+	<h3>Kiemel�s</h3>
+	<p>
+		A kiemel�s eszk�z <kbd>H</kbd> kiv�laszt�sa ut�n, pontosan megadhatjuk a kiemelni k�v�nt ter�letet. <br>
+		Sz�mos lehet�s�g k�z�l lehet v�lasztani bal oldali eszk�zt�r feletti leg�rd�l� men�b�l:
+	</p>
+	<ul>
+		<li><em>Sz�veg kiemel�s</em>: ki lehet emelni a sz�veget �l�nk sz�nekkel, mint egy irodai sz�veg kiemel�vel.</li>
+		<li><em>Ter�let kiemel�se</em>: a kijel�lt ter�leten k�v�l mindent el lehet mosni<a href="#hint-blur">*</a> �s s�t�t�teni.</li>
+		<li><em>Sz�rke�rnyalatos</em>: a kijel�lt ter�leten k�v�l minden sz�rke�rnyalatos lesz.</li>
+		<li><em>Nagy�t�s</em>: A kijel�lt ter�let lesz kinagy�tva. A nagy�t�s m�rt�k�t�l f�gg, hogy mekkora lesz a kijel�lt ter�let.</li>
+	</ul>
+	
+	<a name="editor-obfuscate"></a>
+	<h3>Hom�lyos�t�s</h3>
+	<p>
+		J� �tlet a k�perny�k�p egyes r�szeit hom�lyos�tani, ha nem akarjuk, hogy mindent l�ssanak. 
+		pl.: banksz�mlasz�m, jelszavakat vagy arck�pek.<br>
+		Haszn�lja a hom�lyos�t�s eszk�zt <kbd>O</kbd>, pontosan olyan, mint a <a href="#editor-highlight">kiemel� eszk�z</a>.<br>
+		A k�vetkez� lehet�s�gekkel lehet hom�lyos�tani:
+	</p>
+	<ul>
+		<li><em>Pixeles�t�</em>: N�veli a pixel m�ret�t a kiv�lasztott ter�leten.</li>
+		<li><em>Elmos�s</em><a href="#hint-blur">*</a>: A kijel�lt ter�letet elkeni, elmossa.</li>
+	</ul>
+	<a name="hint-blur"></a>
+	<p class="hint">
+		* A sz�m�t�g�p teljes�tm�ny�t�l f�gg�en lass�thatja a EvidenciasSQA k�pszerkeszt�j�t a hom�lyos�t�s. 
+		Ha �gy �rezz�k, hogy a k�pszerkeszt� lassan reag�l, cs�kkents�k az <em>el�n�zet min�s�g�t</em> vagy a <em>hom�lyos�t�s �rt�k�t</em>. 
+		Ha �gy �rezz�k, hogy tov�bbra is lass�, haszn�ljuk ink�bb a pixeles�t�st. 
+		Ha az el�n�zet min�s�g�t minim�lisra �ll�tjuk, a mentett k�pen nem azt fogjuk l�tni.<br>		
+	</p>
+	
+	<a name="editor-crop"></a>
+	<h3>K�perny�k�p v�g�sa</h3>
+	<p>
+		Ha sz�ks�g�nk lenne a k�perny�k�p egy r�sz�re akkor haszn�ljuk v�g�s eszk�zt <kbd>C</kbd>.<br>
+		Miut�n kiv�lasztottuk a v�g�s eszk�zt <kbd>C</kbd>, rajzoljunk egy t�glalapot a k�r�, amit ki akarunk v�gni. 
+		A kijel�lt ter�letet m�g �t tudjuk m�retezni miel�tt kiv�gjuk.<br>
+		Ha kijel�lt�k a kiv�gand� ter�letet az <kbd>Enter</kbd> billenty�vel vagy az eszk�zt�r feletti a z�ld pip�val 
+		v�ghatunk. Ha m�gis meggondoltuk magunkat az <kbd>ESC</kbd> gomb vagy az eszk�zt�r feletti m�gsem, 
+		piros k�r �th�zva ikonra kattintva megszak�thatjuk a ter�let kiv�g�s�t.
+	</p>
+	
+	<a name="editor-reuse-elements"></a>
+	<h3>Kijel�l�sek �jb�li haszn�lata</h3>
+	<p>
+		Ha t�bbsz�r haszn�lunk azonos m�ret� elemeket k�l�nb�z� k�perny�ment�seken (pl.: sz�vegmez�t vagy hom�lyos�t�sokat), 
+		akkor �jra haszn�lhatjuk ezeket a kijel�l�seket.<br>
+		V�lasszuk az <em>eszk�z�k</em> men�, <em>kijel�l�s ment�se f�jlba</em> opci�t. 
+		Elnevezz�k �gy, hogy ha sz�ks�g�nk lesz r� k�s�bb megtal�ljuk �s az <em>eszk�z�k</em> men�, 
+		<em>kijel�l�s bet�lt�se f�jlb�l</em> opci�t v�lasztva �jb�l tudjuk haszn�lni kor�bbi kijel�l�s�nket egy �j k�perny�k�pen.
+	</p>
+	
+	<a name="editor-export"></a>
+	<h3>K�perny�k�p kiviteli lehet�s�gek</h3>
+	<p>
+		A k�perny�k�p szerkeszt�se ut�n lehet�s�g�nk van t�bbf�le m�don elmenti a f�jlunkat. 
+		A f�jl kiviteli lehet�s�geit a <em>F�jl</em> men�ben vagy a legfels� eszk�zt�ron lehet kiv�lasztani.
+	</p>
+	<ul>
+		<li><em>Ment�s</em> <kbd>Control</kbd> + <kbd>S</kbd>: a k�p ment�se f�jlba (ha a k�p m�r mentve van felugrik a <em>ment�s m�sk�nt</em> ablak)</li>
+		<li><em>Ment�s m�sk�nt...</em> <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>: lehet�s�g�nk van ment�si helyet, f�jl form�tumot �s f�jlnevet v�lasztani.</li>
+		<li><em>K�p m�sol�sa v�g�lapra</em> <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>: a k�p egy m�solat�t v�g�lapra helyezi, �gy m�s programokba beilleszthetj�k k�p�nket</li>
+		<li><em>Nyomtat�s...</em> <kbd>Control</kbd> + <kbd>P</kbd>: k�p nyomtat�sa</li>
+		<li><em>E-Mail</em> <kbd>Control</kbd> + <kbd>E</kbd>: megny�lik egy �j lev�l k�ld�se ablak alap�rtelmezett levelez�rendszerrel �s mell�kletk�nt csatolva lesz a k�p�nk</li>
+	</ul>
+	<p class="hint">
+		Ment�s ut�n a k�pszerkeszt� �llapotsor�n megnyomjuk a jobb eg�rgombot �s lehet v�lasztani, hogy a k�p el�r�si �tj�t a v�g�lapra m�solja vagy megnyitja a ment�si helyet.
+	</p>
+	
+	
+	<a name="settings"></a>
+	<h2>Be�ll�t�sok</h2>
+	
+	<a name="settings-general"></a>
+	<h3>�ltal�nos be�ll�t�sok</h3>
+	<ul>
+		<li><em>Nyelv</em>: A haszn�lni k�v�nt nyelv kiv�laszt�sa.<br>
+			Let�lthet tov�bbi nyelvi f�jlokat a EvidenciasSQA oldal�r�l <a target="_blank" href="https://evidenciassqa.com/downloads/">itt</a>. </li>
+		<li><em>Gyorsbillenty�k haszn�lata</em>: Ha be van jel�lve, ind�thatod a EvidenciasSQA programot a <kbd>Print + Scrn</kbd> billenty�vel.</li>
+		<li><em>Program ind�t�sa a Windows indul�sakor</em>: a EvidenciasSQA program elindul Windows indul�sakor.</li>
+		<li><em>F�nyk�pez� vaku</em>: Vizu�lis visszajelz�s k�perny�k�p k�sz�t�sekor.</li>
+		<li><em>F�nyk�pez� z�rhang</em>: Hallhat� visszajelz�s k�perny�k�p k�sz�t�sekor</li>
+		<li><em>Kijel�l�s eg�rmutat�val</em>: Ha be van jel�lve, eg�r mutat�val tudunk kijel�lni. A mutat�val a k�l�n �ll� elemeket ki tudjuk jel�lni a szerkeszt�ben, hogy k�s�bb mozgathassuk vagy elt�vol�thassuk.</li>
+		<li><em>Interakt�v ablak kijel�l�si m�d</em>: Lehet�s�g�nk van kisebb ablakok lement�s�re is az akt�v ablakon bel�l. 
+		L�sd <a href="#capture-window">az ablak ment�s�n�l</a>.</li>
+	</ul>
+	
+	<a name="settings-output"></a>
+	<h3>Ment�s </h3>
+	<ul>
+		<li><em>Kiviteli lehet�s�gek</em>: Megadhatjuk, hogy a k�perny�k�p ment�se ut�n mit csin�ljon a program.</li>
+		<li><em>Kimeneti f�jl be�ll�t�sai</em>: K�nyvt�r �s f�jln�v be�ll�t�sok k�zvetlen ment�shez, vagy a javasolt ment�skor (ment�s m�sk�nt). A <em>?</em> gombra kattintva t�bbet megtudhatunk a f�jln�v form�tum�r�l.</li>
+		<li><em>JPEG be�ll�t�sok</em>: JPEG f�jlok ment�si min�s�g�t lehet be�ll�tani.</li>
+	</ul>
+	
+	<a name="settings-printer"></a>
+	<h3>Nyomtat�si be�ll�t�sok</h3>
+	<ul>
+		<li><em>Zsugor�t�s a nyomtathat� ter�lethez</em>: Ha a k�p nagyobb az oldal m�ret�t�l, akkor zsugor�tja az oldal m�ret�hez a k�pet.</li>
+		<li><em>Igaz�t�s a nyomtathat� ter�lethez</em>: Ha a k�p kisebb, mint a pap�r m�rete, akkor a pap�r m�ret�het igaz�tja a k�pet.</li>
+		<li><em>Automatikus forgat�s �s k�z�pre igaz�t�s</em>: Fekv� t�jol�s� k�pet 90&deg; -kal ford�tja el.</li>
+	</ul>
+	
+	
+	<a name="help"></a>
+	<h2>Akar seg�teni?</h2>
+	
+	<p>
+		A fejleszt�s�ben seg�ts�g�re nincs sz�ks�g. Azonban van n�h�ny dolog, amit tehet�nk, 
+		hogy t�mogassuk a EvidenciasSQA t�mogat�st �s a fejleszt� csapatot.<br>
+		El�re is k�sz�nj�k :)
+	</p>
+	
+	<a name="help-donate"></a>
+	<h3>Fontolja meg az adom�nyoz�st</h3>
+	<p>
+		A EvidenciasSQA programba sok munk�t �s p�nzt fektett�nk, ez egy j�, ingyenes, ny�lt forr�sk�d� programot hoztunk l�tre. 
+		Ha �gy �rzed, hogy megk�nny�ti a munk�dat, ha id�t �s p�nzt tudsz sp�rolni magadnak (vagy c�gednek), 
+		vagy ha csak �gy, szereted a EvidenciasSQA programot �s ha van egy j� �tleted a programhoz, 
+		k�rlek tartsd tiszteletben az er�fesz�t�s�nket �s fontold meg az adom�nyoz�st.<br>
+		K�rj�k tekintse meg honlapunkat, hogy hogyan tudn� seg�teni a EvidenciasSQA fejleszt�i csapatot.:<br>
+		<a target="_blank" href="https://evidenciassqa.com/?locale=default&page=support">https://evidenciassqa.com/?locale=default&amp;page=support</a>
+	</p>
+	
+	<a name="help-spread"></a>
+	<h3>Sz�jhagyom�ny �tj�n :)</h3>
+	<p>
+		Ha szereted a EvidenciasSQA -ot, tudasd  az emberekkel, besz�lj a bar�taiddal �s koll�g�iddal a EvidenciasSQA -r�l. 
+		A k�vet�iddel is :)<br>
+		�rt�keld a EvidenciasSQA -ot szoftver oldalakon vagy linkeld be a honlapodon, blogodon.
+	</p>
+	
+	<a name="help-translate"></a>
+	<h3>K�ldj�n be ford�t�st</h3>
+	<p>
+		EvidenciasSQA nem �rhet� el a k�v�nt nyelvet? Ha �gy �rzi, ford�tsa le a szoftvert �s k�ldje el nek�nk, sz�vesen fogadjuk. 
+		Ha �n regisztr�l a sourceforge.net -en fel tudja t�lteni a ford�t�st a <a target="_blank" href="https://sourceforge.net/tracker/?group_id=191585&atid=1368020">keres�nkre</a>.<br>
+		K�rj�k, gy�z�dj�n meg r�la, hogy nincs e l�tez� ford�t�sa az �n nyelv�t a <a target="_blank" href="https://evidenciassqa.com/downloads/">let�lt�si oldalunkon</a>. 
+		N�zze meg a <a target="_blank" href="https://sourceforge.net/tracker/?group_id=191585&atid=1368020">keres�nkben</a>, hogy ford�t�s nincs e folyamatban vagy elb�r�l�s alatt. 
+		Felh�vjuk figyelm�t, hogy csak akkor tudjuk a ford�t�s�t elfogadni, ha a sourceforge.net -en saj�t felhaszn�l�i fi�kj�n kereszt�l t�lti fel. 
+		Nagy val�sz�n�s�ggel nem �rtj�k meg az �n ford�t�s�t, j� esetben a t�bbi soundforge felhaszn�l� el�ri az �n fejleszt�s�t 
+		vagy az �j EvidenciasSQA tov�bbfejlesztett verzi�j�ban.
+	</p>
+	
+	
+	
+	</body>
+</html>
+
+ 	  	 

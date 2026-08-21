@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language description="English" ietf="en-US" version="1.0.4" languagegroup="1">
+	<resources>
+		<resource name="about_bugs">Please report bugs to</resource>
+		<resource name="about_donations">If you like EvidenciasSQA, you are welcome to support us:</resource>
+		<resource name="about_host">EvidenciasSQA is hosted by GitHub at</resource>
+		<resource name="about_icons">Icons from Yusuke Kamiyamane's Fugue icon set (Creative Commons Attribution 3.0 license)</resource>
+		<resource name="about_license">Copyright Â© 2004-2026 Thomas Braun, Jens Klingen, Robin Krom
+EvidenciasSQA comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.
+Details about the GNU General Public License:</resource>
+		<resource name="about_title">About EvidenciasSQA</resource>
+		<resource name="about_translation"><!-- diplayed in about dialog, use to add credits or other translation-related info, e.g. "English translation by YOUR_NAME"--></resource>
+		<resource name="application_title">EvidenciasSQA - the revolutionary screenshot utility</resource>
+		<resource name="bugreport_cancel">Close</resource>
+		<resource name="bugreport_info">Sorry, an unexpected error occurred.
+
+The good news is: you can help us getting rid of it by filing a bug report.
+Please visit the URL below, create a new bug report and paste the contents from the text area into the description.
+Please add a meaningful summary and enclose any information you consider to be helpful for reproducing the issue.
+Also, we would highly appreciate if you checked whether a tracker item already exists for this bug. (You can use the search to find those quickly.) Thank you :)</resource>
+		<resource name="bugreport_title">Error</resource>
+		<resource name="CANCEL">Cancel</resource>
+		<resource name="clipboard_error">An unexpected error occurred while writing to the clipboard.</resource>
+		<resource name="clipboard_inuse">EvidenciasSQA wasn't able to write to the clipboard as the process {0} blocked the access.</resource>
+		<resource name="clipboard_noimage">Couldn't find a clipboard image.</resource>
+		<resource name="ClipboardFormat.BITMAP">Windows Bitmap</resource>
+		<resource name="ClipboardFormat.DIB">Device Independent Bitmap (DIB)</resource>
+		<resource name="ClipboardFormat.HTML">HTML</resource>
+		<resource name="ClipboardFormat.HTMLDATAURL">HTML with inline images</resource>
+		<resource name="ClipboardFormat.PNG">PNG</resource>
+		<resource name="colorpicker_alpha">Alpha</resource>
+		<resource name="colorpicker_apply">Apply</resource>
+		<resource name="colorpicker_blue">Blue</resource>
+		<resource name="colorpicker_green">Green</resource>
+		<resource name="colorpicker_htmlcolor">HTML color</resource>
+		<resource name="colorpicker_recentcolors">Recently used colors</resource>
+		<resource name="colorpicker_transparent">Transparent</resource>
+		<resource name="com_rejected">The destination {0} rejected EvidenciasSQA access, probably a dialog is open. Close the dialog and try again.</resource>
+		<resource name="com_rejected_title">EvidenciasSQA access rejected</resource>
+		<resource name="config_unauthorizedaccess_write">Could not save EvidenciasSQA's configuration file. Please check access permissions for '{0}'.</resource>
+		<resource name="contextmenu_about">About EvidenciasSQA</resource>
+		<resource name="contextmenu_capturearea">Capture region</resource>
+		<resource name="contextmenu_captureclipboard">Open image from clipboard</resource>
+		<resource name="contextmenu_capturefullscreen">Capturar pantalla</resource>
+		<resource name="contextmenu_capturefullscreen_all">Todas las pantallas</resource>
+		<resource name="contextmenu_capturefullscreen_bottom">Pantalla Secundaria</resource>
+		<resource name="contextmenu_capturefullscreen_left">Pantalla Secundaria</resource>
+		<resource name="contextmenu_capturefullscreen_right">Pantalla Secundaria</resource>
+		<resource name="contextmenu_capturefullscreen_top">Pantalla Principal</resource>
+		<resource name="contextmenu_capturelastregion">Capture last region</resource>
+		<resource name="contextmenu_capturewindow">Capturar ventana activa</resource>
+		<resource name="contextmenu_capturewindowfromlist">Capture window from list</resource>
+		<resource name="contextmenu_donate">Support EvidenciasSQA</resource>
+		<resource name="contextmenu_exit">Exit</resource>
+		<resource name="contextmenu_help">Help</resource>
+		<resource name="contextmenu_openfile">Open image from file</resource>
+		<resource name="contextmenu_openrecentcapture">Open last capture location</resource>
+		<resource name="contextmenu_quicksettings">Quick preferences</resource>
+		<resource name="contextmenu_settings">Preferences...</resource>
+		<resource name="destination_exportfailed">Error while exporting to {0}. Please try again.</resource>
+		<resource name="editor_align_bottom">Bottom</resource>
+		<resource name="editor_align_center">Center</resource>
+		<resource name="editor_align_horizontal">Horizontal alignment</resource>
+		<resource name="editor_align_left">Left</resource>
+		<resource name="editor_align_middle">Middle</resource>
+		<resource name="editor_align_right">Right</resource>
+		<resource name="editor_align_top">Top</resource>
+		<resource name="editor_align_vertical">Vertical alignment</resource>
+		<resource name="editor_arrange">Arrange</resource>
+		<resource name="editor_arrowheads">Arrow heads</resource>
+		<resource name="editor_arrowheads_both">Both</resource>
+		<resource name="editor_arrowheads_end">End point</resource>
+		<resource name="editor_arrowheads_none">None</resource>
+		<resource name="editor_arrowheads_start">Start point</resource>
+		<resource name="editor_autocrop">Auto crop</resource>
+		<resource name="editor_autocrop_not_possible">Auto crop not possible</resource>
+		<resource name="editor_backcolor">Fill color (0-9)</resource>
+		<resource name="editor_blur_radius">Blur radius</resource>
+		<resource name="editor_bold">Bold</resource>
+		<resource name="editor_border">Border</resource>
+		<resource name="editor_brightness">Brightness</resource>
+		<resource name="editor_cancel">Cancel</resource>
+		<resource name="editor_clipboardfailed">Error while accessing the clipboard. Please try again.</resource>
+		<resource name="editor_close">Close</resource>
+		<resource name="editor_close_all">Close all</resource>
+		<resource name="editor_close_on_save">Do you want to save the screenshot?</resource>
+		<resource name="editor_close_on_save_title">Save image?</resource>
+		<resource name="editor_confirm">Confirm</resource>
+		<resource name="editor_copyimagetoclipboard">Copy image to clipboard</resource>
+		<resource name="editor_copypathtoclipboard">Copy path to clipboard</resource>
+		<resource name="editor_copytoclipboard">Copy</resource>
+		<resource name="editor_crop">Crop (C)</resource>
+		<resource name="editor_crop_mode">Crop mode</resource>
+		<resource name="editor_cropmode_default">Crop</resource>
+		<resource name="editor_cropmode_vertical">Crop out vertically</resource>
+		<resource name="editor_cropmode_horizontal">Crop out horizontally</resource>
+		<resource name="editor_cropmode_vertical_right">Crop out vertically (right)</resource>
+		<resource name="editor_cropmode_horizontal_bottom">Crop out bottom</resource>
+		<resource name="editor_cropmode_horizontal_top">Crop out top</resource>
+		<resource name="editor_cropmode_vertical_left">Crop out vertically (left)</resource>
+		<resource name="editor_cropmode_horizontal_right">Crop out right</resource>
+		<resource name="editor_cropmode_horizontal_left">Crop out left</resource>
+		<resource name="editor_cropmode_vertical_bottom">Crop out bottom</resource>
+		<resource name="editor_counter">Add counter (I)</resource>
+		<resource name="editor_speechbubble">Add speechbubble (S)</resource>
+
+		<resource name="editor_resize">Resize (Z)</resource>
+		<resource name="editor_resize_settings">Resize settings</resource>
+		<resource name="editor_resize_aspectratio">Maintain aspect ratio</resource>
+		<resource name="editor_resize_width">Width</resource>
+		<resource name="editor_resize_height">Height</resource>
+		<resource name="settings_iconsize">Icon size</resource>
+		<resource name="editor_tornedge_horizontaltoothrange">Horizontal tooth range</resource>
+		<resource name="editor_tornedge_settings">Torn edges settings</resource>
+		<resource name="editor_tornedge_toothsize">Tooth size</resource>
+		<resource name="editor_tornedge_all">Tear all sides</resource>
+		<resource name="editor_tornedge_left">Left side</resource>
+		<resource name="editor_tornedge_right">Right side</resource>
+		<resource name="editor_tornedge_top">Top side</resource>
+		<resource name="editor_tornedge_bottom">Bottom side</resource>
+		<resource name="editor_tornedge_shadow">Generate shadow</resource>
+		<resource name="editor_counter">Add counter (I)</resource>
+		<resource name="editor_speechbubble">Add speechbubble (S)</resource>
+
+		<resource name="editor_resize">Resize (Z)</resource>
+		<resource name="editor_resize_settings">Resize settings</resource>
+		<resource name="editor_resize_aspectratio">Maintain aspect ratio</resource>
+		<resource name="editor_resize_width">Width</resource>
+		<resource name="editor_resize_height">Height</resource>
+		<resource name="settings_iconsize">Icon size</resource>
+</resources>
+</language>

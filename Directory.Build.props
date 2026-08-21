@@ -1,0 +1,74 @@
+<Project>
+  <PropertyGroup>
+    <Copyright>Copyright © EvidenciasSQA 2004-2026</Copyright>
+    <Authors>EvidenciasSQA</Authors>
+    <PackageIconUrl>https://evidenciassqa.com/favicon.ico</PackageIconUrl>
+    <RepositoryUrl>https://github.com/evidenciassqa/evidenciassqa</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/evidenciassqa/evidenciassqa</PackageProjectUrl>
+    <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
+    <LangVersion>latest</LangVersion>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <!-- Optional: Embed source files that are not tracked by the source control manager in the PDB -->
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <Deterministic>true</Deterministic>
+    <!-- BinaryFormatter (SYSLIB0011 = error en net9) se mantiene SOLO para compatibilidad
+         de formatos legacy mientras se migra: (1) .evidenciassqa (Surface.SaveElementsToStream,
+         Editor) y (2) WM_COPYDATA entre instancias (CopyData). Ambos lanzan en runtime en
+         .NET 9 y tienen migracion pendiente documentada; NoWarn permite compilar mientras tanto. -->
+    <NoWarn>$(NoWarn);SYSLIB0011</NoWarn>
+    <!-- Emit Roslyn source-generator output to disk so Visual Studio IntelliSense can see
+         the Dapplo.Ini-generated property implementations in *Impl.cs partial classes.
+         The output path is inside obj/ so the auto-glob (**/*.cs) does NOT pick it up. -->
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>$(MSBuildProjectDirectory)/obj/generated</CompilerGeneratedFilesOutputPath>
+    <!-- .NET 9 (consolidación): los recursos no-string se preserializan para compilar con
+         'dotnet build' (evita MSB3822/MSB3823 con el SDK 9). -->
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug' And !$(MSBuildProjectName.Contains('Test')) And !$(MSBuildProjectName.Contains('Demo'))">
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests')) Or $(MSBuildProjectName.Contains('Demo'))">
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>True</DebugSymbols>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DebugType>embedded</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Optimize>true</Optimize>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup Condition="!$(MSBuildProjectName.Contains('Tests')) And $(MSBuildProjectName.StartsWith('EvidenciasSQA'))">
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.9.50">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.103" PrivateAssets="All"/>
+  </ItemGroup>
+
+  <!-- Exclude the Roslyn-generated *.g.cs files from the normal compilation glob so they are
+       not compiled twice (once from the generator output and once from the **/*.cs wildcard). -->
+  <ItemGroup Condition="!$(MSBuildProjectName.Contains('Tests')) And $(MSBuildProjectName.StartsWith('EvidenciasSQA'))">
+    <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
+  </ItemGroup>
+
+  </Project>

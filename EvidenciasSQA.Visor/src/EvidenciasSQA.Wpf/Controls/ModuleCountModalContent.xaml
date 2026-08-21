@@ -1,0 +1,24 @@
+<UserControl x:Class="EvidenciasSQA.Wpf.Controls.ModuleCountModalContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Root"
+             Focusable="False">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/EvidenciasSQA.Wpf;component/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <TextBlock Text="Selecciona el número de casos de prueba. Para cada uno se te pedirá marcar sus evidencias."
+                   Foreground="#4b5563" FontSize="13.5" TextWrapping="Wrap" Margin="0,0,0,14" />
+
+        <TextBlock Text="Número de casos de prueba (1-20)" Foreground="#444444" FontSize="13"
+                   FontWeight="SemiBold" Margin="0,0,0,4" />
+        <TextBox x:Name="CountTextBox" Style="{StaticResource DialogInputStyle}" Text="2" />
+        <TextBlock x:Name="CountErrorText" Text="Ingresa un número válido entre 1 y 20"
+                   Foreground="#cc0000" FontSize="11" Margin="2,3,0,0" Visibility="Collapsed" />
+    </StackPanel>
+</UserControl>

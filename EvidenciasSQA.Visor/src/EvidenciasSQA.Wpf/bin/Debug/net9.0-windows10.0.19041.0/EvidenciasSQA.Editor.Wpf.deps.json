@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "EvidenciasSQA.Editor.Wpf/1.0.0": {
+        "dependencies": {
+          "EvidenciasSQA.Core": "1.0.0"
+        },
+        "runtime": {
+          "EvidenciasSQA.Editor.Wpf.dll": {}
+        }
+      },
+      "EvidenciasSQA.Core/1.0.0": {
+        "runtime": {
+          "EvidenciasSQA.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EvidenciasSQA.Editor.Wpf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EvidenciasSQA.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

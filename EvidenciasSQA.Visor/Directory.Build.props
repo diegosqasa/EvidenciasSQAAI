@@ -1,0 +1,8 @@
+<Project>
+  <!--
+    Aisla el visor del Directory.Build.props del repo Tray (C:\projects\EvidenciasSQA\src):
+    su RuntimeIdentifiers win10-x64/win10-x86 y TargetFramework net480 no aplican a los
+    proyectos net9.0-windows del visor (producen NETSDK1083). Cada csproj del visor es
+    autosuficiente (UseWPF/TargetFramework declarados explícitamente).
+  -->
+</Project>

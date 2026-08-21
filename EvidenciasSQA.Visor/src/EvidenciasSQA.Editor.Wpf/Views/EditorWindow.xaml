@@ -1,0 +1,17 @@
+<Window x:Class="EvidenciasSQA.Editor.Wpf.Views.EditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:EvidenciasSQA.Editor.Wpf.Views"
+        Title="Editor de capturas (módulo EvidenciasSQA)"
+        Icon="pack://application:,,,/EvidenciasSQA.Editor.Wpf;component/Media/SQA1.png"
+        Width="1000" Height="680"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF2B2B2B">
+
+    <!--
+      Wrapper del MODO STANDALONE (exe del editor lanzado por sí mismo).
+      La UI real vive en EditorView (UserControl): la misma vista que el visor
+      embebe en su ventana principal — cero duplicación y consistencia total.
+    -->
+    <views:EditorView x:Name="EditorHost" />
+</Window>

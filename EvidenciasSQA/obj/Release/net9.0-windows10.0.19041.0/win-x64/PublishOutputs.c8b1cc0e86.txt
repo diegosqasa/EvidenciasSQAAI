@@ -1,0 +1,4 @@
+C:\projects\EvidenciasSQA\src\dist\EvidenciasSQA.Core.pdb
+C:\projects\EvidenciasSQA\src\dist\EvidenciasSQA.Wpf.pdb
+C:\projects\EvidenciasSQA\src\dist\EvidenciasSQA.Editor.Wpf.pdb
+C:\projects\EvidenciasSQA\src\dist\EvidenciasSQA.exe

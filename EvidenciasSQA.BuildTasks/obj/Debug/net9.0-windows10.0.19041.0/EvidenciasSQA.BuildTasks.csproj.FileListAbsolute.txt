@@ -1,0 +1,16 @@
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\bin\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.BuildTasks.deps.json
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\bin\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.BuildTasks.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\bin\Debug\net9.0-windows10.0.19041.0\SixLabors.Fonts.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\bin\Debug\net9.0-windows10.0.19041.0\SixLabors.ImageSharp.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\bin\Debug\net9.0-windows10.0.19041.0\SixLabors.ImageSharp.Drawing.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\bin\Debug\net9.0-windows10.0.19041.0\Microsoft.Windows.SDK.NET.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\bin\Debug\net9.0-windows10.0.19041.0\WinRT.Runtime.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.BuildTasks.csproj.AssemblyReference.cache
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.BuildTasks.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.BuildTasks.AssemblyInfoInputs.cache
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.BuildTasks.AssemblyInfo.cs
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.BuildTasks.csproj.CoreCompileInputs.cache
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\Evidenci.C674F459.Up2Date
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.BuildTasks.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\refint\EvidenciasSQA.BuildTasks.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.BuildTasks\obj\Debug\net9.0-windows10.0.19041.0\ref\EvidenciasSQA.BuildTasks.dll

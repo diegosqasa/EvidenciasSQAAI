@@ -1,0 +1,147 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Wpf\\EvidenciasSQA.Wpf.csproj": {}
+  },
+  "projects": {
+    "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Core\\EvidenciasSQA.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Core\\EvidenciasSQA.Core.csproj",
+        "projectName": "EvidenciasSQA.Core",
+        "projectPath": "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Core\\EvidenciasSQA.Core.csproj",
+        "packagesPath": "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\projects\\greenshot-viewer-editor\\NuGet.Config",
+          "C:\\Users\\DiegoFernandoMachado\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0-windows7.0": {
+            "targetAlias": "net9.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0-windows7.0": {
+          "targetAlias": "net9.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Wpf\\EvidenciasSQA.Wpf.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Wpf\\EvidenciasSQA.Wpf.csproj",
+        "projectName": "EvidenciasSQA.Wpf",
+        "projectPath": "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Wpf\\EvidenciasSQA.Wpf.csproj",
+        "packagesPath": "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Wpf\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\projects\\greenshot-viewer-editor\\NuGet.Config",
+          "C:\\Users\\DiegoFernandoMachado\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0-windows10.0.19041.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0-windows10.0.19041": {
+            "targetAlias": "net9.0-windows10.0.19041.0",
+            "projectReferences": {
+              "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Core\\EvidenciasSQA.Core.csproj": {
+                "projectPath": "C:\\projects\\greenshot-viewer-editor\\src\\EvidenciasSQA.Core\\EvidenciasSQA.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0-windows10.0.19041": {
+          "targetAlias": "net9.0-windows10.0.19041.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.Windows.SDK.NET.Ref",
+              "version": "[10.0.19041.57, 10.0.19041.57]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.Windows.SDK.NET.Ref.Windows": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.317/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

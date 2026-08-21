@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    EvidenciasSQA.Core — análogo de EvidenciasSQA.Base:
+    capa agnóstica de UI con GDI+ (System.Drawing) y WIC (System.Windows.Media.Imaging).
+    Obtiene las referencias de WindowsDesktop sin generar ninguna ventana (FrameworkReference).
+  -->
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>EvidenciasSQA.Core</RootNamespace>
+    <AssemblyName>EvidenciasSQA.Core</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Expone System.Drawing + System.Windows.Media (WIC) + System.Windows.Forms API de Windows sin UseWPF -->
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Plantilla Word corporativa - se copia al output para WordReportBuilder -->
+    <Content Include="..\..\..\Media\Soporte_Evidencias.docx">
+      <Link>Media\Soporte_Evidencias.docx</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Iconos inline del header corporativo (calendario, navegador, SO) - assets de Media/ -->
+    <Content Include="..\..\..\Media\Calendario.png">
+      <Link>Media\Calendario.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\Media\Navegador.png">
+      <Link>Media\Navegador.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\Media\SO.png">
+      <Link>Media\SO.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

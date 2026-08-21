@@ -1,0 +1,98 @@
+/*
+ * EvidenciasSQA - a free and open source screenshot tool
+ * Copyright (C) 2004-2026 Thomas Braun, Jens Klingen, Robin Krom
+ * 
+ * For more information see: https://evidenciassqa.com/
+ * The EvidenciasSQA project is hosted on GitHub https://github.com/evidenciassqa/evidenciassqa
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 1 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+using EvidenciasSQA.Base;
+using EvidenciasSQA.Base.Core;
+using EvidenciasSQA.Base.Interfaces;
+using EvidenciasSQA.Configuration;
+
+namespace EvidenciasSQA.Destinations
+{
+    /// <summary>
+    /// Description of ClipboardDestination.
+    /// </summary>
+    public class ClipboardDestination : AbstractDestination, IAcceptsPreRenderedImage
+    {
+        public override string Designation => nameof(WellKnownDestinations.Clipboard);
+
+        public override string Description
+        {
+            get { return Language.GetString(LangKey.settings_destination_clipboard); }
+        }
+
+        public override int Priority
+        {
+            get { return 2; }
+        }
+
+        public override Keys EditorShortcutKeys
+        {
+            get { return Keys.Control | Keys.Shift | Keys.C; }
+        }
+
+        public override Image DisplayIcon
+        {
+            get { return EvidenciasSQAResources.GetImage("Clipboard.Image"); }
+        }
+
+        public override ExportInformation ExportCapture(bool manuallyInitiated, ISurface surface, ICaptureDetails captureDetails)
+        {
+            ExportInformation exportInformation = new ExportInformation(Designation, Description);
+            try
+            {
+                ClipboardHelper.SetClipboardData(surface);
+                exportInformation.ExportMade = true;
+            }
+            catch (Exception)
+            {
+                // TODO: Change to general logic in ProcessExport
+                surface.SendMessageEvent(this, SurfaceMessageTyp.Error, Language.GetString(LangKey.editor_clipboardfailed));
+            }
+
+            ProcessExport(exportInformation, surface);
+            return exportInformation;
+        }
+
+        /// <summary>
+        /// Exports to clipboard using a pre-rendered bitmap, avoiding a redundant surface render pass.
+        /// Called by CaptureHelper when a shared rendered bitmap is already available.
+        /// </summary>
+        public ExportInformation ExportCaptureWithRenderedImage(Image preRenderedImage, ISurface surface, ICaptureDetails captureDetails)
+        {
+            ExportInformation exportInformation = new ExportInformation(Designation, Description);
+            try
+            {
+                ClipboardHelper.SetClipboardData(surface, preRenderedImage);
+                exportInformation.ExportMade = true;
+            }
+            catch (Exception)
+            {
+                surface.SendMessageEvent(this, SurfaceMessageTyp.Error, Language.GetString(LangKey.editor_clipboardfailed));
+            }
+
+            ProcessExport(exportInformation, surface);
+            return exportInformation;
+        }
+    }
+}

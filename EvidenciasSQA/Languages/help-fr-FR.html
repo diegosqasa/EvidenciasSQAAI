@@ -1,0 +1,508 @@
+<html>
+  <head>
+    <meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+    <title>EvidenciasSQA Help</title>
+    <style>
+		* {
+			font-family: Tahoma, Arial, Sans-serif;
+		}
+		h1 {font-size:16px;}
+		h2 {font-size:14px;color:#009900;margin-top:24px;}
+		h3 {font-size:12px;margin-top:18px;}
+		small {font-size:10px;}
+		p, li {font-size:12px;line-height:1.5em}
+		a:link, a:hover, a:visited, a:active {color:#009900;}
+		kbd {background-color:#dddddd;border:1px solid #bbbbbb;padding:0 2px;border-radius:2px;}
+		p.hint {background-color:#ffffdd;border:1px solid #ddddbb;padding:5px;}
+		em {padding-right:0.2em;}
+		</style>
+  </head>
+  <body>
+    <h1>Aide de EvidenciasSQA<br>
+    </h1>
+    <!-- 
+	Note to translator: uncomment entry below to have your effort honored 	--> <small>Version
+      1.0<!-- - Traduction fran�aise par Thierry Boulestin--></small>
+    <h2>Contenu</h2>
+    <ol>
+      <li><a href="#screenshot">Cr�ation d'une capture d'�cran</a></li>
+      <ol>
+        <li><a href="#capture-region">Capturer une r�gion d'�cran</a></li>
+        <li><a href="#capture-last-region">Capturer la derni�re r�gion<br>
+          </a></li>
+        <li><a href="#capture-window">Capturer une fen�tre</a></li>
+        <li><a href="#capture-fullscreen">Capturer tout l'�cran<br>
+          </a></li>
+        <li><a href="#capture-ie">Capturer Internet Explorer</a></li>
+      </ol>
+      <li><a href="#editor">Utilisation de l'�diteur d'image</a></li>
+      <ol>
+        <li><a href="#editor-shapes">Dessiner des formes</a></li>
+        <li><a href="#editor-text">Ajouter du texte</a></li>
+        <li><a href="#editor-highlight">Mise en �vidence d'�l�ments <br>
+          </a></li>
+        <li><a href="#editor-obfuscate">Occulter des �l�ments</a></li>
+        <li><a href="#editor-effects">Ajouter des effets</a></li>
+        <li><a href="#editor-crop">Recadrer la capture d'�cran<br>
+          </a></li>
+        <li><a href="#editor-adding-graphics">Ajouter des graphiques � une
+            capture d'�cran<br>
+          </a></li>
+        <li><a href="#editor-reuse-elements">R�utiliser des �l�ments dessin�s</a></li>
+        <li><a href="#editor-export">Exporter la capture d'�cran</a></li>
+      </ol>
+      <li><a href="#settings">Param�trage des bo�tes de dialogues</a></li>
+      <ol>
+        <li><a href="#settings-general">Pr�f�rences g�n�rales</a></li>
+        <li><a href="#settings-capture">Param�tres de Capture</a></li>
+        <li><a href="#settings-output">Param�tres de Sortie<br>
+          </a></li>
+        <li><a href="#settings-destination">Param�tres de Destination</a></li>
+        <li><a href="#settings-printer">Param�tres d'Impression</a></li>
+        <li><a href="#settings-plugins">Configuration des extensions</a><br>
+        </li>
+        <li><a href="#settings-expert">Param�tres d'Expert</a></li>
+      </ol>
+      <li><a href="#help">Voulez-vous nous aider ?</a></li>
+      <ol>
+        <li><a href="#help-donate">Faire un don</a></li>
+        <li><a href="#help-spread">Diffuser l'information</a></li>
+        <li><a href="#help-translate">Proposer une traduction</a></li>
+      </ol>
+    </ol>
+    <a name="screenshot"></a>
+    <h2>Cr�ation d'une capture d'�cran</h2>
+    <p> <span class="hps">Vous pouvez cr�er</span> <span class="hps">une
+        capture d'�cran</span><span>, soit en utilisant</span> <span class="hps">la
+        touche&nbsp;</span><kbd>Impr �cran</kbd> <span class="hps">de votre
+        clavier, soit</span> <span class="hps">en effectuant un clic droit</span>
+      sur l&#8217;ic�ne EvidenciasSQA de la zone de notification.<br>
+      <span class="hps">Il existe</span> <span class="hps">plusieurs options
+        pour cr�er</span> <span class="hps">une capture d'�cran</span><span> :</span>
+    </p>
+    <a name="capture-region"></a>
+    <h3>Capturer une r�gion d'�cran <kbd>Impr �cran</kbd></h3>
+    <p> Le mode capture de zone vous permet de s�lectionner la partie d&#8217;�cran
+      que vous souhaitez capturer.<br>
+      Apr�s avoir s�lectionn� le mode <i>capturer une r�gion</i>, une croix
+      appara�t qui pointe la position de la souris sur l&#8217;�cran. Cliquez et
+      maintenez le bouton de la souris enfonc� � l&#8217;endroit<br>
+      o� vous voulez commencer votre s�lection. Tout en maintenant le bouton de
+      la souris enfonc�, d�placez la souris pour d�finir le rectangle �
+      capturer. Lorsque le rectangle vert<br>
+      recouvre toute la surface que vous souhaitez capturer, rel�chez le bouton
+      de la souris. </p>
+    <p class="hint"> Vous pouvez utiliser la touche <kbd class="western">Espace</kbd>
+      pour passer du mode capture de zone au mode capture de <a href="file:///G:/windowsxp/Projet/projet/iss/evidenciassqa/%7Bapp%7D/Languages/help-fr-FR2.html#capture-window">fen�tre</a>.
+    </p>
+    <p class="hint"> Si vous souhaitez capturer une zone bien pr�cise, il peut
+      s&#8217;av�rer plus simple de s�lectionner une zone l�g�rement plus grande puis
+      de <a href="file:///G:/windowsxp/Projet/projet/iss/evidenciassqa/%7Bapp%7D/Languages/help-fr-FR2.html#editor-crop">recadrer</a>
+      plus tard la capture d&#8217;�cran<br>
+      en utilisant l&#8217;�diteur d&#8217;image de EvidenciasSQA. </p>
+    <a name="capture-last-region"></a>
+    <h3>Capturer la derni�re r�gion <kbd>Maj</kbd> + <kbd>Impr �cran<br>
+      </kbd></h3>
+    <p> Si vous avez effectu� une capture de <a href="file:///G:/windowsxp/Projet/projet/iss/evidenciassqa/%7Bapp%7D/Languages/help-fr-FR2.html#capture-region">zone</a>
+      ou de <a href="file:///G:/windowsxp/Projet/projet/iss/evidenciassqa/%7Bapp%7D/Languages/help-fr-FR2.html#capture-window">fen�tre</a>
+      pr�c�demment, vous pouvez capturer � nouveau cette zone en utilisant cette
+      option. </p>
+    <a name="capture-window"></a>
+    <h3>Capturer une fen�tre <kbd>Alt</kbd> + <kbd>Impr �cran<br>
+      </kbd></h3>
+    <p> <span class="hps">Cr�e</span> <span class="hps">une capture d'�cran</span>
+      <span class="hps">de la fen�tre</span> <span class="hps">qui est
+        actuellement active</span><span>.</span></p>
+    <p class="hint">Pour les syst�mes Windows 7 ou Vista, utiliser les
+      param�tres du mode de capture de fen�tre pour contr�ler comment EvidenciasSQA
+      g�re les bordures de fen�tre semi-transparente (Aero), ex : <font lang="fr">Remplacer
+        la transparence par une couleur personnalis�e.</font> </p>
+    <p class="hint"> La bo�te de dialogue des <a href="file:///G:/windowsxp/Projet/projet/iss/evidenciassqa/%7Bapp%7D/Languages/help-fr-FR2.html#settings">pr�f�rences</a>
+      (onglet Capture) offre une option pour ne pas capturer directement la
+      fen�tre active, permettant ainsi d'obtenir une certaine interactivit�.<br>
+      Si cette option est active, une fen�tre peut �tre s�lectionn�e en cliquant
+      dessus (d'une fa�on analogue au <a href="file:///G:/windowsxp/Projet/projet/iss/evidenciassqa/%7Bapp%7D/Languages/help-fr-FR2.html#capture-region">mode
+        zone</a>, EvidenciasSQA mettra en surbrillance la zone qui sera captur�e).<br>
+      Si vous souhaitez capturer une fen�tre adjacente (par ex.: une fen�tre
+      d&#8217;affichage de navigateur (sans la barre d&#8217;outils, etc.) ou un seul cadre
+      d&#8217;une page web utilisant des �Frames�)<br>
+      pointer le curseur de la souris sur la fen�tre et frapper sur la touche <kbd
+        class="western">Page suivante (PgDown)</kbd>. Apr�s cette proc�dure,
+      vous pouvez s�lectionner les �l�ments compl�mentaires<br>
+      dans la fen�tre que vous souhaitez capturer. </p>
+    <p class="hint"> Capturer des menus contextuels : L'utilisation du raccourci
+      � Capturer une fen�tre active � ferait disparaitre le menu contextuel, et
+      �videmment la m�me chose se passerait si vous avez utilis� le menu
+      contextuel de EvidenciasSQA afin de cr�er une capture d'�cran.Si vous
+      souhaitez capturer un menu contextuel que vous venez juste de faire
+      appara�tre par un clic droit, activez tout simplement le mode <kbd>Impr
+        �cran</kbd>, puis appuyez sur la <br>
+      touche <kbd>Espace</kbd> .<br>
+    </p>
+    <a name="capture-fullscreen"></a>
+    <h3>Capturer tout l'�cran <kbd>Control</kbd> + <kbd>Impr �cran</kbd></h3>
+    <p> Cr�e une capture compl�te de l'�cran. </p>
+    <a name="capture-ie"></a>
+    <h3>Capturer Internet Explorer <kbd>Control</kbd> + <kbd>Maj</kbd> + <kbd>Impr
+        �cran<br>
+      </kbd></h3>
+    <p> <span class="hps">Cr�e</span> facilement <span class="hps">la
+        capture&nbsp;</span><span class="hps">d'une page Web</span> <span class="hps">ouverte</span>
+      <span class="hps">dans Internet Explorer</span><span>.</span> Utilisez<span
+        class="hps"> le menu contextuel</span> de <span class="hps">EvidenciasSQA</span>
+      <span class="hps">pour s�lectionner</span> <span class="hps">l'onglet</span>
+      <span class="hps">d'Internet Explorer</span> a<span class="hps"> capturer</span><span></span>,
+      ou appuyez sur <kbd>Crtl</kbd> + <kbd>Maj</kbd> + <kbd>Impr �cran</kbd>
+      pour capturer l'onglet actif. </p>
+    <a name="editor"></a>
+    <h2>Utilisation de l&#8217;�diteur d&#8217;image</h2>
+    <h2></h2>
+    <p> EvidenciasSQA est livr� avec un �diteur d'image facile � utiliser,
+      fournissant des fonctionnalit�s pratiques pour ajouter des annotations ou
+      des formes � une capture d'�cran. Il permet m�me de mettre en �vidence ou
+      de masquer certaines parties de votre capture d'�cran.</p>
+    <p class="hint"> L'�diteur d'images de EvidenciasSQA n'est pas r�serv� qu'aux
+      captures d'�cran. Vous pouvez �galement ouvrir des images pour l'�dition
+      d'un fichier ou � partir du presse-papier. Simplement, faites un clic
+      droit sur l'ic�ne dans le systray de EvidenciasSQA et s�lectionnez <em>Ouvrir
+        une image � partir d'un fichier</em> ou <em>Ouvrir l'image du
+        presse-papier</em>. </p>
+    <p class="hint"> Par d�faut, l'�diteur d'images s'ouvre chaque fois qu'une
+      capture d'�cran est captur�e. Si vous ne souhaitez pas utiliser l'�diteur
+      d'images, vous pouvez d�sactiver ce comportement dans la bo�te de <a href="#settings">dialogue
+        des pr�f�rences</a>. </p>
+    <a name="editor-shapes"></a>
+    <h3>Dessiner des formes</h3>
+    <h3></h3>
+    <p> S�lectionner l&#8217;un des outils de dessin de forme dans la barre d&#8217;outils
+      sur le c�t� gauche de l&#8217;�diteur d&#8217;image ou dans le menu <em>Objet</em>.
+      Un raccourci est �galement associ� � chaque outil si l&#8217;on pr�f�re cette
+      approche.<br>
+      Les formes disponibles sont : le rectangle <kbd>R</kbd>, l'ellipse <kbd>E</kbd>,
+      la ligne <kbd>L</kbd>, la fl�che <kbd>A</kbd> et le dessin � main lev�e
+      <kbd>F</kbd>.<br>
+      Cliquez en maintenant le bouton de la souris enfonc� et faites glisser
+      pour d�finir la position et la taille de la forme. Rel�chez le bouton de
+      la souris lorsque vous avez termin�. </p>
+    <p> <font lang="fr">Vous pouvez d�placer ou redimensionner les formes
+        existantes apr�s avoir s�lectionn� l'outil de s�lection </font><kbd>ESC</kbd>
+      dans la barre d'outils.<br>
+      Pour chaque type d'�l�ment, il y a un ensemble sp�cifique d'options
+      disponibles pour modifier l'apparence de l'�l�ment (ex.: l'�paisseur du
+      trait, couleur de la ligne, couleur de remplissage). Vous pouvez modifier
+      les options d'un �l�ment existant apr�s l'avoir s�lectionn�. Ces
+      modifications resteront valables pour le m�me type d'objet qui sera
+      dessin�. </p>
+    <p class="hint"> Vous pouvez s�lectionner plusieurs �l�ments � la fois pour
+      l'�dition. Afin de s�lectionner plusieurs �l�ments, maintenez la touche <kbd>Maj</kbd>
+      enfonc�e tout en cliquant sur les �l�ments. </p>
+    <p class="hint"> Si vous voulez dessiner des formes �quilat�rales (ex: objet
+      rectangle pour devenir un carr�) maintenez la touche <kbd>Maj</kbd> tout
+      dessinant la forme. Lorsque vous dessinez des lignes ou des fl�ches,
+      maintenez la touche <kbd>Maj</kbd> et l'angle de la ligne se d�placera de
+      15�.<br>
+      <font lang="fr">Vous pouvez aussi utiliser</font> <kbd>Maj</kbd> si vous
+      souhaitez redimensionner un objet existant en conservant ses proportions.</p>
+    <p class="hint"> Lors de l'�laboration ou de mise � l'�chelle, vous pouvez
+      maintenir la touche <kbd>Ctrl</kbd> enfonc�e pour avoir l'objet ancr�
+      dans son milieu g�om�trique. C'est-�-dire que l'objet est redimensionn�
+      dans le sens inverse. (Ceci est tr�s pratique si vous voulez dessiner une
+      ellipse autour de quelque chose sur votre �cran.)</p>
+    <a name="editor-text"></a>
+    <h3>Ajouter du texte</h3>
+    <p> L'utilisation de l'outil texte <kbd>T</kbd>est similaire �
+      l'utilisation des outils <a href="#editor-shapes">formes</a>.<font lang="fr">
+        Dessinez l'�l�ment de texte � la taille souhait�e, puis tapez le texte.</font><br>
+      Double-cliquez sur un �l�ment de texte existant pour modifier le texte. </p>
+    <a name="editor-highlight"></a>
+    <h3>Accentuer des �l�ments</h3>
+    <h3></h3>
+    <p> Apr�s avoir s�lectionn� l'outil <i>Surligneur</i> <kbd>H</kbd>, vous
+      pouvez d�finir la zone � mettre en �vidence exactement comme vous
+      dessineriez une <a href="#editor-shapes">forme</a>.<br>
+      Il existe plusieurs options pour mettre en �vidence, que vous pouvez
+      choisir en cliquant sur le bouton le plus � gauche dans la barre d'outils
+      : </p>
+    <ul>
+      <li><em>Surligner le texte </em>: mets en �vidence une zone en appliquant
+        une couleur lumineuse, comme un surligneur de texte de bureau</li>
+      <li><em>Surligner une zone </em>: floute<a href="#hint-blur">*</a> toute
+        la zone autour de la s�lection</li>
+      <li><em>Niveaux de gris </em>: tout en dehors de la zone s�lectionn�e
+        sera transform� en niveaux de gris</li>
+      <li><font lang="fr"><i>Agrandir </i>: la zone s�lectionn�e sera affich�e
+          agrandie</font></li>
+    </ul>
+    <a name="editor-obfuscate"></a>
+    <h3>Occulter des �l�ments<br>
+    </h3>
+    <p> Occulter des parties d'une capture d'�cran est une bonne id�e, si elle
+      contient des donn�es qui ne sont pas destin�es � �tre vues par d'autres
+      personnes (ex: donn�es de compte bancaire, noms, mots de passe ou des
+      visages sur les photos).<br>
+      Utilisez l'outil Occulter <kbd>O</kbd> exactement comme l'<a href="#editor-highlight">outil
+        de surlignage</a>.<br>
+      Les options disponibles pour l'obscurcissement sont : </p>
+    <ul>
+      <li><em>Pix�liser </em>: augmente la taille en pixels pour la zone
+        s�lectionn�e</li>
+      <li><em>Flouter</em><a href="#hint-blur">*</a>: rends floue la zone
+        s�lectionn�e.</li>
+    </ul>
+    <a name="hint-blur"></a>
+    <p class="hint"> * Selon les performances de votre ordinateur, appliquer un
+      effet flou peut ralentir l'�diteur d'images de EvidenciasSQA. Si vous sentez
+      que l'�diteur d'images r�agit lentement d�s qu'un flou est appliqu�,
+      essayez de r�duire la valeur de la <i>qualit� de pr�visualisation</i>
+      dans la barre d'outils ou diminuez la valeur du<i> rayon de floutage</i>.<br>
+      Si les performances avec le floutage sont encore trop mauvaises pour
+      travailler avec, vous pr�f�rerez peut-�tre utiliser l'effet pix�liser</p>
+    <a name="editor-effects"></a>
+    <h3><font lang="fr">Ajout d'effets</font></h3>
+    <p> Vous pouvez ajouter diff�rents effets � votre capture d'�cran. Vous
+      pouvez appliquer une bordure, effet d'ombre ou bords d�chir�s (par exemple
+      pour s�parer visuellement votre capture d'�cran de tout autre contenu dans
+      un document). Les effets de nuances de gris et d'inversion sont
+      principalement utiles avant l'impression (�conomie d'encre ou de toner
+      lorsque vous imprimez des captures d'�cran color� ou noir). </p>
+    <a name="editor-crop"></a>
+    <h3>Recadrer la capture d'�cran<br>
+    </h3>
+    <p> Si vous avez juste besoin d&#8217;une partie de l&#8217;�cran captur�, utilisez
+      l'outil de recadrage <kbd>C</kbd> pour recadrer la zone d�sir�e.<br>
+      Apr�s avoir s�lectionn� l'outil Recadrage, dessinez un rectangle dans la
+      zone de capture d'�cran que vous souhaitez conserver. Vous pouvez
+      redimensionner la zone s�lectionn�e comme tout autre �l�ment.<br>
+      Lorsque vous �tes satisfait de votre s�lection, utilisez le bouton <i>Confirmer</i>
+      de la barre d'outils ou appuyez sur la touche <kbd>Entr�e</kbd> . Vous
+      pouvez annuler le recadrage en cliquant sur le bouton <i>Annuler</i> ou
+      par la touche <kbd>ESC</kbd>. </p>
+    <p class="hint"> <em>Recadrage automatique :</em> Si vous avez besoin de
+      rogner une bordure de couleur d'arri�re-plan unie de votre capture
+      d'�cran, choisissez simplement <i>Cadrage automatique</i> du menu <i>�dition</i>
+      et EvidenciasSQA s�lectionnera automatiquement la zone de recadrage. </p>
+    <a name="editor-rotate"></a>
+    <p class="hint"> <font lang="fr">Utilisez les outils de rotation pour faire
+        pivoter l'�cran vers la droite ou vers la gauche.</font></p>
+    <a name="editor-adding-graphics"></a>
+    <h3>Ajout de graphiques � une capture d'�cran</h3>
+    <p> Vous pouvez simplement ajouter des graphiques ou des images � votre
+      capture d'�cran par un glisser-d�poser d'une image dans la fen�tre de
+      l'�diteur. Vous pouvez �galement ins�rer des captures d'�cran d'autres
+      fen�tres en s�lectionnant <em>Inserer une fen�tre </em>du menu <em>�dition.</em>
+      Une liste de toutes les fen�tres ouvertes s'affiche, vous permettant d'en
+      s�lectionner une pour l'insertion. </p>
+    <a name="editor-reuse-elements"></a>
+    <h3>R�utilisation d'�l�ments dessin�s</h3>
+    <p> Si vous utilisez des �l�ments identiques sur la plupart de vos captures
+      d'�cran (par exemple un champ texte contenant la version et le type de
+      navigateur, ou obscurcissez le m�me �l�ment sur plusieurs captures
+      d'�cran), vous pouvez les r�utiliser.<br>
+      S�lectionnez <em>Enregistrer les objets dans un fichier </em>du menu <em>Objet</em>
+      pour enregistrer l'ensemble des �l�ments pour les r�utiliser plus tard. <i>Charger</i><em>
+        les objets depuis un fichier</em> applique les m�mes �l�ments pour une
+      autre capture d'�cran.</p>
+    <a name="editor-export"></a>
+    <h3>Exporter une capture d&#8217;�cran</h3>
+    <h3></h3>
+    <p> Apr�s avoir modifi� la capture d'�cran, vous pouvez exporter le r�sultat
+      � des fins diff�rentes, en fonction de vos besoins. Vous pouvez acc�der �
+      toutes les options d'exportation par le biais du menu <em>Fichier</em>,
+      la barre d'outils sup�rieure ou par l'interm�diaire de raccourcis :<br>
+    </p>
+    <ul>
+      <li><em>Enregistrer</em> <kbd>Ctrl</kbd> + <kbd>S</kbd>: Enregistre
+        l'image dans un fichier (si l'image a d�j� �t� enregistr�e), sinon
+        affiche la bo�te de dialogue Enregistrer sous...</li>
+      <li><em>Enregistrer sous...</em> <kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>S</kbd>:
+        vous permet de choisir l'emplacement, le nom de fichier et le format
+        d'image pour le fichier � enregistrer</li>
+      <li><em>Vers le presse-papier</em> <kbd>Ctrl</kbd> + <kbd>Maj</kbd> + <kbd>C</kbd>:
+        Met une copie de l'image dans le presse-papiers, ce qui permet de la
+        coller dans d'autres programmes</li>
+      <li><em>Vers l'imprimante...</em> <kbd>Ctrl</kbd> + <kbd>P</kbd>: Envoie
+        l'image vers une imprimante<br>
+      </li>
+      <li>Client messagerie <kbd>Ctrl</kbd> + <kbd>E</kbd>: ouvre un nouveau
+        message dans votre client messagerie, en ajoutant l'image en pi�ce
+        jointe</li>
+    </ul>
+    <p> Il existe des extensions pour l'exportation de captures d'�cran �
+      d'autres cibles, comme DropBox, Picasa, Flickr. Il suffit de s�lectionner
+      les extensions appropri�es pendant l'installation.</p>
+    <p class="hint"> Apr�s avoir enregistr� l'image de l'�diteur, en faisant un
+      clic droit sur la barre d'�tat au bas de la fen�tre de l'�diteur, vous
+      pouvez, soit copier le chemin du fichier dans le presse-papiers, soit
+      ouvrir le r�pertoire dans l'Explorateur Windows.</p>
+    <a name="settings"></a>
+    <h2><font lang="fr">Bo�te de dialogue Param�tres</font></h2>
+    <a name="settings-general"></a>
+    <h3>Pr�f�rences g�n�rales<br>
+    </h3>
+    <ul>
+      <li><em>Langue</em>: La langue que vous pr�f�rez utiliser.<br>
+        Vous pouvez t�l�charger des fichiers de langues suppl�mentaires <a target="_blank"
+          href="https://evidenciassqa.com/downloads/">ici</a>. </li>
+      <li><em>Lancer EvidenciasSQA au d�marrage de Windows </em>: d�marrez le
+        programme lorsque le syst�me a �t� d�marr�.</li>
+      <li><em>Raccourcis clavier</em>: Personnaliser les raccourcis clavier �
+        utiliser pour cr�er des captures d'�cran.</li>
+      <li><em>Utiliser le proxy syst�me par d�faut </em>: Si coch�, EvidenciasSQA
+        utilise le proxy par d�faut du syst�me pour v�rifier les mises � jour.</li>
+      <li><em>Intervalle de v�rification des mises � jour en jours</em>:
+        EvidenciasSQA peut v�rifier les mises � jour automatiquement. Utilisez ce
+        param�tre pour r�gler l'intervalle (en jours) ou r�glez-le sur 0 pour
+        d�sactiver la v�rification de mise � jour.</li>
+    </ul>
+    <a name="settings-capture"></a>
+    <h3>Param�tres de capture<br>
+    </h3>
+    <ul>
+      <li><em>Capturer le pointeur de souris </em>: si coch�, le pointeur de la
+        souris sera captur�. Le pointeur est g�r� comme un �l�ment distinct dans
+        l'�diteur, de sorte que vous pouvez le d�placer ou le supprimer par la
+        suite.</li>
+      <li><em>jouer un son d'appareil photo :</em> Indication sonore lorsque
+        vous faites une capture<br>
+      </li>
+      <li><em>Millisecondes d'attente avant la capture</em>: Ajoute un laps de
+        temps personnalis� avant la capture de l'�cran.</li>
+      <li><em>Utiliser le mode interactif de capture de fen�tre </em>: au lieu
+        de capturer la fen�tre active tout de suite, le mode interactif vous
+        permet de s�lectionner la fen�tre � capturer. Il est �galement possible
+        de capturer des fen�tres enfants, voir <a href="#capture-window">capturer
+          une fen�tre</a>.</li>
+      <li> <em>Capturer avec le style Aero (Windows Vista / 7 uniquement)</em>
+        : Si vous utilisez EvidenciasSQA sur Windows Vista ou Windows 7 avec le
+        style Aero activ�, vous pouvez choisir comment la transparence des
+        fen�tres peut �tre trait� lors de la cr�ation d'une capture d'�cran en
+        mode fen�tre. Utilisez ces param�tres pour �viter la capture des
+        �l�ments en arri�re-plan qui brille � travers les bordures
+        transparentes.
+        <ul>
+          <li><em>Automatique </em>: Laisser EvidenciasSQA d�cider comment g�rer la
+            transparence.</li>
+          <li><em>Tel qu'il appara�t</em>: Les bordures transparentes sont
+            captur�es, tel qu'elles apparaissent � l'�cran.</li>
+          <li><em>Utiliser la couleur par d�faut </em>: une couleur solide par
+            d�faut est appliqu�e au lieu de la transparence.</li>
+          <li><em>Utiliser une couleur personnalis�e</em> : choisissez une
+            couleur personnalis�e pour �tre appliqu�e au lieu de la
+            transparence.</li>
+          <li><em>Pr�server la transparence </em>: les bordures sont captur�es
+            en pr�servant la transparence, ne pas capturer des �l�ments qui
+            pourraient �tre � l'arri�re-plan. (Remarque : les zones
+            transparentes sont affich�es en utilisant un mod�le activ� dans
+            l'�diteur. Le mod�le n'est pas export� lors de l'enregistrement de
+            la capture d'�cran dans un fichier. Gardez � l'esprit que pour
+            conserver la transparence, il faut enregistrer le fichier au format
+            PNG.)</li>
+        </ul>
+      </li>
+      <li><em>Capturer Internet Explorer </em>: activer permet de capturer des
+        pages web dans Internet Explorer.</li>
+      <li><em>Adapter le format de capture :</em> Si s�lectionn�e, la fen�tre de
+        l'�diteur sera automatiquement redimensionn�e pour s'ajuster � la taille
+        de la capture d'�cran.</li>
+    </ul>
+    <a name="settings-output"></a>
+    <h3>Param�tres de sortie<br>
+    </h3>
+    <ul>
+      <li><em>Destination de la capture d'�cran </em>: permets de choisir la
+        (les) destination(s) de votre capture, juste apr�s l'avoir faite.</li>
+      <li><em>Choix du fichier de sortie</em>: d�finis le dossier et le nom du
+        fichier � utiliser ou sugg�r� lors de l&#8217;enregistrement (utilisation de
+        la bo�te de dialogue enregistrer-sous). Cliquez sur le bouton <em>?</em>
+        pour en savoir plus sur caract�res r�serv�s qui peuvent �tre utilis�s
+        comme mod�le de nom de fichier.</li>
+      <li><em>Param�tres JPEG </em>: Qualit� � utiliser lors de
+        l'enregistrement du fichier JPEG</li>
+    </ul>
+    <a name="settings-destination"></a>
+    <h3>Param�tre de destination</h3>
+    <p>Par d�faut, EvidenciasSQA vous permet de choisir une destination dynamique
+      apr�s la cr�ation d'une capture d'�cran, en affichant un petit menu
+      permettant de choisir diff�rentes destinations. Si vous ne voulez pas
+      changer imm�diatement de destinations, vous pouvez configurer EvidenciasSQA
+      pour exporter directement vers une ou plusieurs destinations sans afficher
+      le s�lecteur de destination.<br>
+      Remarque: comme pour <a href="#editor-export">l'exportation � partir de
+        la fen�tre de l'�diteur, les destinations affich�es varient selon les
+        extensions que vous avez install�es avec EvidenciasSQA</a> </p>
+    <a name="settings-printer"></a>
+    <h3>Param�tres d'impression<br>
+    </h3>
+    <ul>
+      <li><em>Diminuer la taille de l&#8217;impression pour correspondre au papier</em>
+        : si l&#8217;image exc�de la taille du papier, l'image sera ajust�e � la
+        taille du papier.</li>
+      <li><em>Augmenter la taille d'impression pour l&#8217;ajuster � la taille du
+          papier </em>: si l&#8217;image est plus petite que la taille du papier,
+        elle sera ajust�e � la taille du papier sans l&#8217;exc�der.</li>
+      <li><em>Tourner l&#8217;image dans le sens de la page</em> : fera tourner une
+        image au format paysage de 90� pour permettre son impression.</li>
+      <li><em>Impression avec les couleurs inver</em>s�es : inversera la capture
+        d'�cran avant l'impression, utile lorsque vous imprimez une capture
+        d'�cran avec du texte blanc sur fond noir (pour �conomiser du
+        toner/encre).</li>
+      <li><em>Forcer l'impression en niveaux de gris :</em> convertira les
+        couleurs en niveaux de gris avant l'impression.</li>
+    </ul>
+    <a name="settings-plugins"></a>
+    <h3>Configuration des extensions</h3>
+    <p>&nbsp;Affiche la liste des extensions install�es dans EvidenciasSQA.
+      S�lectionnez en un dans la liste et cliquez sur <em>Configurer</em> afin
+      d'acc�der � la configuration de l'extension. </p>
+    <a name="settings-expert"></a>
+    <h3>Param�tres d'expert</h3>
+    <p> Nous le pensons vraiment : vous ne devriez rien changer dans cet onglet
+      si vous ne savez pas ce que vous faites, car ces param�tres peuvent
+      entra�ner un comportement inattendu.<br>
+    </p>
+    <a name="help"></a>
+    <h2>Vous souhaitez nous soutenir ?</h2>
+    <h2></h2>
+    <p> Actuellement, nous n&#8217;avons pas besoin d&#8217;aide pour le d�veloppement du
+      logiciel. Cependant, il y a plusieurs choses que vous pouvez faire pour
+      soutenir EvidenciasSQA et l&#8217;�quipe de d�veloppement.<br>
+      Merci par avance :) </p>
+    <a name="help-donate"></a>
+    <h3>Faire un don<br>
+    </h3>
+    <p> Nous travaillons �norm�ment sur EvidenciasSQA et passons �norm�ment de temps
+      pour fournir un excellent logiciel libre et open source.<br>
+      Si vous sentez qu'il vous rend plus productif, s&#8217;il vous fait gagner (ou
+      votre soci�t�) beaucoup de temps et d&#8217;argent, ou tout simplement si vous
+      aimez EvidenciasSQA et l'id�e du logiciel libre, vous pouvez encourager nos
+      efforts en faisant un don. <br>
+      Jetez un &#339;il � notre page d'accueil pour voir comment vous pouvez soutenir
+      l&#8217;�quipe de d�veloppement EvidenciasSQA :<br>
+      <a target="_blank" href="https://evidenciassqa.com/support/">https://evidenciassqa.com/support/</a><a
+        target="_blank" href="https://evidenciassqa.com/support/"></a> </p>
+    <a name="help-spread"></a>
+    <h3>Diffuser l&#8217;information</h3>
+    <p> Si vous aimez EvidenciasSQA, faites le savoir autour de vous, � vos amis et
+      coll�gues. Vos disciples �galement :)<br>
+      �valuer EvidenciasSQA sur les portails de logiciels, placez un lien dans votre
+      blog ou votre site internet vers notre page de garde. </p>
+    <a name="help-translate"></a>
+    <h3>Soumettre une traduction</h3>
+    <p> EvidenciasSQA n'est pas disponible dans votre langue pr�f�r�e ! Si vous vous
+      sentez apte � traduire un morceau du logiciel, vous �tes le bienvenu.<br>
+      Si vous �tes un utilisateur enregistr� de sourceforge.net, vous pouvez
+      soumettre votre traduction � notre <a target="_blank" href="https://sourceforge.net/tracker/?group_id=191585&amp;atid=1368020">tracker
+        de traduction</a>.<br>
+      Assurez-vous qu&#8217;aucune traduction n&#8217;existe dans votre langue sur notre <a
+        target="_blank" href="https://evidenciassqa.com/downloads/">page de
+        t�l�chargement</a>. V�rifiez �galement notre <a href="https://sourceforge.net/tracker/?group_id=191585&amp;atid=1368020">tracker
+        de traduction</a>, pour v�rifier qu&#8217;il n&#8217;y a aucune traduction en cours
+      ou en discussion.<br>
+      Notez bien que nous fournirons cette traduction seulement si elle a �t�
+      soumise via un compte d&#8217;utilisateur sourceforge.net. Du fait que selon
+      toute probabilit� nous serons incapables de comprendre<br>
+      votre traduction, il est logique que d&#8217;autres utilisateurs de sourceforge
+      puissent vous contacter pour l'am�liorer ou d�finir une nouvelle version.
+    </p>
+  </body>
+</html>

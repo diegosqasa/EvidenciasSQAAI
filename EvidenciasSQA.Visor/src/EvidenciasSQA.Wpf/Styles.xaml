@@ -1,0 +1,438 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:EvidenciasSQA.Wpf.Controls">
+
+    <!-- ============================================================
+         Sistema de Diseño EvidenciasSQA — Tema claro Fluent (UI.md)
+         Primario #003060 | Primary-dark #001a33 | Acento #FF6B00
+         Fondo #F3F4F6 | Peligro #dc3545 (#ff8080 sobre header)
+         ============================================================ -->
+
+    <!-- .btn-action / .btn-secondary (base de todos los botones del header) -->
+    <Style x:Key="PrimaryHeaderButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#FFFFFF" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Padding" Value="10,7" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="8"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#1AFFFFFF" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.98" ScaleY="0.98" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.3" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Enlace/acción del header (misma base .btn-action) -->
+    <Style x:Key="HeaderLinkButtonStyle" TargetType="Button"
+           BasedOn="{StaticResource PrimaryHeaderButtonStyle}">
+        <Setter Property="Margin" Value="2,0" />
+    </Style>
+
+    <!-- .btn-danger del header: texto coral #ff8080 (paridad con btn-danger de la web),
+         hover #ff4d4d con tinte de peligro (UI.md §5.5) -->
+    <Style x:Key="HeaderDangerLinkButtonStyle" TargetType="Button"
+           BasedOn="{StaticResource HeaderLinkButtonStyle}">
+        <Setter Property="Foreground" Value="#ff8080" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="8"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#1ADC3545" />
+                            <Setter Property="Foreground" Value="#ff4d4d" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.3" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Botón de ayuda "?" circular del header -->
+    <Style x:Key="HelpButtonStyle" TargetType="Button">
+        <Setter Property="Width" Value="22" />
+        <Setter Property="Height" Value="22" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="#80FFFFFF" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Cursor" Value="Help" />
+        <Setter Property="Margin" Value="10,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="11">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="White" />
+                            <Setter Property="Background" Value="#1AFFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- .v-sep (separador vertical del header): Rectangle 1x16 #4A6B82 (inspección app original) -->
+    <Style x:Key="ToolbarSeparator" TargetType="Rectangle">
+        <Setter Property="Fill" Value="#4A6B82" />
+        <Setter Property="Width" Value="1" />
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Margin" Value="8,0" />
+    </Style>
+
+    <!-- .btn-item-action: pill de tarjeta (hover invertido) -->
+    <Style x:Key="TileButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#f8fafc" />
+        <Setter Property="Foreground" Value="#003060" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Padding" Value="6,5" />
+        <Setter Property="BorderBrush" Value="#e2e8f0" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="20" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#003060" />
+                            <Setter Property="BorderBrush" Value="#003060" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.35" />
+                            <Setter Property="Cursor" Value="No" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- .btn-item-danger: pill destructiva de tarjeta (hover invertido) -->
+    <Style x:Key="TileDangerButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#fff5f5" />
+        <Setter Property="Foreground" Value="#dc3545" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Padding" Value="6,5" />
+        <Setter Property="BorderBrush" Value="#ffdada" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="20" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#dc3545" />
+                            <Setter Property="BorderBrush" Value="#dc3545" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.35" />
+                            <Setter Property="Cursor" Value="No" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- .confirm-cancel: pill de diálogo -->
+    <Style x:Key="ConfirmCancelButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#f8fafc" />
+        <Setter Property="Foreground" Value="#64748b" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Padding" Value="14,8" />
+        <Setter Property="BorderBrush" Value="#e2e8f0" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="MinWidth" Value="80" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="20" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#f1f5f9" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- .confirm-accept: pill primaria de diálogo -->
+    <Style x:Key="ConfirmAcceptButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#003060" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Padding" Value="14,8" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="MinWidth" Value="80" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="20"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#001a33" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- .confirm-accept.is-danger: pill destructiva de diálogo (replica web, eliminaciones) -->
+    <Style x:Key="ConfirmDangerAcceptButtonStyle" TargetType="Button"
+           BasedOn="{StaticResource ConfirmAcceptButtonStyle}">
+        <Setter Property="Background" Value="#dc3545" />
+        <Setter Property="BorderBrush" Value="#dc3545" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="20"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#bd2130" />
+                            <Setter Property="BorderBrush" Value="#bd2130" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- #moduleBarOkBtn: botón OK de la barra de fases CP (acento, pill) -->
+    <Style x:Key="PhaseOkButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#FF6B00" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Padding" Value="20,7" />
+        <Setter Property="Height" Value="34" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="20"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#E86100" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Sombra estándar para modales -->
+    <DropShadowEffect x:Key="ModalDropShadow"
+                      BlurRadius="20"
+                      ShadowDepth="3"
+                      Opacity="0.2"
+                      Color="#000000" />
+
+    <!-- Header estándar de modal (UI.md §3.5) -->
+    <Style x:Key="ModalHeaderStyle" TargetType="Border">
+        <Setter Property="Background" Value="#003060" />
+        <Setter Property="Padding" Value="20,12" />
+        <Setter Property="BorderBrush" Value="#FF6B00" />
+        <Setter Property="BorderThickness" Value="0,0,0,3" />
+        <Setter Property="CornerRadius" Value="12,12,0,0" />
+    </Style>
+
+    <!-- Botón close circular del modal header -->
+    <Style x:Key="ModalCloseButtonStyle" TargetType="Button">
+        <Setter Property="Width" Value="28" />
+        <Setter Property="Height" Value="28" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="14">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF6B00" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Botón close "fantasma" del modal (recomendación de diseño: X de texto blanco sutil,
+         sin círculo flotante naranja, centrada verticalmente en la barra de título;
+         hover translúcido discreto que no desborda el alto del header) -->
+    <Style x:Key="ModalCloseGhostButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Padding" Value="8,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="4"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#14FFFFFF" />
+                            <Setter Property="Foreground" Value="#E6FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Input de diálogo (UI.md §7.1) -->
+    <Style x:Key="DialogInputStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="#CCCCCC" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="8,6" />
+        <Setter Property="FontSize" Value="13" />
+    </Style>
+
+    <!-- ============================================================
+         Menú "Recopilar" (dropdown nativo, replica de ocr-select):
+         fondo #003060, borde naranja #FF6B00, items blancos con hover
+         azul claro — patrón del dropdown de la app Electron.
+         NOTA: sin templates custom (rompen la medida del popup); solo
+         setters que el template por defecto de WPF sí respeta.
+         ============================================================ -->
+    <Style x:Key="RecopilarContextMenuStyle" TargetType="ContextMenu">
+        <Setter Property="Background" Value="#003060" />
+        <Setter Property="BorderBrush" Value="#FF6B00" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="RecopilarMenuItemStyle" TargetType="MenuItem">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Background" Value="#003060" />
+        <Setter Property="Padding" Value="16,8" />
+        <Style.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Background" Value="#1B4E82" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.35" />
+                <Setter Property="Foreground" Value="#9CA3AF" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- ============================================================
+         Barra de metadatos (header) — emojis institucionales a color.
+         Tipografía principal Segoe UI Variable; los emojis (📅🌐💻) se
+         renderizan a color con GDI+ vía controls:EmojiTextBlock y se
+         incrustan como imágenes en línea para no degradarlos a monocromo.
+         FontFamily: Segoe UI Variable con fallback Segoe UI; el emoji
+         hereda el tamaño del texto (1.15em) para equilibrar el peso visual
+         sin generar ruido en la lectura.
+         ============================================================ -->
+    <Style x:Key="MetadataBarTextStyle" TargetType="controls:EmojiTextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI Variable, Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="#4B5563" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+    </Style>
+
+    <!-- Variante sobre fondo oscuro (header #003060 / info bar #060B29) -->
+    <Style x:Key="MetadataBarTextOnDarkStyle" TargetType="controls:EmojiTextBlock"
+           BasedOn="{StaticResource MetadataBarTextStyle}">
+        <Setter Property="Foreground" Value="#D9FFFFFF" />
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language description="English" ietf="en-US" version="1.0.4" languagegroup="1">
+	<resources>
+		<resource name="about_bugs">Please report bugs to</resource>
+		<resource name="about_donations">If you like EvidenciasSQA, you are welcome to support us:</resource>
+		<resource name="about_host">EvidenciasSQA is hosted by GitHub at</resource>
+		<resource name="about_icons">Icons from Yusuke Kamiyamane's Fugue icon set (Creative Commons Attribution 3.0 license)</resource>
+		<resource name="about_license">Copyright © 2004-2026 Thomas Braun, Jens Klingen, Robin Krom
+EvidenciasSQA comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.
+Details about the GNU General Public License:</resource>
+		<resource name="about_title">About EvidenciasSQA</resource>
+		<resource name="about_translation"><!-- diplayed in about dialog, use to add credits or other translation-related info, e.g. "English translation by YOUR_NAME"--></resource>
+		<resource name="application_title">Evidencias SQA</resource>
+		<resource name="bugreport_cancel">Close</resource>
+		<resource name="bugreport_info">Sorry, an unexpected error occurred.
+
+The good news is: you can help us getting rid of it by filing a bug report.
+Please visit the URL below, create a new bug report and paste the contents from the text area into the description.
+Please add a meaningful summary and enclose any information you consider to be helpful for reproducing the issue.
+Also, we would highly appreciate if you checked whether a tracker item already exists for this bug. (You can use the search to find those quickly.) Thank you :)</resource>
+		<resource name="bugreport_title">Error</resource>
+		<resource name="CANCEL">Cancel</resource>
+		<resource name="clipboard_error">An unexpected error occurred while writing to the clipboard.</resource>
+		<resource name="clipboard_inuse">EvidenciasSQA wasn't able to write to the clipboard as the process {0} blocked the access.</resource>
+		<resource name="clipboard_noimage">Couldn't find a clipboard image.</resource>
+		<resource name="ClipboardFormat.BITMAP">Windows Bitmap</resource>
+		<resource name="ClipboardFormat.DIB">Device Independent Bitmap (DIB)</resource>
+		<resource name="ClipboardFormat.HTML">HTML</resource>
+		<resource name="ClipboardFormat.HTMLDATAURL">HTML with inline images</resource>
+		<resource name="ClipboardFormat.PNG">PNG</resource>
+		<resource name="colorpicker_alpha">Alpha</resource>
+		<resource name="colorpicker_apply">Apply</resource>
+		<resource name="colorpicker_blue">Blue</resource>
+		<resource name="colorpicker_green">Green</resource>
+		<resource name="colorpicker_htmlcolor">HTML color</resource>
+		<resource name="colorpicker_recentcolors">Recently used colors</resource>
+		<resource name="colorpicker_red">Red</resource>
+		<resource name="colorpicker_title">Color Picker</resource>
+		<resource name="colorpicker_transparent">Transparent</resource>
+		<resource name="com_rejected">The destination {0} rejected EvidenciasSQA access, probably a dialog is open. Close the dialog and try again.</resource>
+		<resource name="com_rejected_title">EvidenciasSQA access rejected</resource>
+		<resource name="config_unauthorizedaccess_write">Could not save EvidenciasSQA's configuration file. Please check access permissions for '{0}'.</resource>
+		<resource name="contextmenu_about">About EvidenciasSQA</resource>
+		<resource name="contextmenu_capturearea">Capture region</resource>
+		<resource name="contextmenu_captureclipboard">Open image from clipboard</resource>
+		<resource name="contextmenu_capturefullscreen">Capturar pantalla</resource>
+		<resource name="contextmenu_capturefullscreen_all">Todas las pantallas</resource>
+		<resource name="contextmenu_capturefullscreen_bottom">Pantalla Secundaria</resource>
+		<resource name="contextmenu_capturefullscreen_left">Pantalla Secundaria</resource>
+		<resource name="contextmenu_capturefullscreen_n">Pantalla {0}</resource>
+		<resource name="contextmenu_capturefullscreen_right">Pantalla Secundaria</resource>
+		<resource name="contextmenu_capturefullscreen_top">Pantalla Principal</resource>
+		<resource name="contextmenu_capturelastregion">Capture last region</resource>
+		<resource name="contextmenu_capturewindow">Capturar ventana activa</resource>
+		<resource name="contextmenu_capturewindowfromlist">Capture window from list</resource>
+		<resource name="contextmenu_grabarpantalla">Record screen</resource>
+		<resource name="contextmenu_extraertexto">Extract text</resource>
+		<resource name="contextmenu_donate">Support EvidenciasSQA</resource>
+		<resource name="contextmenu_exit">Exit</resource>
+		<resource name="contextmenu_help">Help</resource>
+		
+		<resource name="contextmenu_openrecentcapture">Open last capture location</resource>
+		<resource name="contextmenu_quicksettings">Quick preferences</resource>
+		<resource name="contextmenu_settings">Preferences...</resource>
+		<resource name="destination_exportfailed">Error while exporting to {0}. Please try again.</resource>
+		<resource name="editor_arrange">Arrange</resource>
+		<resource name="editor_arrowheads">Arrow heads</resource>
+		<resource name="editor_arrowheads_both">Both</resource>
+		<resource name="editor_arrowheads_end">End point</resource>
+		<resource name="editor_arrowheads_none">None</resource>
+		<resource name="editor_arrowheads_start">Start point</resource>
+		<resource name="editor_autocrop">Auto crop</resource>
+		<resource name="editor_backcolor">Fill color</resource>
+		<resource name="editor_blur_radius">Blur radius</resource>
+		<resource name="editor_bold">Bold</resource>
+		<resource name="editor_border">Border</resource>
+		<resource name="editor_brightness">Brightness</resource>
+		<resource name="editor_cancel">Cancel</resource>
+		<resource name="editor_clipboardfailed">Error while accessing the clipboard. Please try again.</resource>
+		<resource name="editor_close">Close</resource>
+		<resource name="editor_close_all">Close all</resource>
+		<resource name="editor_close_on_save">Do you want to save the screenshot?</resource>
+		<resource name="editor_close_on_save_title">Save image?</resource>
+		<resource name="editor_confirm">Confirm</resource>
+		<resource name="editor_copyimagetoclipboard">Copy image to clipboard</resource>
+		<resource name="editor_copypathtoclipboard">Copy path to clipboard</resource>
+		<resource name="editor_copytoclipboard">Copy</resource>
+		<resource name="editor_crop">Crop (C)</resource>
+		<resource name="editor_cropmode_default">Crop</resource>
+		<resource name="editor_cropmode_auto">Auto crop</resource>
+		<resource name="editor_cursortool">Selection tool (ESC)</resource>
+		<resource name="editor_cuttoclipboard">Cut</resource>
+		<resource name="editor_deleteelement">Delete</resource>
+		<resource name="editor_downonelevel">Down one level</resource>
+		<resource name="editor_downtobottom">Down to bottom</resource>
+		<resource name="editor_drawarrow">Draw arrow (A)</resource>
+		<resource name="editor_drawellipse">Draw ellipse (E)</resource>
+		<resource name="editor_drawfreehand">Draw freehand (F)</resource>
+		<resource name="editor_drawhighlighter">Highlight (H)</resource>
+		<resource name="editor_drawline">Draw line (L)</resource>
+		<resource name="editor_drawrectangle">Draw rectangle (R)</resource>
+		<resource name="editor_drawtextbox">Add text box (T)</resource>
+		<resource name="editor_duplicate">Duplicate selected element</resource>
+		<resource name="editor_edit">Edit</resource>
+		<resource name="editor_effects">Effects</resource>
+		<resource name="editor_email">Email</resource>
+		<resource name="editor_file">File</resource>
+		<resource name="editor_fontsize">Size</resource>
+		<resource name="editor_forecolor">Line color</resource>
+		<resource name="editor_grayscale">Grayscale</resource>
+		<resource name="editor_highlight_area">Highlight area</resource>
+		<resource name="editor_highlight_grayscale">Grayscale</resource>
+		<resource name="editor_highlight_magnify">Magnify</resource>
+		<resource name="editor_highlight_mode">Highlight mode</resource>
+		<resource name="editor_highlight_text">Highlight text</resource>
+		<resource name="editor_image_shadow">Shadow</resource>
+		<resource name="editor_imagesaved">Image saved to {0}.</resource>
+		<resource name="editor_insertwindow">Insert window</resource>
+		<resource name="editor_invert">Invert</resource>
+		<resource name="editor_italic">Italic</resource>
+		<resource name="editor_load_objects">Load objects from file</resource>
+		<resource name="editor_magnification_factor">Magnification factor</resource>
+		<resource name="editor_match_capture_size">Match capture size</resource>
+		<resource name="editor_obfuscate">Obfuscate (O)</resource>
+		<resource name="editor_obfuscate_blur">Blur</resource>
+		<resource name="editor_obfuscate_mode">Obfuscation mode</resource>
+		<resource name="editor_obfuscate_pixelize">Pixelize</resource>
+		<resource name="editor_obfuscate_text">Obfuscate text...</resource>
+		<resource name="editor_obfuscate_text_title">Obfuscate text</resource>
+		<resource name="editor_obfuscate_text_search">Search:</resource>
+		<resource name="editor_obfuscate_text_search_button">Search</resource>
+		<resource name="editor_obfuscate_text_regex">Use regular expression</resource>
+		<resource name="editor_obfuscate_text_case_sensitive">Case sensitive</resource>
+		<resource name="editor_obfuscate_text_auto_search">Automatic search</resource>
+		<resource name="editor_obfuscate_text_search_scope">Search in:</resource>
+		<resource name="editor_obfuscate_text_scope_words">Words</resource>
+		<resource name="editor_obfuscate_text_scope_lines">Lines</resource>
+		<resource name="editor_obfuscate_text_matches">Matches found: {0}</resource>
+		<resource name="editor_obfuscate_text_apply">Apply</resource>
+		<resource name="editor_obfuscate_text_error">Error</resource>
+		<resource name="editor_obfuscate_text_no_capture">No capture available</resource>
+		<resource name="editor_obfuscate_text_no_ocr_provider">No OCR provider available</resource>
+		<resource name="editor_obfuscate_text_ocr_failed">OCR failed</resource>
+		<resource name="editor_obfuscate_text_no_text">No text found in the image</resource>
+		<resource name="editor_object">Object</resource>
+		<resource name="editor_opendirinexplorer">Open folder in Windows Explorer</resource>
+		<resource name="editor_pastefromclipboard">Paste</resource>
+		<resource name="editor_pixel_size">Pixel size</resource>
+		<resource name="editor_preview_quality">Preview quality</resource>
+		<resource name="editor_print">Print</resource>
+		<resource name="editor_remove_transparency">Remove transparency</resource>
+		<resource name="editor_redo">Redo {0}</resource>
+		<resource name="editor_resetsize">Reset size</resource>
+		<resource name="editor_rotateccw">Rotate counterclockwise</resource>
+		<resource name="editor_rotatecw">Rotate clockwise</resource>
+		<resource name="editor_save">Save</resource>
+		<resource name="editor_save_objects">Save objects to file</resource>
+		<resource name="editor_saveas">Save as...</resource>
+		<resource name="editor_selectall">Select all</resource>
+		<resource name="editor_senttoprinter">Print job sent to '{0}'.</resource>
+		<resource name="editor_shadow">Shadow</resource>
+		<resource name="editor_storedtoclipboard">Image stored in clipboard.</resource>
+		<resource name="editor_thickness">Line thickness</resource>
+		<resource name="editor_title">EvidenciasSQA Image Editor</resource>
+		<resource name="editor_torn_edge">Torn edges</resource>
+		<resource name="editor_undo">Undo {0}</resource>
+		<resource name="editor_uponelevel">Up one level</resource>
+		<resource name="editor_uptotop">Up to top</resource>
+		<resource name="EmailFormat.MAPI">MAPI client</resource>
+		<resource name="EmailFormat.OUTLOOK_HTML">Outlook with HTML</resource>
+		<resource name="EmailFormat.OUTLOOK_TXT">Outlook with text</resource>
+		<resource name="error">Error</resource>
+		<resource name="error_multipleinstances">EvidenciasSQA is already running.</resource>
+		<resource name="error_nowriteaccess">Could not save file to {0}.
+Please verify that the storage path is correct.</resource>
+		<resource name="error_openfile">Could not open file "{0}".</resource>
+		<resource name="error_openlink">Could not open URL '{0}'.</resource>
+		<resource name="error_save">Could not save screenshot, please choose a suitable location.</resource>
+		<resource name="expertsettings">Expert</resource>
+		<resource name="expertsettings_autoreducecolors">Create 8-bit image if there are fewer than 256 colors and the image is more than 8-bit</resource>
+		<resource name="expertsettings_checkunstableupdates">Check for unstable versions too</resource>
+		<resource name="expertsettings_clipboardformats">Clipboard formats</resource>
+		<resource name="expertsettings_counter">Number to replace ${NUM} in the filename pattern</resource>
+		<resource name="expertsettings_enableexpert">I know what I'm doing!</resource>
+		<resource name="expertsettings_footerpattern">Pattern for print footer</resource>
+		<resource name="expertsettings_minimizememoryfootprint">Minimize memory footprint, but with performance penalty (not recommended).</resource>
+		<resource name="expertsettings_optimizeforrdp">Optimize for use with Remote Desktop</resource>
+		<resource name="expertsettings_reuseeditorifpossible">Reuse editor if possible</resource>
+		<resource name="expertsettings_suppresssavedialogatclose">Suppress save dialog when closing the editor</resource>
+		<resource name="expertsettings_thumbnailpreview">Show window thumbnails in the context menu (for Vista and Windows 7)</resource>
+		<resource name="exported_to">Exported to: {0}</resource>
+		<resource name="exported_to_error">An error occurred while exporting to {0}:</resource>
+		<resource name="help_title">EvidenciasSQA Help</resource>
+		<resource name="hotkeys">Hotkeys</resource>
+		<resource name="jpegqualitydialog_choosejpegquality">Adjust the JPEG quality for the image.</resource>
+		<resource name="OK">OK</resource>
+		<resource name="print_error">An error occurred while printing.</resource>
+		<resource name="printoptions_allowcenter">Center print on page</resource>
+		<resource name="printoptions_allowenlarge">Enlarge print to fill paper</resource>
+		<resource name="printoptions_allowrotate">Rotate print to page orientation</resource>
+		<resource name="printoptions_allowshrink">Fit print to paper size</resource>
+		<resource name="printoptions_dontaskagain">Save options by default and do not ask again</resource>
+		<resource name="printoptions_inverted">Print with inverted colors</resource>
+		<resource name="printoptions_layout">Print layout</resource>
+		<resource name="printoptions_printgrayscale">Force grayscale printing</resource>
+		<resource name="printoptions_printmonochrome">Force monochrome printing</resource>
+		<resource name="printoptions_printcolor">Color printing</resource>
+		<resource name="printoptions_timestamp">Print date / time at the bottom of the page</resource>
+		<resource name="printoptions_title">EvidenciasSQA Print Options</resource>
+		<resource name="qualitydialog_dontaskagain">Save with the default quality and do not ask again</resource>
+		<resource name="qualitydialog_title">EvidenciasSQA Quality</resource>
+		<resource name="quicksettings_destination_file">Save directly (use preferred settings)</resource>
+		<resource name="settings_alwaysshowprintoptionsdialog">Show print options every time an image is printed</resource>
+		<resource name="settings_alwaysshowqualitydialog">Show quality options every time an image is saved</resource>
+		<resource name="settings_applicationsettings">Application settings</resource>
+		<resource name="settings_autostartshortcut">Start EvidenciasSQA when Windows starts</resource>
+		<resource name="settings_capture">Capture</resource>
+		<resource name="settings_capture_mousepointer">Capture mouse cursor</resource>
+		<resource name="settings_capture_windows_interactive">Use interactive window capture mode</resource>
+		<resource name="settings_checkperiod">Update check interval (0=don't check)</resource>
+		<resource name="settings_configureplugin">Configure</resource>
+		<resource name="settings_copypathtoclipboard">Copy location to clipboard every time an image is saved</resource>
+		<resource name="settings_destination">Screenshot destination</resource>
+		<resource name="settings_destination_clipboard">Copy to clipboard</resource>
+		<resource name="settings_destination_editor">Open image in editor</resource>
+		<resource name="settings_destination_email">Email</resource>
+		<resource name="settings_destination_file">Save directly (using the settings indicated below)</resource>
+		<resource name="settings_destination_fileas">Save as (showing dialog)</resource>
+		<resource name="settings_destination_picker">Ask destination each time</resource>
+		<resource name="settings_destination_printer">Send to printer</resource>
+		<resource name="settings_editor">Editor</resource>
+		<resource name="settings_filenamepattern">Filename pattern</resource>
+		<resource name="settings_general">General</resource>
+		<resource name="settings_jpegquality">JPEG quality</resource>
+		<resource name="settings_language">Language</resource>
+		<resource name="settings_message_filenamepattern">The following placeholders will be replaced automatically with the defined format:
+${YYYY} year, 4 digits
+${MM} month, 2 digits
+${DD} day, 2 digits
+${hh} hour, 2 digits
+${mm} minute, 2 digits
+${ss} second, 2 digits
+${NUM} number increment, 6 digits
+${title} Window title
+${user} Windows user
+${domain} Windows domain
+${hostname} Computer name
+
+You can also create dynamic locations for EvidenciasSQA by simply using the backslash symbol (\) to separate folder and file names.
+Example: the format ${YYYY}-${MM}-${DD}\${hh}-${mm}-${ss}
+will create a folder for the current day inside your default storage folder, for example: 2008-06-29, and the names of the contained images will be based on the current time,
+for example: 11_58_32 (plus the extension defined in the settings)</resource>
+		<resource name="settings_network">Network and updates</resource>
+		<resource name="settings_output">Output</resource>
+		<resource name="settings_playsound">Play camera sound</resource>
+		<resource name="settings_plugins">Plugins</resource>
+		<resource name="settings_plugins_createdby">Created by</resource>
+		<resource name="settings_plugins_dllpath">Path to plugin libraries</resource>
+		<resource name="settings_plugins_name">Name</resource>
+		<resource name="settings_plugins_version">Version</resource>
+		<resource name="settings_preferredfilesettings">Preferred file settings</resource>
+		<resource name="settings_primaryimageformat">Image format</resource>
+		<resource name="settings_printer">Printer</resource>
+		<resource name="settings_printoptions">Print settings</resource>
+		<resource name="settings_qualitysettings">Quality settings</resource>
+		<resource name="settings_reducecolors">Reduce to less than 256 colors</resource>
+		<resource name="settings_registerhotkeys">Register hotkeys</resource>
+		<resource name="settings_showflashlight">Show flashlight</resource>
+		<resource name="settings_shownotify">Show notifications</resource>
+		<resource name="settings_storagelocation">Storage location</resource>
+		<resource name="settings_title">Settings</resource>
+		<resource name="settings_tooltip_filenamepattern">Pattern to generate the names of the files when saving screenshots</resource>
+		<resource name="settings_tooltip_language">EvidenciasSQA user interface language (requires restart)</resource>
+		<resource name="settings_tooltip_primaryimageformat">Default image format</resource>
+		<resource name="settings_tooltip_registerhotkeys">Defines whether the Print, Ctrl + Print, Alt + Print hotkeys are reserved for global use by EvidenciasSQA at startup, until the program is closed.</resource>
+		<resource name="settings_tooltip_storagelocation">Location where screenshots are saved by default (leave blank to save to desktop)</resource>
+		<resource name="settings_usedefaultproxy">Use system default proxy</resource>
+		<resource name="settings_visualization">Effects</resource>
+		<resource name="settings_waittime">Milliseconds to wait before capturing</resource>
+		<resource name="settings_window_capture_mode">Window capture mode</resource>
+		<resource name="settings_windowscapture">Window capture</resource>
+		<resource name="settings_zoom">Zoomer</resource>
+		<resource name="tooltip_firststart">Right click here or press the {0} key.</resource>
+		<resource name="update_found">There is a new version of EvidenciasSQA available, do you want to download {0}?</resource>
+		<resource name="warning">Attention</resource>
+		<resource name="warning_hotkeys">The hotkey "{0}" could not be registered. Probably another application{1} wants to use this key combination. There are two possible solutions: change the hotkey in EvidenciasSQA, or disable/change the settings of the other program that uses this hotkey.
+
+Even so, you can still use all the features of EvidenciasSQA directly from the context menu of the icon in the system tray.</resource>
+		<resource name="WindowCaptureMode.Aero">Use custom color</resource>
+		<resource name="WindowCaptureMode.AeroTransparent">Keep transparency</resource>
+		<resource name="WindowCaptureMode.Auto">Automatically</resource>
+		<resource name="WindowCaptureMode.GDI">Use default color</resource>
+		<resource name="WindowCaptureMode.Screen">As shown</resource>
+	</resources>
+</language>

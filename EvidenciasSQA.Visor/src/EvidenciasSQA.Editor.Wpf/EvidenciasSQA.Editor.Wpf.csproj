@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    EvidenciasSQA.Editor.Wpf — MÓDULO EDITOR (delegado por el Visor).
+    Responsabilidad única: editar/anotar una captura ya horneada con el header
+    (rectángulos, desenfoque, selección, exportación a PNG/.evidenciasSqa/portapapeles).
+    Lanzado bajo demanda por el Visor con el argumento "-file ruta": el guardado
+    por defecto vuelve al mismo archivo y el Visor recarga el resultado.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>EvidenciasSQA.Editor.Wpf</RootNamespace>
+    <AssemblyName>EvidenciasSQA.Editor.Wpf</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>..\..\..\Media\SQA1.ico</ApplicationIcon>
+    <!-- Publicacion consistente con el exe unificado: el visor lo referencia como
+         proyecto (editor embebido), y 'dotnet publish' del root con PublishDir activa
+         la autocontencion globalmente. Sin RID explicito el SDK infiere win-x64 SOLO
+         para el publish del editor y se producen dos conjuntos de outputs (net9.0-windows
+         vs win-x64) con rutas relativas identicas (NETSDK1152). Se fija el RID/self-contained
+         con la misma condicion que el root para que build y publish del editor compartan
+         una sola salida. -->
+    <SelfContained Condition="'$(PublishDir)' != ''">true</SelfContained>
+    <RuntimeIdentifier Condition="'$(PublishDir)' != ''">win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EvidenciasSQA.Core\EvidenciasSQA.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="..\..\..\Media\SQA1.png" Link="Media\SQA1.png" />
+    <Resource Include="..\..\..\Media\SQA1.ico" Link="Media\SQA1.ico" />
+  </ItemGroup>
+
+</Project>

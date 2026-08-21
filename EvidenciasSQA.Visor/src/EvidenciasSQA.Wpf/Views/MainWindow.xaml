@@ -1,0 +1,491 @@
+<Window x:Class="EvidenciasSQA.Wpf.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:EvidenciasSQA.Wpf.Controls"
+        xmlns:converters="clr-namespace:EvidenciasSQA.Wpf.Converters"
+        xmlns:editor="clr-namespace:EvidenciasSQA.Editor.Wpf.Views;assembly=EvidenciasSQA.Editor.Wpf"
+        Title="Evidencias SQA"
+        Icon="pack://application:,,,/EvidenciasSQA.Wpf;component/Media/SQA1.png"
+        Height="800" Width="1300"
+        MinWidth="530" MinHeight="460"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F4F6">
+
+    <Window.Resources>
+        <ResourceDictionary>
+        <!--
+          Sistema de Diseño compartido (tema claro Fluent, paleta en Styles.xaml).
+          Se mergea aquí (no en App.xaml): el SDK 9.0.x no compila el BAML de
+          App.xaml sin StartupUri. Source absoluto: el relativo resolvería
+          contra la carpeta Views\ (quirk documentado en README).
+        -->
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/EvidenciasSQA.Wpf;component/Styles.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+
+<BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVis" />
+<converters:NullToCollapsedConverter x:Key="NullToCollapsed" />
+        <converters:NullToVisibleConverter x:Key="NullToVisible" />
+
+        <!-- Estilos de acciones en lote del modo selección: deshabilitadas = opacity 0.3
+             (paridad con btn.disabled/style.opacity=0.3 de app.js updateHistoryUI) -->
+        <Style x:Key="SelectionActionButtonStyle" TargetType="Button"
+               BasedOn="{StaticResource HeaderLinkButtonStyle}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.3" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SelectionDangerActionButtonStyle" TargetType="Button"
+               BasedOn="{StaticResource HeaderDangerLinkButtonStyle}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.3" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="PrimarySelectionActionButtonStyle" TargetType="Button"
+               BasedOn="{StaticResource PrimaryHeaderButtonStyle}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.3" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+<!-- Sombras de tarjeta (normal / hover, UI.md §5.1) -->
+        <DropShadowEffect x:Key="TileShadow" BlurRadius="15" ShadowDepth="2" Opacity="0.08" Color="Black" />
+        <DropShadowEffect x:Key="TileShadowHover" BlurRadius="30" ShadowDepth="6" Opacity="0.12" Color="Black" />
+        <!-- Sombra del badge de selección: contraste del círculo/número sobre
+             capturas claras (blanco) sin depender del color del thumbnail -->
+        <DropShadowEffect x:Key="BadgeShadow" BlurRadius="8" ShadowDepth="1" Opacity="0.45" Color="Black" />
+
+        <!-- Tarjeta de evidencia de la galería (UI.md §5.2/§5.3) -->
+        <DataTemplate x:Key="EvidenceTileTemplate">
+            <Border Width="280" Margin="10" Background="White" CornerRadius="12" Padding="16"
+                    Effect="{StaticResource TileShadow}">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <TranslateTransform Y="-4" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Effect" Value="{StaticResource TileShadowHover}" />
+                            </Trigger>
+<DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                <Setter Property="BorderBrush" Value="#003060" />
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="Padding" Value="14" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsFocused}" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF6B00" />
+                                <Setter Property="BorderThickness" Value="2" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+
+                <Grid>
+<!-- Botón transparente de tarjeta completa: clic abre el visor o
+                                 alterna la selección según modo (InvokePattern por UIA) -->
+                                <Button Command="{Binding DataContext.TileClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                        CommandParameter="{Binding}"
+                                        AutomationProperties.Name="{Binding EvidenceCode}"
+                                        ToolTip="Abrir en el visor / alternar selección"
+                                        IsEnabled="{Binding DataContext.IsHistoryViewVisible, RelativeSource={RelativeSource AncestorType=Window}}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="Transparent" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <StackPanel>
+                        <!-- Preview 16:9 (no captura clics: los recibe el botón de la tarjeta) -->
+                        <Border Height="144" Background="#f9fafb" BorderBrush="#f1f5f9" BorderThickness="1"
+                                CornerRadius="8" ClipToBounds="True" IsHitTestVisible="False">
+                            <Grid>
+                                <Image Source="{Binding Thumbnail}" Stretch="UniformToFill" />
+
+<!-- Badge de selección unificado (círculo 28px top-left):
+                                     vacío/transparente sin selección, número de orden
+                                     (SelectionOrder) sobre #003060 al seleccionar.
+                                     Fondo por Style Setter+Trigger (un atributo local
+                                     anularía el trigger) y sombra para contraste sobre
+                                     capturas claras -->
+                                <Border Width="28" Height="28" CornerRadius="14"
+                                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6"
+                                        BorderBrush="White" BorderThickness="2"
+                                        Effect="{StaticResource BadgeShadow}"
+                                        Visibility="{Binding DataContext.IsSelectionModeActive, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BoolToVis}}">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="#4DFFFFFF" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                                    <Setter Property="Background" Value="#003060" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <TextBlock Text="{Binding SelectionOrder}" Foreground="White" FontWeight="Bold"
+                                               FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Visibility="{Binding IsSelected, Converter={StaticResource BoolToVis}}" />
+                                </Border>
+
+                                <!-- Badge de edición (top-right, pill #ff9f1c) -->
+                                <Border Background="#ff9f1c" CornerRadius="20" Padding="6,2"
+                                        HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6"
+                                        BorderBrush="White" BorderThickness="1.5"
+                                        Visibility="{Binding IsEdited, Converter={StaticResource BoolToVis}}">
+                                    <TextBlock Text="&#x270F;&#xFE0F;" FontFamily="Segoe UI Emoji" FontSize="10"
+                                               Foreground="White" />
+                                </Border>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock Text="{Binding EvidenceCode}" FontWeight="Bold" FontSize="17"
+                                   Foreground="#003060" Margin="0,12,0,2" TextTrimming="CharacterEllipsis" />
+
+                        <StackPanel Orientation="Horizontal" Margin="0,2">
+                            <TextBlock Text="Fecha: " Foreground="#4b5563" FontSize="12" FontWeight="Bold" />
+                            <TextBlock Text="{Binding FormattedDate}" Foreground="#1f2937" FontSize="12" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,10">
+                            <TextBlock Text="Origen: " Foreground="#4b5563" FontSize="12" FontWeight="Bold" />
+                            <Border Background="#0D003060" BorderBrush="#1A003060" BorderThickness="1"
+                                    CornerRadius="6" Padding="4,2">
+                                <TextBlock Text="{Binding OriginSite}" Foreground="#003060" FontSize="17"
+                                           FontWeight="Bold" TextTrimming="CharacterEllipsis" MaxWidth="175" />
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Acciones por tarjeta (pills 11px bold, hover invertido) -->
+                        <Grid Margin="0,2,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+<Button Grid.Column="0" Content="Copiar"
+                                    Command="{Binding DataContext.CopyTileCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding}" Style="{StaticResource TileButtonStyle}"
+                                    IsEnabled="{Binding DataContext.IsTileActionsEnabled, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Grid.Column="1" Content="Descargar"
+                                    Command="{Binding DataContext.DownloadTileCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding}" Style="{StaticResource TileButtonStyle}" Margin="8,0"
+                                    IsEnabled="{Binding DataContext.IsTileActionsEnabled, RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <Button Grid.Column="2" Content="Eliminar"
+                                    Command="{Binding DataContext.DeleteTileCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding}" Style="{StaticResource TileDangerButtonStyle}"
+                                    IsEnabled="{Binding DataContext.IsTileActionsEnabled, RelativeSource={RelativeSource AncestorType=Window}}" />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- 0. Header corporativo (#002B55 -> #004080, borde inferior 3px #FF6B00) -->
+            <RowDefinition Height="Auto" />
+            <!-- 1. Info bar (#060B29, texto 13px centrado) -->
+            <RowDefinition Height="Auto" />
+            <!-- 2. Área de contenido (Visor o Galería) + barra de fases CP -->
+            <RowDefinition Height="*" />
+            <!-- 3. Barra de estado (progreso de exportación) -->
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- 0. HEADER CORPORATIVO con menú integrado (altura fija 64, fondo degradado #002B55 -> #004080,
+             padding 24 horizontal, Grid de 3 columnas: menú | * (logo+título) | acciones) -->
+        <Border Grid.Row="0" Height="64" BorderBrush="#FF6B00" BorderThickness="0,0,0,3"
+                Padding="24,0,24,0"
+                TextElement.FontFamily="Segoe UI" TextElement.FontSize="16" TextElement.Foreground="#FFFFFF">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <GradientStop Color="#002B55" Offset="0" />
+                    <GradientStop Color="#004080" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />       <!-- Logo + Título + Navegación -->
+                    <ColumnDefinition Width="Auto" />    <!-- Acciones globales -->
+                </Grid.ColumnDefinitions>
+
+                <!-- ===== COLUMNA CENTRAL (Grid.Column="0"): marca + conmutador + navegación corta ===== -->
+                <StackPanel Orientation="Horizontal" Grid.Column="0"
+                            VerticalAlignment="Center">
+
+                    <!-- Logo SQA1 (img.brand-logo: 59x32 al alto 32, Margin 0,8,12,0) -->
+                    <Image Source="pack://application:,,,/EvidenciasSQA.Wpf;component/Media/SQA1.png" Height="34" Stretch="Uniform"
+                           Margin="0,8,14,0" />
+
+                    <!-- Título contextual: "Visor de Evidencias" / "Historial de Evidencias" / "Seleccionar Evidencias" / "Informe de Evidencias" -->
+                    <TextBlock Text="{Binding HeaderTitleText}" Foreground="White" FontSize="20"
+                               FontWeight="ExtraBold" VerticalAlignment="Center" />
+
+                    <!-- Ayuda -->
+                    <Button Content="?" Style="{StaticResource HelpButtonStyle}"
+                            ToolTip="Guía del visor" Click="HelpButton_Click" />
+
+                    <!-- Conmutador Visor ↔ Historial (enlace plano). Deshabilitado sin
+                         evidencias (empty state): paridad con updateUIState(false) de
+                         Electron que desactiva historyLink (opacity 0.3). Oculto con
+                         el editor embebido abierto (su lugar lo toma "Volver al visor"). -->
+                    <Button Content="{Binding ToggleHistoryButtonText}"
+                            Command="{Binding ToggleHistoryViewCommand}"
+                            IsEnabled="{Binding IsHistoryEnabled}"
+                            Margin="10,0,0,0"
+                            Visibility="{Binding IsEditorVisible, Converter={StaticResource InverseBoolToVis}}">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource HeaderLinkButtonStyle}" TargetType="Button">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.3" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- Navegación corta (SOLO visor): Anterior | Siguiente -->
+                    <StackPanel Orientation="Horizontal"
+                                Visibility="{Binding IsViewerMode, Converter={StaticResource BoolToVis}}">
+                        <Button Content="Anterior" Command="{Binding PreviousCommand}"
+                                Style="{StaticResource HeaderLinkButtonStyle}" />
+                        <Rectangle Style="{StaticResource ToolbarSeparator}" />
+                        <Button Content="Siguiente" Command="{Binding NextCommand}"
+                                Style="{StaticResource HeaderLinkButtonStyle}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!-- 1. INFO BAR (UI.md §2.3): texto 13px centrado sobre #060B29. Se oculta con el editor
+              embebido abierto (el editor tiene su propia barra de estado interna). -->
+        <Border Grid.Row="1" Background="#060B29" BorderBrush="#0DFFFFFF" BorderThickness="0,0,0,1"
+                Padding="24,8"
+                Visibility="{Binding IsEditorVisible, Converter={StaticResource InverseBoolToVis}}">
+            <Grid>
+                <!-- Info: visor (texto dinámico vía ViewerInfoText) -->
+                <TextBlock Text="{Binding ViewerInfoText, Mode=OneWay}" Foreground="White" FontSize="18"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Visibility="{Binding IsViewerMode, Converter={StaticResource BoolToVis}}" />
+
+                <!-- Info: historial normal -->
+                <TextBlock Text="Gestión de evidencias guardadas localmente | Haz clic en una captura para seleccionarla"
+                           Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Visibility="{Binding IsNormalMode, Converter={StaticResource BoolToVis}}" />
+
+                <!-- Info: modo selección -->
+                <TextBlock Text="Selecciona las capturas en el orden que necesites que se copien o descarguen"
+                           Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Visibility="{Binding IsPlainSelectionMode, Converter={StaticResource BoolToVis}}" />
+
+                <!-- Info: opciones del informe -->
+                <TextBlock Text="Seleccione el tipo de informe a generar"
+                           Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Visibility="{Binding IsInformeOptionsMode, Converter={StaticResource BoolToVis}}" />
+
+                <!-- Info: informe + selección -->
+                <TextBlock Text="Seleccione las evidencias para generar el informe"
+                           Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Visibility="{Binding IsInformeSelectionMode, Converter={StaticResource BoolToVis}}" />
+            </Grid>
+        </Border>
+
+        <!-- 2. ÁREA DE CONTENIDO -->
+        <Grid Grid.Row="2" Background="#F3F4F6">
+
+            <!-- 3A. GALERÍA DE HISTORIAL (UI.md §5.1) -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                          Background="#f4f7f6"
+                          Focusable="False"
+                          PanningMode="VerticalOnly"
+                          Visibility="{Binding IsHistoryMode, Converter={StaticResource BoolToVis}}">
+                <ItemsControl x:Name="HistoryItemsControl" ItemsSource="{Binding HistoryTiles}"
+                              ItemTemplate="{StaticResource EvidenceTileTemplate}" Margin="30"
+                              RenderOptions.BitmapScalingMode="HighQuality"
+                              RenderOptions.ClearTypeHint="Enabled">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <!-- 3B. VISOR INDIVIDUAL -->
+            <Border Background="#F4F6F9" Padding="30"
+                    Visibility="{Binding IsViewerMode, Converter={StaticResource BoolToVis}}">
+                <Grid>
+                    <DockPanel>
+                        <controls:ZoomViewport x:Name="ViewerControl" Source="{Binding CurrentImage}" />
+                    </DockPanel>
+
+                    <!-- Empty state del visor -->
+                    <Grid Background="#E8F0FE"
+                          Visibility="{Binding CurrentImage, Converter={StaticResource NullToVisible}}">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Sin evidencias" FontSize="22" FontWeight="SemiBold"
+                                       Foreground="#1F2937" HorizontalAlignment="Center" />
+                            <TextBlock Text="Captura una pantalla para comenzar" FontSize="14"
+                                       Foreground="#4B5563" HorizontalAlignment="Center" Margin="0,6,0,0" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- 3C. BARRA DE FASE CP -->
+            <Border VerticalAlignment="Bottom" Background="#003060" Padding="24,12"
+                    Visibility="{Binding IsModulePhaseVisible, Converter={StaticResource BoolToVis}}">
+                <DockPanel>
+                    <Button DockPanel.Dock="Right" Content="Cancelar" Command="{Binding CancelModeCommand}"
+                            Style="{StaticResource PrimaryHeaderButtonStyle}" />
+                    <Button DockPanel.Dock="Right" Content="OK" Command="{Binding ConfirmModulePhaseCommand}"
+                            Style="{StaticResource PhaseOkButtonStyle}" Margin="0,0,12,0" />
+                    <TextBlock Text="{Binding ModulePhaseText}" Foreground="White" FontWeight="SemiBold"
+                               HorizontalAlignment="Center" FontSize="13" VerticalAlignment="Center" />
+                </DockPanel>
+            </Border>
+
+            <!-- 3D. EDITOR EMBEBIDO -->
+            <editor:EditorView DataContext="{Binding Editor}"
+                               Visibility="{Binding DataContext.IsEditorVisible, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BoolToVis}}" />
+
+<!-- 3E. TOAST IN-APP (spec web: arriba-centro, sobre el contenido).
+                  No intercepta clics y siempre queda por encima del área de contenido. -->
+            <controls:ToastHost x:Name="ToastHost"
+                                Grid.RowSpan="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Margin="0,16,0,0"
+                                Panel.ZIndex="1000"
+                                IsHitTestVisible="False"
+                                Visibility="Collapsed" />
+        </Grid>
+
+        <!-- 3. BARRA DE ESTADO (oculta con el editor embebido abierto) -->
+        <StatusBar Grid.Row="3" Background="#FFFFFF" Foreground="#374151" FontFamily="Segoe UI" FontSize="12"
+                   Visibility="{Binding IsEditorVisible, Converter={StaticResource InverseBoolToVis}}">
+<StatusBarItem>
+                <TextBlock Text="{Binding StatusText}" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding ZoomPercentText, Mode=OneWay}" Foreground="#374151"
+                           FontWeight="SemiBold" Margin="12,0,0,0" ToolTip="Zoom del visor"
+                           Visibility="{Binding IsViewerMode, Converter={StaticResource BoolToVis}}" />
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal"
+                            Visibility="{Binding IsExporting, Converter={StaticResource BoolToVis}}">
+                    <TextBlock Text="{Binding ExportStatusText}" Foreground="#003060" Margin="0,0,10,0"
+                               FontWeight="SemiBold" />
+                    <ProgressBar Width="220" Height="10" Minimum="0" Maximum="100"
+                                 Value="{Binding ExportProgress, Mode=OneWay}"
+                                 Background="#e0e0e0" BorderThickness="0">
+                        <ProgressBar.Foreground>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FF6B00" Offset="0" />
+                                <GradientStop Color="#FF8C33" Offset="1" />
+                            </LinearGradientBrush>
+                        </ProgressBar.Foreground>
+                    </ProgressBar>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+
+<!-- 4. MODAL DE CONFIRMACIÓN (usa BaseModal + ModalCloseButton — regla de oro:
+      overlay dentro de la misma ventana, sin ventanas nativas nuevas). -->
+        <controls:BaseModal x:Name="ConfirmModal"
+                            Grid.RowSpan="4"
+                            Panel.ZIndex="900"
+                            Title="Confirmar"
+                            Size="Md"
+                            Closed="ConfirmModal_Closed">
+            <controls:BaseModal.HeaderIcon>
+                <Image Source="pack://application:,,,/EvidenciasSQA.Wpf;component/Media/SQA1.png"
+                       Height="26" Width="Auto" VerticalAlignment="Center" />
+            </controls:BaseModal.HeaderIcon>
+            <controls:BaseModal.BodyContent>
+                <TextBlock Foreground="#374151" FontSize="14.5" FontWeight="SemiBold"
+                           TextAlignment="Center" TextWrapping="Wrap" Margin="24,18" />
+            </controls:BaseModal.BodyContent>
+            <controls:BaseModal.FooterContent>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Cancelar" Style="{StaticResource ConfirmCancelButtonStyle}"
+                            IsCancel="True" Click="ConfirmCancel_Click" AutomationProperties.Name="Cancelar" />
+                    <Button Content="Aceptar" Style="{StaticResource ConfirmAcceptButtonStyle}"
+                            Margin="10,0,0,0" IsDefault="True" Click="ConfirmAccept_Click" AutomationProperties.Name="Aceptar" />
+                </StackPanel>
+            </controls:BaseModal.FooterContent>
+        </controls:BaseModal>
+
+        <!-- Modal para ingreso de datos de HU (usa BaseModal) -->
+        <controls:BaseModal x:Name="HuModal"
+                            Grid.RowSpan="4"
+                            Panel.ZIndex="900"
+                            Title="Datos de la Historia de Usuario (HU)"
+                            Size="Md"
+                            Closed="HuModal_Closed">
+            <controls:BaseModal.HeaderIcon>
+                <Image Source="pack://application:,,,/EvidenciasSQA.Wpf;component/Media/SQA1.png"
+                       Height="26" Width="Auto" VerticalAlignment="Center" />
+            </controls:BaseModal.HeaderIcon>
+            <controls:BaseModal.BodyContent>
+                <controls:HuModalContent />
+            </controls:BaseModal.BodyContent>
+            <controls:BaseModal.FooterContent>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Cancelar" Style="{StaticResource ConfirmCancelButtonStyle}"
+                            IsCancel="True" Click="HuModalCancel_Click" />
+                    <Button Content="Exportar a Word" Style="{StaticResource ConfirmAcceptButtonStyle}"
+                            Margin="10,0,0,0" IsDefault="True" Click="HuModalExport_Click" />
+                </StackPanel>
+            </controls:BaseModal.FooterContent>
+        </controls:BaseModal>
+
+        <!-- Modal para selección de cantidad de casos de prueba (usa BaseModal) -->
+        <controls:BaseModal x:Name="ModuleCountModal"
+                            Grid.RowSpan="4"
+                            Panel.ZIndex="900"
+                            Title="Exportación por casos de prueba"
+                            Size="Sm"
+                            Closed="ModuleCountModal_Closed">
+            <controls:BaseModal.HeaderIcon>
+                <Image Source="pack://application:,,,/EvidenciasSQA.Wpf;component/Media/SQA1.png"
+                       Height="26" Width="Auto" VerticalAlignment="Center" />
+            </controls:BaseModal.HeaderIcon>
+            <controls:BaseModal.BodyContent>
+                <controls:ModuleCountModalContent />
+            </controls:BaseModal.BodyContent>
+            <controls:BaseModal.FooterContent>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Cancelar" Style="{StaticResource ConfirmCancelButtonStyle}"
+                            IsCancel="True" Click="ModuleCountModalCancel_Click" />
+                    <Button Content="Comenzar" Style="{StaticResource ConfirmAcceptButtonStyle}"
+                            Margin="10,0,0,0" IsDefault="True" Click="ModuleCountModalAccept_Click" />
+                </StackPanel>
+            </controls:BaseModal.FooterContent>
+        </controls:BaseModal>
+    </Grid>
+</Window>
+
+
+

@@ -1,0 +1,136 @@
+<UserControl x:Class="EvidenciasSQA.Wpf.Controls.BaseModal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:controls="clr-namespace:EvidenciasSQA.Wpf.Controls"
+             x:Name="Root"
+             Focusable="True">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/EvidenciasSQA.Wpf;component/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Tamaños predefinidos para el modal -->
+            <sys:Double x:Key="ModalWidthSm">320</sys:Double>
+            <sys:Double x:Key="ModalWidthMd">420</sys:Double>
+            <sys:Double x:Key="ModalWidthLg">520</sys:Double>
+            <sys:Double x:Key="ModalWidthXl">640</sys:Double>
+            <sys:Double x:Key="ModalWidthFull">900</sys:Double>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <!-- Grid raíz: overlay + modal como hermanos para Z-order correcto -->
+    <Grid x:Name="RootGrid" Visibility="Collapsed">
+        <!-- Overlay oscuro (se renderiza primero, queda debajo) -->
+        <Border x:Name="OverlayBackground"
+                Background="#66000000"
+                Visibility="Visible" />
+
+        <!-- Modal (se renderiza después, queda encima del overlay) -->
+        <Border x:Name="ModalBorder"
+                Background="White"
+                CornerRadius="12"
+                BorderBrush="#E5E7EB"
+                BorderThickness="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                ClipToBounds="True"
+                Effect="{StaticResource ModalDropShadow}"
+                MaxHeight="720"
+                MaxWidth="1200"
+                Panel.ZIndex="1">
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Border.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="ModalBorder"
+                                             Storyboard.TargetProperty="Opacity"
+                                             From="0" To="1" Duration="0:0:0.15" />
+                            <DoubleAnimation Storyboard.TargetName="ModalBorder"
+                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                             From="0.95" To="1" Duration="0:0:0.15" />
+                            <DoubleAnimation Storyboard.TargetName="ModalBorder"
+                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                             From="0.95" To="1" Duration="0:0:0.15" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+            <Border.RenderTransform>
+                <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1" ScaleY="1" />
+            </Border.RenderTransform>
+
+            <Grid x:Name="ModalGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" /> <!-- Header -->
+                    <RowDefinition Height="Auto" /> <!-- Body -->
+                    <RowDefinition Height="Auto" /> <!-- Footer -->
+                </Grid.RowDefinitions>
+
+                <!-- Header estándar con ModalCloseButton - Grid para alineación perfecta -->
+                <Border x:Name="HeaderBorderElement"
+                        Grid.Row="0"
+                        Style="{StaticResource ModalHeaderStyle}">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" /> <!-- Logo -->
+                            <ColumnDefinition Width="*" />    <!-- Título -->
+                            <ColumnDefinition Width="Auto" /> <!-- CloseButton -->
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Logo/Icono opcional -->
+                        <ContentControl x:Name="HeaderIconElement"
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        Margin="0,0,12,0"
+                                        Visibility="Collapsed" />
+
+                        <!-- Título -->
+                        <TextBlock x:Name="TitleTextElement"
+                                   Grid.Column="1"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   TextTrimming="CharacterEllipsis"
+                                   Margin="0,0,12,0" />
+
+                        <!-- ModalCloseButton - único autorizado para la X -->
+                        <controls:ModalCloseButton x:Name="CloseButtonElement"
+                                                   Grid.Column="2"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Right"
+                                                   CloseRequested="CloseButton_CloseRequested"
+                                                   Focusable="True"
+                                                   IsTabStop="True" />
+                    </Grid>
+                </Border>
+
+                <!-- Body - contenido personalizable -->
+                <ScrollViewer x:Name="BodyScrollViewerElement"
+                              Grid.Row="1"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled"
+                              Padding="24,20,24,0"
+                              Focusable="False">
+                    <ContentPresenter x:Name="BodyContentElement" />
+                </ScrollViewer>
+
+                <!-- Footer de acciones -->
+                <Border x:Name="FooterBorderElement"
+                        Grid.Row="2"
+                        BorderBrush="#f3f4f6"
+                        BorderThickness="0,1,0,0"
+                        Background="#f9fafb"
+                        Padding="24,15"
+                        Margin="0,24,0,0"
+                        Visibility="Collapsed">
+                    <StackPanel x:Name="FooterActionsElement"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right" />
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

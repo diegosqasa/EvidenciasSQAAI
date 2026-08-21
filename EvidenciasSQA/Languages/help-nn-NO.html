@@ -1,0 +1,447 @@
+
+<html>
+	<head>
+		<title>EvidenciasSQA-hjelp</title>
+		
+		<style>
+		* {
+			font-family: Tahoma, Arial, Sans-serif;
+		}
+		h1 {font-size:16px;}
+		h2 {font-size:14px;color:#009900;margin-top:24px;}
+		h3 {font-size:12px;margin-top:18px;}
+		small {font-size:10px;}
+		p, li {font-size:12px;line-height:1.5em}
+		a:link, a:hover, a:visited, a:active {color:#009900;}
+		kbd {background-color:#dddddd;border:1px solid #bbbbbb;padding:0 2px;border-radius:2px;}
+		p.hint {background-color:#ffffdd;border:1px solid #ddddbb;padding:5px;}
+		em {padding-right:0.2em;}
+		</style>
+	</head>
+	<body>
+	<h1>EvidenciasSQA-hjelp</h1>
+	<!-- 
+	Note to translator: uncomment entry below to have your effort honored 
+	-->
+	<small>Version 1.0.2 RC2 - Norsk omsetjing av Ivar Barstad</small>
+	
+	<h2>Innhald</h2>
+	<ol>
+		<li><a href="#screenshot">Ta eit skjermknips</a></li>
+		<ol>
+			<li><a href="#capture-region">Knips omr�de</a></li>
+			<li><a href="#capture-last-region">Knips siste omr�de</a></li>
+			<li><a href="#capture-window">Knips vindauge</a></li>
+			<li><a href="#capture-fullscreen">Knips fullskjerm</a></li>
+			<li><a href="#capture-ie">Knips Internet Explorer</a></li>
+		</ol>
+	
+		<li><a href="#editor">� bruke knipsfiksaren</a></li>
+		<ol>
+			<li><a href="#editor-shapes">Teikne former</a></li>
+			<li><a href="#editor-text">Leggje til tekst</a></li>
+			<li><a href="#editor-highlight">Markering</a></li>
+			<li><a href="#editor-obfuscate">Sensurering</a></li>
+			<li><a href="#editor-crop">Skjere skjermknipset</a></li>
+			<li><a href="#editor-adding-graphics">Setje grafikk inn i skjermknips</a></li>
+			<li><a href="#editor-reuse-elements">Gjenbruk av teikna element</a></li>
+			<li><a href="#editor-export">Eksportere skjermknipset</a></li>
+		</ol>
+		<li><a href="#settings">Innstillingsdialogen</a></li>
+		<ol>
+			<li><a href="#settings-general">Generelle innstillingar</a></li>
+			<li><a href="#settings-capture">Knipsinnstillingar</a></li>
+			<li><a href="#settings-output">Ut-innstillingar</a></li>
+			<li><a href="#settings-printer">Utskriftsinnstillingar</a></li>
+		</ol>
+		<li><a href="#help">Lyst til � hjelpe?</a></li>
+		<ol>
+			<li><a href="#help-donate">Vurder ein donasjon</a></li>
+			<li><a href="#help-spread">Spre ryktet</a></li>
+			<li><a href="#help-translate">Send inn omsetjing</a></li>
+		</ol>
+	</ol>
+	
+	<a name="screenshot"></a>
+	<h2>Ta eit skjermknips</h2>
+	<p>
+		Du kan knipse ein del av skjermen ved � bruke <kbd>Print</kbd>-tasten
+		eller ved � h�greklikke EvidenciasSQA-ikonet i varselfeltet nedst til h�gre.<br>
+		Det er fleire m�tar � knipse skjermen p�:
+	</p>
+	
+	<a name="capture-region"></a>
+	<h3>Knips omr�de<kbd>Print</kbd></h3>
+	<p>
+		Omr�deknipsing let deg ta bilde av ein del av skjermen.<br>
+		Etter at du har stara omr�demodus vil du sj� eit kryss som syner musposisjonen
+		p� skjermen. Klikk og hald inne venstre musknapp og teikn eit rektangel
+		rund den delen av skjermen du �nskjer � knipse. N�r du slepp musknappen
+		blir det gr�ne omr�det knipsa.
+	</p>
+	<p class="hint">
+		Du kan bruke <kbd>Mellomrom</kbd>-tasten for � bytte mellom omr�demodus og 
+		<a href="#capture-window">vindaugknipsing</a>.
+	</p>
+	<p class="hint">
+		Om du �nskjer � ta bilde av eit n�yaktig omr�de, kan det ofte vera lettare
+		� angje eit litt st�rre omr�de enn du �nskjer, for s� � <a href="#editor-crop">skjera til</a>
+		bildet i EvidenciasSQA sin knipsfiksar.
+	</p>
+	
+	<a name="capture-last-region"></a>
+	<h3>Knips siste omr�de <kbd>Shift</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Om du alt har knipsa eit <a href="#capture-region">omr�de</a> eller <a href="#capture-window">vindauge</a> 
+		tidlegare, kan du knipse same omr�de/vindauge p� nytt med dette valet. 
+	</p>
+	
+	<a name="capture-window"></a>
+	<h3>Knips vindauge <kbd>Alt</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Knipsar det aktive vindauget (vanlegvis det som ligg fremst).
+	</p>
+	<p class="hint">
+		Under <a href="#settings">Innstillingar</a> er det mogeleg � skru p�
+		interaktivt val av vindauge, i kontrast til standardfunksjonen som knipsar det
+		aktive vindauget. Om dette er skrudd p�, kan ein velje eit vindauge ved � 
+		klikke p� det. (EvidenciasSQA markerar omr�det p� same m�te som i <a href="#capture-region">omr�demodus</a>).<br>
+		Om du �nskjer � knipse eit dotterelement (f.eks. innhaldet p� ei nettside
+		utan rulleomr�de og menyar eller ei enkeltramme p� ein nettstad som nyttar rammer,
+		kan du halde muspeikaren over vindauget og trykkje <kbd>PgDown</kbd>-tasten. Etter
+		dette kan du velje dotterelementa du �nskjer � knipse.
+	</p>
+	<p class="hint">
+		Om du �nskjer � knipse h�greklikkmenyar, stiller ting seg annleis: Sn�ggtasten for
+		� knipse vindauge vil ta bort menyen, og EvidenciasSQA sin eigen h�greklikkmeny vil
+		openbart gje same resultat. Om du �nskjer � knipse ein slik meny, gjer du det enkelt
+		ved � aktivere omr�deknipsing med <kbd>Print</kbd>-tasten, og deretter bytte til
+		vindaugemodus med <kbd>Mellomrom</kbd>.
+	</p>
+	
+	<a name="capture-fullscreen"></a>
+	<h3>Knips fullskjerm <kbd>Control</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Denne funksjonen tar eit bilde heile skjermen 
+		(den aktive skjermen i fleirskjermoppsett).
+	</p>
+
+	<a name="capture-ie"></a>
+	<h3>Knips Internet Explorer <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Med denne funksjonen kan du enkelt ta eit skjermbilde av ei open nettside i
+		Internet Explorer. Bruk EvidenciasSQA sin h�greklikkmeny for � velje IE-fane, eller
+		bruk sn�ggtasten for � knipse den aktive fana.
+	</p>
+
+	
+	<a name="editor"></a>
+	<h2>� bruke knipsfiksaren</h2>
+	<p>
+		EvidenciasSQA har eit innebygd, enkelt bilderedigeringsprogram (knipsfiksaren)
+		som har kjekke funksjonar for � notere eller teikne p� eit skjermbilde. 
+		Du kan �g markere eller sensurere delar av skjermknipset.
+	</p>
+	<p class="hint">
+		EvidenciasSQA sin knipsfiksar kan brukast til meir enn bare skjermknips;
+		du kan �g opne bildefiler fr� disk eller fr� utklyppstavla. H�greklikk
+		EvidenciasSQA-ikonet i varselfeltet nedst til h�gre og vel h�vesvis 
+		<em>Opne bilde fr� fil</em> eller <em>Opne bilde fr� utklyppstavle</em>.
+	</p>
+	<!-- This has been changed in 1.0, if I'm not mistaken?
+	
+	<p class="hint">
+		Standardinnstillinga er � opne knipsfiksaren for kvart bilde som blir knipsa.
+		Om du ikkje �nskj�er � bruke denne funksjonen kan du endre dette under
+		<a href="#settings">Innstillingar</a>.
+	</p>
+	-->	
+	
+	<a name="editor-shapes"></a>
+	<h3>Teikne former</h3>
+	<p>
+		Vel ei av teikneverkt�ya fr� verkt�ypaletten p� venstre side av knipsfiksaren
+		eller fr� <em>Objekt</em>-menyen. Dei ymse verkt�ya har �g sn�ggtastar for �
+		effektivisere prosessen.<br>
+		Dei ymse formene er: Rektangel <kbd>R</kbd>, ellipse <kbd>E</kbd>, line <kbd>L</kbd>,
+		pil <kbd>A</kbd> og frihandsline <kbd>F</kbd>.<br>
+		Klikk og hald inne venstre museknapp for � teikne inn posisjon og storleik p�
+		forma du �nskjer � teikne. Slepp musetasten n�r du er ferdig.
+	</p>
+	<p>
+		Du kan flytte eller endre storleik p� eksisterande objekt med peikarverkt�yet <kbd>Esc</kbd>.<br>
+		Det finst visse val for dei ymse verkt�ya som endrar utsj�naden deira
+		(f.eks. linebreidde, linefarge og fyllfarge). Du kan endre desse eigenskapane
+		for eit eksisterande objekt, men ogs� for det neste objektet du teiknar etter
+		� ha valt eit teikneverkt�y.
+	</p>
+	<p class="hint">
+		Du kan redigere fleire objekt p� same tid! For � velje fleire objekt, hald inne
+		<kbd>Shift</kbd>-tasten medan du vel objekta.
+	</p>
+	<p class="hint">
+		Om du �nskjer � teikne eit kvadrat eller ein sirkel, gjer du dette ved � halde
+		inne <kbd>Shift</kbd>-tasten medan du teiknar. Gjer du det same med line- eller
+		pilverkt�yet, vil du teikne i vinkelretningar runda av til n�raste 15�. 
+		Du kan �g bruke <kbd>Shift</kbd> for � skalere eit objekt proporsjonalt.
+	</p>
+	<p class="hint">
+		N�r du teiknar eller skalerar eit objekt kan du halde nede <kbd>Ctrl</kbd>-tasten
+		for � arbeide ut fr� objektets midtpunkt, eksempelvis vil eit objekt som blir
+		forst�rra vekse b�de med og mot muspekaren, forankra i midtpunktet. 
+		(Dette er veldig nyttig om du til d�mes �nskjer � teikne ei ellipse 
+		rundt eit element p� skjermknipset.)
+	</p>
+	
+	<a name="editor-text"></a>
+	<h3>Leggje til tekst</h3>
+	<p>
+		Tekstverkt�yet <kbd>T</kbd> minner mykje om dei andre <a href="#editor-shapes">formverkt�ya</a>.
+		Du teiknar opp ein tekstboks i �nskt storleik og skriv s� inn teksten.
+		Dobbeltklikk boksen for � redigere eksisterande tekst.
+	</p>
+	
+	<a name="editor-highlight"></a>
+	<h3>Markering</h3>
+	<p>
+		Med markeringsverkt�yet <kbd>H</kbd> kan du definere eit markeringsomr�de 
+		p� same m�te som du ville ha teikna ei <a href="#editor-shapes">form</a>.<br>
+		P� knappen lengst til venstre p� verkt�ylina p� toppen kan du bytte mellom
+		fleire forskjellige markeringstyper:
+	</p>
+	<ul>
+		<li><em>Marker tekst</em>: Markerar tekst i ein ljos farge, som ein mark�rpenn</li>
+		<li><em>Marker omr�de</em>: Framhevar det valte omr�det ved � gjera utsida uskarp<a href="#hint-blur">*</a> og m�rk</li>
+		<li><em>Gr�tone</em>: Framhevar det valte omr�det ved � konvertere utsida til gr�tonar</li>
+		<li><em>Forst�rr</em>: Forst�rrar det valte omr�det</li>
+	</ul>
+	
+	<a name="editor-obfuscate"></a>
+	<h3>Sensurering</h3>
+	<p>
+		Om skjermknipset inneheld sensitiv data, t.d. kontonummer, namn, passord eller 
+		andlet kan det vera lurt � sensurere bildet. Bruk sensureringsverkt�yet <kbd>O</kbd> 
+		p� same m�te som <a href="#editor-highlight">markeringsverkt�yet</a>.<br>
+		Dei forskjellige sensureringsm�tane er:
+	</p>
+	<ul>
+		<li><em>Pikseler</em>: Aukar pikselstorleiken i merkt omr�de</li>
+		<li><em>Gjer uskarpt</em><a href="#hint-blur">*</a>: Gjer eit omr�de uskarpt</li>
+	</ul>
+	<a name="hint-blur"></a>
+	<p class="hint">
+		* Avhengig av kor kraftig datamaskina di er, kan EvidenciasSQA sin knipsfiksar
+		oppf�re seg treigt n�r ein nyttar uskarp-funskjonen. Om du syns at programmet
+		reagerar seint etter � ha aktivert funksjonen, pr�v � skru ned <em>Kvalitet p� 
+		f�rehandssyning</em> p� verkt�ylina eller minsk verdien for <em>Uskarp-radius</em>.<br>
+		Om uskarp-ytelsen framleis er plagsom, b�r du vurdere pikseler-effekten i staden.
+	</p>
+	
+	<a name="editor-crop"></a>
+	<h3>Skjere skjermknipset</h3>
+	<p>
+		Om du bare treng ein del av skjermbildet du har knipsa, kan du bruke 
+		skjereverkt�yet <kbd>C</kbd> for � kutte det til �nskt storleik.<br>
+		Teikn eit rektangel for � markere omr�det du �nskjer � halde fram med,
+		du kan �g endre storleiken p� dette omr�det som med andre objekt..<br>
+		N�r du er n�gd med utklyppet, trykk <em>Stadfest</em>-knappen eller <kbd>Enter</kbd>.
+		Du kan avbryte operasjonen ved � trykkje <em>Avbryt</em> eller <kbd>Esc</kbd>.
+	</p>
+	<p class="hint">
+		<em>Auto-skjer</em>: Om du vil klyppe vekk ein einsfarga kant rundt skjermknipset,
+		kan du bruke <em>Auto-skjer</em> fr� <em>Rediger</em>-menyen. EvidenciasSQA vel d�
+		automatisk omr�det du vil skjera vekk.
+	</p>
+
+	<a name="editor-adding-graphics"></a>
+	<h3>Setje grafikk inn i skjermknips</h3>
+	<p>
+		Du kan enkelt leggje til grafikk og bilde i eit skjermknips ved � dra bildefiler
+		inn i knipsfiksaren (dra-og-slepp). Du kan �g leggje til knips av andre vindauge
+		ved � bruke <em>Sett inn vindauge</em> fr� <em>Rediger</em>-menyen. Du vil d�
+		f� opp ei liste over tilgjengelege vindauge som kan importerast.
+	</p>
+	
+	<a name="editor-reuse-elements"></a>
+	<h3>Gjenbruk av teikna element</h3>
+	<p>
+		Om du �nskjer � gjere den same eller liknande jobben p� fleire skjermknips
+		(t.d. eit tekstfelt med nettlesartype og versjon, eller sensurering av det
+		same elementet p� fleire knips) kan du enkelt bruke objekt p� nytt.<br>
+		Vel <em>Lagre objekt til fil</em> fr� <em>Objekt</em>-menyen for � lagre
+		det eksisterande sett av objekt for seinare bruk. Ein kan d� enkelt bruke
+		<em>Last inn objekt...</em> for � importere objekta til eit anna skjermknips.
+	</p>
+	
+	<a name="editor-export"></a>
+	<h3>Eksportere skjermknipset</h3>
+	<p>
+		N�r du er ferdig med � redigere skjermknipset i knipsefiksaren, kan du eksportere
+		resultatet p� fleire m�tar. Du finn dei ymse vala p� <em>Fil</em>-menyen, den �vste
+		knapperada eller via sn�ggtastar:
+	</p>
+	<ul>
+		<li><em>Lagre</em> <kbd>Control</kbd> + <kbd>S</kbd>: Lagrar bildet til ei fil, og overskriv f�rre utg�ve om du bare har gjort endringar</li>
+		<li><em>Lagre som...</em> <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>: Let deg alltid velje kor du vil lagre fila, ogs� n�r du alt har lagra ho f�r</li>
+		<li><em>Kopier knips til utklyppstavla</em> <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>: Gjer knipset tilgjengeleg for andre Windows-program via <em>Lim inn</em>-funksjonen</li>
+		<li><em>Skriv ut...</em> <kbd>Control</kbd> + <kbd>P</kbd>: Sender skjermknipset til ein skrivar</li>
+		<li><em>Send med e-post</em> <kbd>Control</kbd> + <kbd>E</kbd>: Lagar ein ny melding i standard e-postprogram og legg knipset som eit vedlegg</li>
+	</ul>
+	<p class="hint">
+		N�r du har lagra bildefila fr� knipsfiksaren, kan du enkelt kopiere filplasseringa
+		til utklyppstavla eller opne mappa i utforskaren ved � h�greklikke p� <em>statuslina</em>
+		nedst i programmet.
+	</p>
+	
+	
+	<a name="settings"></a>
+	<h2>Innstillingsdialogen</h2>
+	
+	<a name="settings-general"></a>
+	<h3>Generelle innstillingar</h3>
+	<ul>
+		<li><em>Spr�k</em>: Spr�ket du �nskjer � bruke i EvidenciasSQA.<br>
+			Du kan laste ned tilleggsspr�k <a target="_blank" href="https://evidenciassqa.com/downloads/">her</a>. </li>
+		<li><em>Start EvidenciasSQA med systemet</em>: Aktiverar EvidenciasSQA n�r Windows startar</li>
+		<li><em>Sn�ggtastar</em>: Redigerar sn�ggtastane knytt til skjermknipsing</li>
+		<li><em>Bruk systemets standardproxy</em>: Om dette er huka av, vil EvidenciasSQA bruke systemet sin proxyserver for � sj� etter oppdateringar.</li>
+		<li><em>Oppdateringsfrekvens</em>: EvidenciasSQA kan sj� om nye utg�ver er tilgjengelege p� verdsveven. Her vel du kor ofte dette skal skje, eller du kan stoppe kontrollen ved � velje 0 dagar.</li>
+	</ul>
+
+	<a name="settings-capture"></a>
+	<h3>Knipsinnstillingar</h3>
+	<ul>
+		<li><em>Knips muspeikaren</em>: Vel om du vil ha muspeikaren med i skjermknipset. 
+				Peikaren blir lagt til som eit eige objekt som du kan skalere og flytte i knipsfiksaren.</li>
+		<li><em>Spel av lukkarlyd</em>: H�yrleg indikasjon p� at skjermknipset blir tatt.</li>
+		<li><em>Syn varsel</em>: Skrur av og p� varsel
+	<!--- What kind of notifications? The en-US help file isn't clear on this, in fact it doesn't mention the notifications at all! -->
+		<li><em>Forseinking f�r skjermknips</em>: Her kan du leggje til ei forseinking 
+				mellom stadfesting og tidspunktet skjermknipset blir tatt.</li>
+		<li><em>Bruk interaktiv vindaugsknipsing</em>: Aktiverar mogelegheiten for � velje 
+				vindauge som knipsast, i kontrast til standardvalet som automatisk knipsar
+				det aktive vindauget. Sj� <a href="#capture-window">vindaugsknipsing</a>.</li>
+		<li>
+			<em>Vindaugsstil</em>: Om du nyttar Windows Vista eller 7 med eit Aero-tema 
+			(gjennomsynlege element) kan du velje korleis element som er synleg <em>gjennom</em>
+			vindauget blir knipsa.
+			<ul>
+				<li><em>Automatisk</em>: Let EvidenciasSQA avgjere gjennomsynlegheit.</li>
+				<li><em>Som synt</em>: Gjennomsynlege rammer blir knipsa nett som p� skjermen.</li>
+				<li><em>Bruk standardfarge</em>: Gjev ein svart bakgrunn bak gjennomsynlege omr�da.</li>
+				<li><em>Use custom color</em>: Gjev ein eigendefinert farge bak dei gjennomsynlege omr�da.</li>
+				<li><em>Hald p� gjennomsynlegheit</em>: Gjennomsynlege omr�de blir knipsa utan bakgrunn,
+						og blir synt med ein rutete bakgrunn i knipsfiksaren. M�nsteret blir ikkje
+						synleg i utfila. Utfila m� lagrast i PNG-format for � halde p� gjennomsynlegheita.</li>
+			</ul>
+		</li>
+		<li><em>Internet Explorer-knipsing</em>: Gjer klart for enkel knipsing fr� Internet Explorer.</li>
+
+		<li><em>Tilpass knipsfiksaren til utklyppsstorleiken</em>: Endrar storleiken p� knipsfiksaren i h�ve til skjermknipset.</li>
+	</ul>
+	
+	<a name="settings-output"></a>
+	<h3>Utformat-innstillingar</h3>
+	<ul>
+		<li><em>Lagringsplassering</em>: Angjev standardmappa skjermknips blir lagra i.</li>
+		<li><em>Regel for filnamn</em>: Definerer ein regel for automatiske filnamn ved direktelagring. 
+				Klikk <em>?</em>-knappen for � f� ei oversikt over gyldige felt.</li>
+		<li><em>Kopier filplasseringa til utklyppstavla kvar gong eit bilde blir lagra</em>: 
+				N�r du lagrar eit bilde fr� EvidenciasSQA vil mappe- og filnamn bli kopiert til 
+				utklyppstavla, og kan enkelt limast inn i andre program for lett tilgang.</li>
+		<li><em>JPEG-kvalitet</em>: Avgjer vektinga mellom filstorleik og kvalitet n�r du
+				lagrar bilde i JPEG-format. Standardkomprimering er 80%.</li>
+		<li><em>Syn kvalitetsdialog kvar gong eit bilde blir lagra</em>: Gjer det mogeleg �
+				velje komprimering ved kvar lagring.</li>
+		<li><em>Reduser totalt fargetal til maksimum 256</em>: Vil alltid lagre JPEG-bildet
+				med maksimum 256 fargar (8-bit). Dette vil ofte redusere kvaliteten.</li>
+	</ul>
+	
+	<a name="settings-output"></a>
+	<h3>M�linnstillingar</h3>
+	<ul>
+		<li><em>Dynamisk m�lveljar</em>: Syner ein meny rett etter knipset er tatt, 
+				der du sj�lv kan velje kor du vil nytte skjermknipset.</li>
+		<li><em>Andre m�l</em>: Om den dynamiske m�lveljaren er deaktivert kan du velje ein
+				eller fleire m�lprogram eller -funksjonar som blir brukt til � ta imot
+				eller vidareformidle skjermknipset. Om du kryssar av for fleire m�l
+				vil EvidenciasSQA jobbe seg nedover lista og eksportere til alle m�la.</li>
+	</ul>
+	
+	<a name="settings-printer"></a>
+	<h3>Utskriftsinnstillingar</h3>
+	<ul>
+		<li><em>Forminsk bildet til arkstorleiken</em>: Om skjermknipset skulle vera st�rre 
+		enn arket som er valt, skalerer EvidenciasSQA ned bildet s� det passar innanfor margane.</li>
+		<li><em>Forst�rr bildet til arkstorleiken</em>: Om bildet er mindre enn arket, vil
+				EvidenciasSQA skalere bildet til � fylle heile arket proporsjonalt.</li>
+		<li><em>Roter bildet til arkretninga</em>: Snur bilde i breiddeformat p� h�gkant.</li>
+		<li><em>Sentrer bildet p� arket</em>: Plasserar bildet p� midten av arket.</li>
+		<li><em>Skriv ut dato/tid som botntekst</em>: Dato og tidspunkt for utskrift blir 
+				plassert nedst p� arket.</li>
+		<li><em>Skriv ut med inverterte fargar</em>: Skriv ut bildet som eit negativ. 
+				Spesielt nyttig for t.d. kvit tekst p� svart bakgrunn (for � spare blekk/toner).</li>
+		<li><em>Skriv ut i gr�tonar</em>: Utskrifta blir skrive ut i gr�tonar uavhengig av 
+				skrivar- og originalinnstilingar.</li>
+	</ul>
+	
+
+	<a name="settings-plugins"></a>
+	<h3>Tilleggsinnstillingar</h3>
+	<p>
+		Syner ei liste over installerte tillegg. Vel eit tillegg fr� lista og klikk 
+		<em>Konfigurer</em> for � justere tilleggspesifikke innstillingar.
+	</p>
+	
+	
+	<a name="help"></a>
+	<h2>Lyst til � hjelpe?</h2>
+	
+	<p>
+		I augneblinken treng me ikkje hjelp i utviklinga. Det er likevel fleire ting
+		du kan gjere for � st�tte opp rundt EvidenciasSQA og utviklarane.
+		P� f�rehand takk! :)
+	</p>
+	
+	<a name="help-donate"></a>
+	<h3>Vurder ein donasjon</h3>
+	<p>
+		Me legg ned mykje arbeid i EvidenciasSQA, og brukar mykje tid p� � utvikle eit godt
+		stykke open kjeldekode utan kostnad for sluttbrukaren. Om programmet gjer deg
+		meir produktiv, sparar deg eller selskapet ditt for mykje tid og pengar eller
+		du rett og slett likar ideen om open kjeldekode er du velkomen til � �re innsatsen
+		v�r med ein donasjon.<br>
+		P� heimesida v�r finn du informasjon om korleis du kan st�tte utviklarane:<br>
+		<a target="_blank" href="https://evidenciassqa.com/support/">https://evidenciassqa.com/support/</a>
+	</p>
+	
+	<a name="help-spread"></a>
+	<h3>Spre ryktet</h3>
+	<p>
+		Om du likar EvidenciasSQA, syt for at andre f�r greie p� det! Fortel vener, kollegaer og
+		fygljarar p� sosiale media om EvidenciasSQA!<br>
+		Gje tilbakemelding p� EvidenciasSQA p� relevante programvaresider eller legg ei
+		lenkje til nettsida v�r (https://evidenciassqa.com) p� bloggen eller heimesida di.
+	</p>
+	
+	<a name="help-translate"></a>
+	<h3>Send inn omsetjing</h3>
+	<p>
+		Er ikkje EvidenciasSQA tilgjengeleg p� ditt f�retrekte spr�k? Om du kjenner deg
+		i stand til � omsetje programmet er du meir enn velkomen!
+		Om du er registrert p� sourceforge.net kan du sende inn omsetjingar til v�r 
+		<a target="_blank" href="https://sourceforge.net/tracker/?group_id=191585&atid=1368020">omsetjings-tracker</a>.<br>
+		Kontroller fyrst om det alt finst ei omsetjing p�
+		<a target="_blank" href="https://evidenciassqa.com/downloads/">nedlastingssida</a>.
+		Sjekk �g <a href="https://sourceforge.net/tracker/?group_id=191585&atid=1368020">omsetjings-trackeren</a>,
+		d� den kan innehalde ein omsetjing under arbeid eller diskusjon.<br>
+		Ver merksam p� at me bare tilbyr omsetjingar p� nedlastingssida v�r om den har
+		blitt sendt inn gjennom ein sourceforge.net-konto. Sidan me sannsynlegvis ikkje
+		forst�r omsetjinga di er det fint om andre sourceforge-brukarar kan kontakte deg
+		om endringar eller forbetringar i samband med til d�mes nye programversjonar.
+	</p>
+	
+	
+	
+	</body>
+</html>

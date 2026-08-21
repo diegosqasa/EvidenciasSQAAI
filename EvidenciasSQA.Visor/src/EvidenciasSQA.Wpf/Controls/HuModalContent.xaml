@@ -1,0 +1,26 @@
+<UserControl x:Class="EvidenciasSQA.Wpf.Controls.HuModalContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Root"
+             Focusable="False">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/EvidenciasSQA.Wpf;component/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <TextBlock Text="ID de HU" Foreground="#444444" FontSize="13" FontWeight="SemiBold" Margin="0,0,0,4" />
+        <TextBox x:Name="IdHuTextBox" Style="{StaticResource DialogInputStyle}" ToolTip="Ej: HU-1024" />
+        <TextBlock x:Name="IdHuErrorText" Text="El ID de HU es obligatorio (ej. HU-1024)"
+                   Foreground="#cc0000" FontSize="11" Margin="2,3,0,0" Visibility="Collapsed" />
+
+        <TextBlock Text="Título de la HU" Foreground="#444444" FontSize="13" FontWeight="SemiBold"
+                   Margin="0,14,0,4" />
+        <TextBox x:Name="NombreHuTextBox" Style="{StaticResource DialogInputStyle}" ToolTip="Ej: Registro de usuario exitoso" />
+        <TextBlock x:Name="NombreHuErrorText" Text="El nombre de la HU es obligatorio"
+                   Foreground="#cc0000" FontSize="11" Margin="2,3,0,0" Visibility="Collapsed" />
+    </StackPanel>
+</UserControl>

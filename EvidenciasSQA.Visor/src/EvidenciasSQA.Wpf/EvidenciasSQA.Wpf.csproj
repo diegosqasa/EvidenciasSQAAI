@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <!--
+      EvidenciasSQA.Wpf - MODULO VISOR (ultraligero, responsabilidad unica: visualizacion + galeria + exportacion).
+      Visor Puro: NO hay captura de pantalla, ni hotkeys globales, ni bandeja del sistema,
+      ni servidor HTTP de captura, ni OCR, ni header corporativo horneado.
+      La edicion se delega por proceso al modulo EvidenciasSQA.Editor.Wpf (argumento "-file ruta"; guardado in-place + recarga).
+      -->
+  <PropertyGroup>
+    <!-- Consolidacion: el visor pasa de WinExe a LIBRERIA. Su ventana MainWindow y sus
+         view models se alojan en el proceso unificado EvidenciasSQA.exe (App.xaml.cs del
+         proyecto raiz). El App.xaml standalone fue eliminado. -->
+    <OutputType>Library</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>EvidenciasSQA.Wpf</RootNamespace>
+    <AssemblyName>EvidenciasSQA.Wpf</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EvidenciasSQA.Core\EvidenciasSQA.Core.csproj" />
+    <!--
+      Referencia REAL (tipos): el editor embebido (EditorView/EditorViewModel) vive
+      dentro del MainWindow unificado — el visor usa sus tipos directamente. La
+      referencia copia EvidenciasSQA.Editor.Wpf.dll al output automáticamente.
+      El target CopyEditorExe conserva exe/deps/runtimeconfig para el modo
+      standalone del editor.
+      -->
+    <ProjectReference Include="..\EvidenciasSQA.Editor.Wpf\EvidenciasSQA.Editor.Wpf.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="..\..\..\Media\SQA1.png" Link="Media\SQA1.png" />
+    <Resource Include="..\..\..\Media\SQA1.ico" Link="Media\SQA1.ico" />
+  </ItemGroup>
+
+  <!--
+    Delegacion por proceso: el editor debe estar junto al visor en el output.
+    Se copia el exe Y su dll/deps/runtimeconfig: sin el dll el host muere al
+    instante con 0x8000809A ("application to execute does not exist").
+    -->
+  <Target Name="CopyEditorExe" AfterTargets="Build">
+    <ItemGroup>
+      <_EditorFiles Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.exe" />
+      <_EditorFiles Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.dll" />
+      <_EditorFiles Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.deps.json" />
+      <_EditorFiles Include="$(MSBuildProjectDirectory)\..\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.runtimeconfig.json" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_EditorFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" Condition="Exists('$(MSBuildProjectDirectory)\..\EvidenciasSQA.Editor.Wpf\bin\$(Configuration)\net9.0-windows\EvidenciasSQA.Editor.Wpf.exe')" />
+  </Target>
+
+</Project>

@@ -1,0 +1,12 @@
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\bin\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.deps.json
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\bin\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.csproj.AssemblyReference.cache
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.Core.EvidenciasSQAResources.resources
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.csproj.GenerateResource.cache
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.AssemblyInfoInputs.cache
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.AssemblyInfo.cs
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.csproj.CoreCompileInputs.cache
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\EvidenciasSQA.Base.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\refint\EvidenciasSQA.Base.dll
+C:\projects\EvidenciasSQA\src\EvidenciasSQA.Base\obj\Debug\net9.0-windows10.0.19041.0\ref\EvidenciasSQA.Base.dll

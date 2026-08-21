@@ -1,0 +1,461 @@
+
+<html>
+	<head>
+		<title>EvidenciasSQA Help</title>
+		
+		<style>
+		* {
+			font-family: Tahoma, Arial, Sans-serif;
+		}
+		h1 {font-size:16px;}
+		h2 {font-size:14px;color:#009900;margin-top:24px;}
+		h3 {font-size:12px;margin-top:18px;}
+		small {font-size:10px;}
+		p, li {font-size:12px;line-height:1.5em}
+		a:link, a:hover, a:visited, a:active {color:#009900;}
+		kbd {background-color:#dddddd;border:1px solid #bbbbbb;padding:0 2px;border-radius:2px;}
+		p.hint {background-color:#ffffdd;border:1px solid #ddddbb;padding:5px;}
+		em {padding-right:0.2em;}
+		</style>
+	</head>
+	<body>
+	<h1>Ajuda do EvidenciasSQA</h1>
+	<!-- 
+	Note to translator: uncomment entry below to have your effort honored 
+	-->
+	Vers�o 1.0
+	<small>Tradu��o Portugu�s do Brasil por JNylson (nylsinho_ba@hotmail.com)</small>
+	
+	<h2>Conte�do</h2>
+	<ol>
+		<li><a href="#screenshot">Criar uma captura de tela</a></li>
+		<ol>
+			<li><a href="#capture-region">Capturar uma regi�o</a></li>
+			<li><a href="#capture-last-region">Capturar a �ltima regi�o</a></li>
+			<li><a href="#capture-window">Capturar janela</a></li>
+			<li><a href="#capture-fullscreen">Capturar a tela inteira</a></li>
+			<li><a href="#capture-ie">Capturar Internet Explorer</a></li>
+		</ol>
+	
+		<li><a href="#editor">Usar o editor de imagem</a></li>
+		<ol>
+			<li><a href="#editor-shapes">Desenhar formas</a></li>
+			<li><a href="#editor-text">Adicionar texto</a></li>
+			<li><a href="#editor-highlight">Real�ar coisas</a></li>
+			<li><a href="#editor-obfuscate">Ofuscar coisas</a></li>
+			<li><a href="#editor-effects">Adicionar efeitos</a></li>
+			<li><a href="#editor-crop">Recortar a captura de tela</a></li>
+			<li><a href="#editor-adding-graphics">Adicionar gr�ficos a uma captura</a></li>
+			<li><a href="#editor-reuse-elements">Reutilizar elementos desenhados</a></li>
+			<li><a href="#editor-export">Exportar a captura</a></li>
+		</ol>
+		<li><a href="#settings">Configura��es</a></li>
+		<ol>
+			<li><a href="#settings-general">Configura��es gerais</a></li>
+			<li><a href="#settings-capture">Configura��es de captura</a></li>
+			<li><a href="#settings-output">Configura��es de sa�da</a></li>
+			<li><a href="#settings-destination">Configura��es de destino</a></li>
+			<li><a href="#settings-printer">Configura��es de impress�o</a></li>
+			<li><a href="#settings-expert">Configura��es avan�adas</a></li>
+		</ol>
+		<li><a href="#help">Quer ajudar?</a></li>
+		<ol>
+			<li><a href="#help-donate">Fa�a uma doa��o</a></li>
+			<li><a href="#help-spread">Espalhe a palavra</a></li>
+			<li><a href="#help-translate">Envie uma tradu��o</a></li>
+		</ol>
+	</ol>
+	
+	<a name="screenshot"></a>
+	<h2>Criar uma captura de tela</h2>
+	<p>
+		Pode criar uma captura de tela ou usando a tecla <kbd>Print</kbd> do seu teclado
+		ou clicando com o bot�o direito do mouse no �cone EvidenciasSQA da bandeja do sistema.<br>
+		Existem diversas op��es para criar uma captura de tela:
+	</p>
+	
+	<a name="capture-region"></a>
+	<h3>Capturar regi�o <kbd>Print</kbd></h3>
+	<p>
+		O modo de capturar uma regi�o permite-lhe selecionar uma parte da tela a ser capturada.<br>
+		Ap�s iniciar o modo regi�o, ir� visualizar uma mira a apontar a posi��o do mouse 
+		no tela. Clique e mantenha o bot�o pressionado no local onde pretende que fique um dos cantos
+		da sua captura. Mantendo o bot�o do mouse pressionado, arraste o mouse para definir o
+		ret�ngulo a ser capturado. Quando o ret�ngulo verde cobrir a �rea que pretende 
+		capturar, solte o bot�o do mouse.
+	</p>
+	<p class="hint">
+		Pode usar a tecla <kbd>Space</kbd> para alternar entre o modo regi�o e o modo 
+		<a href="#capture-window">janela</a>.
+	</p>
+	<p class="hint">
+		Se pretende capturar uma �rea exata, ser� mais f�cil selecionar a �rea inicial da
+		captura um pouco maior e depois <a href="#editor-crop">recortar</a> a captura de tela
+		usando o editor de imagem do EvidenciasSQA.
+	</p>
+	
+	<a name="capture-last-region"></a>
+	<h3>Capturar a �ltima regi�o <kbd>Shift</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Se acabou de capturar uma <a href="#capture-region">regi�o</a> ou uma <a href="#capture-window">janela</a>,
+		pode capturar novamente a mesma regi�o usando esta op��o. 
+	</p>
+	
+	<a name="capture-window"></a>
+	<h3>Capturar uma janela <kbd>Alt</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Cria uma captura da janela que est� atualmente ativa.
+	</p>
+	<p class="hint">
+		Para sistemas com o Windows 7 ou Vista, use a configura��o do modo Captura de Janela para controlar
+		como o EvidenciasSQA manipula as bordas da janela semi transparente (Aero), p.e. substituindo a
+		transpar�ncia com uma cor personalizada.
+	</p>
+	<p class="hint">
+		O <a href="#settings">di�logo de configura��es</a> oferece uma op��o de n�o capturar
+		a janela ativa de imediato, mas permitindo-lhe selecionar uma interativamente.
+		Se esta op��o for selecionada, pode selecionar uma janela clicando nela (Tal como no 
+		<a href="#capture-region">modo regi�o</a>, o EvidenciasSQA ir� real�ar a �rea que
+		ir� ser capturada).<br>Se pretender capturar uma janela secund�ria (p.e. uma janela do
+		navegador (sem barras de ferramentas, etc.) ou um simples quadro de uma p�gina web que use 'framesets') 
+		aponte o cursor do mouse para a janela e pressione a tecla <kbd>PgDown</kbd>. Depois de
+		fazer isso, pode selecionar elementos secund�rios da janela para serem capturados.
+	</p>
+	<p class="hint">
+		A captura dos menus de contexto � diferente: ao usar o atalho "Capturar janela" 
+		far� desaparecer o menu de contexto, e obviamente acontecer� o mesmo se usar
+		o menu de contexto do EvidenciasSQA para criar a captura. Se pretende capturar
+		um menu de contexto que faz surgir clicando com o bot�o direito do mouse em qualquer coisa,
+		simplesmente ativa o modo regi�o <kbd>Print</kbd>, e depois pressione a tecla <kbd>Space</kbd>.
+	</p>
+	
+	<a name="capture-fullscreen"></a>
+	<h3>Capturar tela completo <kbd>Control</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Cria uma captura da totalidade da tela.
+	</p>
+
+	<a name="capture-ie"></a>
+	<h3>Capturar Internet Explorer <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>Print</kbd></h3>
+	<p>
+		Cria confortavelmente uma captura da p�gina web atualmente aberta no Internet Explorer. 
+		Use o menu de contexto do EvidenciasSQA para selecionar o separador do Internet Explorer a capturar, ou pressione
+		<kbd>Crtl</kbd> + <kbd>Shift</kbd> + <kbd>Print</kbd> para capturar a aba ativa.
+	</p>
+
+	
+	<a name="editor"></a>
+	<h2>Usar o editor de imagem</h2>
+	<p>
+		O EvidenciasSQA possui um editor de imagem f�cil de usar, fornecendo uma s�rie de funcionalidades
+		para adicionar anota��es e formas a uma captura. Ele tamb�m permite real�ar ou 
+		ofuscar partes da sua captura.
+	</p>
+	<p class="hint">
+		O editor de imagem do EvidenciasSQA pode ser usado n�o apenas em capturas. Tamb�m pode 
+		abrir imagens de um arquivo ou da �rea de transfer�ncia para editar. Basta clicar com o bot�o 
+		direito do mouse no �cone do EvidenciasSQA na bandeja do sistema e selecionar <em>Abrir imagem de arquivo</em> 
+		ou <em>Abrir imagem da �rea de transfer�ncia</em>, respectivamente.
+	</p>
+	<p class="hint">
+		Por padr�o, o editor de imagem � aberto sempre que � feita uma captura de tela.
+		Se n�o pretender usar o editor de imagem, pode desativar esta
+		funcionalidade no <a href="#settings">di�logo configura��es</a>.
+	</p>
+	
+	
+	<a name="editor-shapes"></a>
+	<h3>Desenhar formas</h3>
+	<p>
+		Selecione uma das ferramentas de desenho de formas na barra de ferramentas situada do lado
+		esquerdo do editor de imagem ou do menu <em>Objeto</em>. Para sua conveni�ncia, tamb�m existe
+		uma tecla associada a cada ferramenta.<br>
+		As formas dispon�veis s�o: ret�ngulo <kbd>R</kbd>, elipse <kbd>E</kbd>, linha <kbd>L</kbd>,
+		seta <kbd>A</kbd> e de linha livre <kbd>F</kbd>.<br>
+		Clique, mantenha pressionado o bot�o do mouse e arraste para definir a posi��o e tamanho da forma. 
+		Solte o bot�o do mouse quando tiver terminado.
+	</p>
+	<p>
+		Pode mover ou redimensionar as formas existentes com a ferramenta de sele��o 
+		<kbd>ESC</kbd> da barra de ferramentas.<br>Para cada tipo de elemento existe um conjunto 
+		pr�prio de op��es dispon�veis para alterar o aspecto do elemento.(p.e. espessura da linha, 
+		cor da linha, cor de preenchimento). Pode alterar as op��es de um elemento existente depois 
+		de selecion�-lo, mas tamb�m para o pr�ximo elemento a ser desenhado ap�s selecionar uma ferramenta de desenho.
+	</p>
+	<p class="hint">
+		Pode selecionar v�rios elementos para editar ao mesmo tempo. Para selecionar v�rios
+		elementos, mantenha pressionada a tecla <kbd>Shift</kbd> enquanto clica nos elementos.
+	</p>
+	<p class="hint">
+		Se pretende desenhar formas com lados iguais (p.e. for�ar um ret�ngulo a ser quadrado) mantenha
+		pressionada a tecla <kbd>Shift</kbd> ao desenhar. Ao desenhar linhas ou setas, manter pressionada a tecla <kbd>Shift</kbd>
+		resulta no �ngulo da linha ser rodado em passos de 15�.<br>
+		Pode tamb�m usar o <kbd>Shift</kbd> se pretender redimensionar um objeto existente mantendo as suas propor��es. 
+	</p>
+	<p class="hint">
+		Ao desenhar ou redimensionar, pode manter pressionada a tecla <kbd>Ctrl</kbd> para ter o objeto ancorado
+		no seu centro geom�trico. P.e. o objeto tamb�m � redimensionado na dire��o oposta. (Isto
+		� muito �til se pretende desenhar uma elipse � volta de qualquer coisa na sua captura.)
+	</p>
+	
+	<a name="editor-text"></a>
+	<h3>Adicionar texto</h3>
+	<p>
+		o uso da ferramenta texto <kbd>T</kbd> � semelhante � das ferramentas de 
+		<a href="#editor-shapes">forma</a>. Desenhe simplesmente o elemento de texto do
+		tamanho desejado, depois digite o texto no seu interior.<br>
+		Fa�a duplo clique num elemento de texto existente para editar o seu conte�do.<br>
+		Pressione <kbd>Return</kbd> ou <kbd>Enter</kbd> quando tiver conclu�do a edi��o.
+	</p>
+	<p class="hint">
+		Se necessita inserir quebras de linha dentro de uma caixa de texto, pressione <kbd>Shift</kbd> + <kbd>Return</kbd> ou
+		<kbd>Shift</kbd> + <kbd>Enter</kbd>.
+	</p>
+	
+	<a name="editor-highlight"></a>
+	<h3>Real�ar coisas</h3>
+	<p>
+		Ap�s selecionar a ferramenta de real�ar <kbd>H</kbd>, pode definir a �rea para ser 
+		real�ada do mesmo modo como desenharia uma <a href="#editor-shapes">forma</a>.<br>
+		Existem diversas op��es para real�ar, entre as quais pode escolher clicando no
+		bot�o mais � esquerda da barra de ferramentas na parte superior:
+	</p>
+	<ul>
+		<li><em>Real�ar texto</em>: real�a uma �rea aplicando-lhe uma cor brilhante, como
+			os marcadores de texto usados no escrit�rio</li>
+		<li><em>Real�ar �rea</em>: desfoca<a href="#hint-blur">*</a> e escurece tudo fora da �rea selecionada</li>
+		<li><em>Escala Cinza</em>: tudo o que est� fora da �rea selecionada ficar� na escala cinza</li>
+		<li><em>Ampliar</em>: a �rea selecionada ser� exibida com amplia��o</li>
+	</ul>
+	
+	<a name="editor-obfuscate"></a>
+	<h3>Ofuscar coisas</h3>
+	<p>
+		Ofuscar partes de uma captura � uma boa ideia se contiver dados que n�o se pretende que sejam
+		vistos por outras pessoas, p.e. dados de contas banc�rias, nomes, senhas ou rostos na imagem.<br>
+		Use a ferramenta ofuscar <kbd>O</kbd> exatamente do mesmo modo que a de <a href="#editor-highlight">real�ar</a>. 
+		<br>
+		As op��es dispon�veis para ofusca��o s�o:
+	</p>
+	<ul>
+		<li><em>Pixelizar</em>: aumenta o tamanho do pixeis na �rea selecionada</li>
+		<li><em>Desfocar</em><a href="#hint-blur">*</a>: desfoca a �rea selecionada</li>
+	</ul>
+	<a name="hint-blur"></a>
+	<p class="hint">
+		* Dependendo do desempenho do seu computador, a aplica��o do efeito desfocar pode tornar lento 
+		o editor de imagens do EvidenciasSQA. Se notar que o editor de imagem reage com lentid�o logo que 
+		o efeito � aplicado, tente reduzir o valor para a <em>Qualidade de Pr�-visualiza��o</em>  
+		na barra de ferramentas ou reduza o valor do <em>Raio de desfocagem</em>.<br>
+		Se o desempenho de desfoque continuar mau para poder trabalhar com ele, deve optar por
+		usar o efeito Pixelizar.
+	</p>
+	<a name="editor-effects"></a>
+	<h3>Adicionar efeitos</h3>
+	<p>
+		Pode adicionar diferentes efeitos � sua captura. Pode querer aplicar uma borda, sombra ou efeito 
+		de cantos arredondados, p.e. para visualizar em separado a sua captura do restante conte�do do documento.
+		Os efeitos Escala Cinza e Inverter s�o �teis principalmente antes de imprimir, poupando tinta ou toner 
+		ao imprimir capturas coloridas ou escuras.
+	</p>
+	
+	<a name="editor-crop"></a>
+	<h3>Recortar a Captura</h3>
+	<p>
+		Se precisa apenas de uma parte da imagem que capturou, use a ferramenta de recorte <kbd>C</kbd>
+		para recort�-la para a �rea desejada.<br>
+		Ap�s selecionar a ferramenta recortar, desenhe um ret�ngulo na �rea da captura que quer
+		manter. Pode redimensionar a �rea selecionada como qualquer outro elemento.<br>
+		Quando estiver satisfeito com a sua sele��o, use o bot�o confirmar da barra de ferramentas ou
+		pressione a tecla <kbd>Enter</kbd>. Pode cancelar o recorte clicando no bot�o cancelar ou pressionando 
+		<kbd>ESC</kbd>.
+	</p>
+	<p class="hint">
+		<em>Recorte Autom�tico</em>: Se necessita recortar uma borda de uma cor s�lida de fundo da sua
+		captura escolha simplesmente <em>Recorte Autom�tico</em> do menu <em>Editar</em> e o EvidenciasSQA 
+		ir� selecionar automaticamente a �rea para recortar.
+	</p>
+	
+	<a name="editor-rotate"></a>
+	<p class="hint">
+		Use as ferramentas de rota��o para girar a captura no sentido hor�rio ou anti-hor�rio.
+	</p>
+
+	<a name="editor-adding-graphics"></a>
+	<h3>Adicionar gr�ficos a uma captura</h3>
+	<p>
+		Pode muito simplesmente adicionar gr�ficos ou imagens � sua captura arrastando e soltando um
+		arquivo de imagem na janela do editor. Pode tamb�m inserir capturas de outras janelas selecionando
+		<em>Inserir janela</em> do menu <em>Editar</em>. Surge uma lista com todas as janelas abertas, 
+		permitindo-lhe selecionar uma para ser inserida.
+	</p>
+	
+	<a name="editor-reuse-elements"></a>
+	<h3>Reutilizar elementos de desenho</h3>
+	<p>
+		Se estiver a usar os mesmos ou elementos semelhantes na maioria das capturas
+		(p.e. um campo de texto contendo o tipo de navegador e a vers�o, ou a ofuscar o mesmo
+		elemento em v�rias capturas) pode reutilizar os elementos.<br>
+		Selecione <em>Salvar objetos para arquivo</em> do menu <em>Objetos</em> para
+		salvar o conjunto atual de elementos e reutiliz�-los mais tarde. <em>Carregar objetos de arquivo</em>
+		aplica os mesmos elementos a outra captura.
+	</p>
+	
+	<a name="editor-export"></a>
+	<h3>Exportar a captura</h3>
+	<p>
+		Ap�s editar a captura, pode exportar o resultado para diversos fins, dependendo das
+		suas necessidades. Pode aceder a todas as op��es de exporta��o atrav�s do menu <em>Arquivo</em>,
+		da barra de ferramentas superior ou via teclas de atalho:
+	</p>
+	<ul>
+		<li><em>Salvar</em> <kbd>Control</kbd> + <kbd>S</kbd>: salva a imagem para um arquivo (se a imagem j� tiver sido guardada, exibe o di�logo <em>Salvar como...</em></li>
+		<li><em>Salvar como...</em> <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd>: deixa-o escolher a localiza��o, nome do arquivo e formato da imagem para o arquivo a salvar</li>
+		<li><em>Copiar imagem para a �rea de transfer�ncia</em> <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>: coloca uma c�pia da imagem na �rea de transfer�ncia, permitindo colar em outros programas</li>
+		<li><em>Imprimir...</em> <kbd>Control</kbd> + <kbd>P</kbd>: envia a imagem para uma impressora</li>
+		<li><em>E-Mail</em> <kbd>Control</kbd> + <kbd>E</kbd>: abre uma nova mensagem no cliente de e-mail padr�o, adicionando a imagem como anexo</li>
+	</ul>
+	<p> 
+		Existem plugins para exportar capturas para outros destinos, e.g. DropBox, Google Photos, Flickr. Deve 
+		selecionar os plugins apropriados durante o processo de instala��o.
+	</p>
+	<p class="hint">
+		Ap�s salvar uma imagem do editor, clique com o bot�o direito do mouse na barra de estado
+		na parte inferior da janela do editor para copiar o atalho do arquivo para a �rea de transfer�ncia
+		ou abrir a pasta respectiva no Explorador do Windows.
+	</p>
+	
+	
+	<a name="settings"></a>
+	<h2>O Di�logo Configura��es</h2>
+	
+	<a name="settings-general"></a>
+	<h3>Configura��es Gerais</h3>
+	<ul>
+		<li><em>Idioma</em>: O idioma preferido a usar.<br>
+			Pode transferir arquivos de idiomas adicionais para o EvidenciasSQA <a target="_blank" href="https://evidenciassqa.com/downloads/">aqui</a>. </li>
+		<li><em>Iniciar o EvidenciasSQA no inicializa��o</em>: Inicia o programa no inicializa��o do sistema.</li>
+		<li><em>Teclas de Atalho</em>: Personaliza as teclas de atalho a serem usadas para criar capturas.</li>
+		<li><em>Usar proxy padr�o do sistema</em>: Se selecionado, o EvidenciasSQA usa proxy padr�o do sistema para procurar atualiza��es.</li>
+		<li><em>Intervalo de procura de atualiza��es em dias</em>: O EvidenciasSQA pode procurar atualiza��es automaticamente. Use esta configura��o para ajustar o
+			intervalo (em dias) ou defina-o para 0 para desligar a procura de atualiza��es.</li>
+	</ul>
+
+	<a name="settings-capture"></a>
+	<h3>Configura��es de Captura</h3>
+	<ul>
+		<li><em>Capturar cursor do mouse</em>: Se selecionada, o cursor do mouse ser� capturado. O cursor � tratado no editor como um elemento separado, por isso pode mov�-lo ou remov�-lo mais tarde.</li>
+		<li><em>Reproduzir som de C�mara</em>: Som aud�vel ao fazer a captura</li>
+		<li><em>Milissegundos de espera antes da captura</em>: Adiciona um tempo de atraso personalizado antes de capturar realmente a tela.</li>
+		<li><em>Usar modo de captura janela interativa</em>: Em vez de capturar a janela ativa de imediato, o modo interativo permite-lhe
+			selecionar a janela a capturar. Tamb�m � poss�vel capturar janelas secund�rias, ver <a href="#capture-window">captura de janela</a>.</li>
+		<li>
+			<em>Captura estilo Aero (apenas Windows Vista / 7)</em>: Se estiver a usar o EvidenciasSQA no Windows Vista ou Windows 7 com janelas estilo aero ativado, pode 
+			escolher como ser�o tratadas as bordas transparentes da janela ao criar uma captura em modo janela. Use esta configura��o para evitar capturar elementos do 
+			fundo a brilhar atrav�s das bordas transparentes.
+			<ul>
+				<li><em>Auto</em>: Deixa o EvidenciasSQA decidir como tratar a transpar�ncia.</li>
+				<li><em>Como exibida</em>: As bordas transparentes s�o capturadas tal como exibidas na tela.</li>
+				<li><em>Usar cor padr�o</em>: � aplicada uma cor s�lida padr�o em vez da transpar�ncia.</li>
+				<li><em>Usar cor personalizada</em>: Selecione uma cor s�lida para ser aplicada em vez da transpar�ncia.</li>
+				<li><em>Preservar transpar�ncia</em>: As bordas s�o capturadas mantendo a transpar�ncia, n�o capturando elementos que possam estar no fundo. (Nota: as �reas
+					transparentes ser�o exibidas usando um padr�o selecionado no editor. O padr�o n�o � exportado ao salvar a captura para um arquivo. Lembre-se de salvar
+					como arquivo PNG para suporte completo da transpar�ncia.)</li>
+			</ul>
+		</li>
+		<li><em>Capturar Internet Explorer</em>: Permite a captura confort�vel de p�gina web com o Internet Explorer.</li>
+		<li><em>Redimensionar a janela do editor ao tamanho da captura</em>: Se selecionado, a janela do editor ser� redimensionada automaticamente para o tamanho da captura.</li>
+
+	</ul>
+	
+	<a name="settings-output"></a>
+	<h3>Configura��es de Sa�da</h3>
+	<ul>
+		<li><em>Destino da captura</em>: Permite-lhe escolher o(s) destino(s) para a sua captura imediatamente ap�s faze-la.</li>
+		<li><em>Configura��es preferidas do arquivo de sa�da</em>: Pasta e nome de arquivo a ser usado ao salvar diretamente ou para ser sugerido ao salvar (usando o di�logo Salvar como). Clique no bot�o <em>?</em> para aprender mais sobre os marcadores que podem ser usados como padr�o de nome de arquivo.</li>
+		<li><em>Configura��es JPEG</em>: Qualidade a ser usada ao salvar arquivos JPEG</li>
+	</ul>
+	
+	<a name="settings-destination"></a>
+	<h3>Configura��es de Destino</h3>
+	<p>
+		Por padr�o, o EvidenciasSQA deixa-o selecionar dinamicamente um destino ap�s criar a captura, exibindo um pequeno
+		menu com diferentes destinos � sua escolha. Se n�o quer ou n�o necessita de estar sempre a alterar os destinos,
+		pode preferir configurar o EvidenciasSQA para exportar diretamente para um ou mais destinos, sem exibir o di�logo de
+		selec��o dos destinos.<br/>
+		Nota: tal como <a href="#editor-export">exportar da janela do editor, os destinos exibidos variam 
+		dependendo dos plugins que tem instalados com o EvidenciasSQA.</a>
+	</p>
+	
+	<a name="settings-printer"></a>
+	<h3>Configura��es de impress�o</h3>
+	<ul>
+		<li><em>Reduzir impress�o para caber no tamanho do papel</em>: Se a imagem exceder o tamanho do papel, ser� reduzida para caber na p�gina.</li>
+		<li><em>Ampliar impress�o para caber no tamanho do papel</em>: Se a imagem for mais pequena do que o tamanho do papel, ser� dimensionada para ser impressa t�o grande quanto poss�vel sem exceder o tamanho do papel.</li>
+		<li><em>Rodar impress�o para orienta��o da p�gina</em>: A imagem de formato paisagem ser� rodada 90&deg; para impress�o.</li>
+		<li><em>Imprimir com cores invertidas</em>: A captura ser� invertida antes de ser impressa, �til p.e. ao imprimir uma captura de texto branco em fundo preto (para poupar toner/tinta).</li>
+		<li><em>For�ar impress�o em escala cinza</em>: As cores ser�o convertidas para a escala cinza antes de imprimir.</li>
+	</ul>
+
+	<a name="settings-plugins"></a>
+	<h3>Configura��es de Plugins</h3>
+	<p>
+		Exibe uma lista de plugins do EvidenciasSQA instalados. Selecione um da lista e clique <em>Configurar</em> para acessar � configura��o de um plugin.
+	</p>
+	
+	<a name="settings-expert"></a>
+	<h3>Configura��es avan�adas</h3>
+	<p>
+		Queremos dizer: � melhor n�o alterar nada aqui se n�o souber o que est� fazendo, pois estas configura��es podem provocar comportamentos inesperados.
+	</p>
+	
+	
+	<a name="help"></a>
+	<h2>Quer ajudar?</h2>
+	
+	<p>
+		De momento, n�o precisamos de ajuda no desenvolvimento. Contudo, h� v�rias coisas que
+		pode fazer para ajudar o EvidenciasSQA e a equipe de desenvolvimento.<br>
+		Antecipadamente obrigado :)
+	</p>
+	
+	<a name="help-donate"></a>
+	<h3>Fa�a uma doa��o</h3>
+	<p>
+		Estamos investindo muito trabalho no EvidenciasSQA e gastando bastante tempo para fornecer
+		um bom software gratuito e de c�digo aberto. Se acha que
+		isso o torna mais produtivo, e lhe poupa (ou � sua empresa)
+		muito tempo e dinheiro, ou se simplesmente gosta do EvidenciasSQA e
+		da ideia de software de c�digo aberto: por favor considere compensar o nosso esfor�o, doando.<br>
+		Por favor visite a nossa p�gina web para ver como pode apoiar a equipe de desenvolvimento do EvidenciasSQA:<br>
+		<a target="_blank" href="https://evidenciassqa.com/support/">https://evidenciassqa.com/support/</a>
+	</p>
+	
+	<a name="help-spread"></a>
+	<h3>Espalhe a palavra</h3>
+	<p>
+		Se gosta do EvidenciasSQA, deixe que as pessoas saibam: Fale sobre o EvidenciasSQA aos seus amigos e colegas.
+		Os seus seguidores, tamb�m :)<br>
+		Classifique o EvidenciasSQA nos portais de software ou tenha um link da nossa p�gina no seu blog ou site.
+	</p>
+	
+	<a name="help-translate"></a>
+	<h3>Envie uma tradu��o</h3>
+	<p>
+		O EvidenciasSQA n�o est� dispon�vel no seu idioma preferido? Se acha que pode traduzir
+		uma pe�a de software, � mais do que bem-vindo.
+		Se � um usu�rio registado no sourceforge.net, pode enviar tradu��es para o nosso 
+		<a target="_blank" href="https://sourceforge.net/tracker/?group_id=191585&atid=1368020">monitor de tradu��es</a>.<br>
+		Por favor certifique-se de que n�o existe tradu��o para o seu idioma na nossa
+		<a target="_blank" href="https://evidenciassqa.com/downloads/">p�gina de downloads</a>. Veja tamb�m no nosso <a href="https://sourceforge.net/tracker/?group_id=191585&atid=1368020">monitor de tradu��es</a>,
+		se existe alguma tradu��o a decorrer, ou pelo menos em discuss�o.<br>
+		Tenha em aten��o que s� disponibilizaremos uma tradu��o na nossa p�gina de downloads se ela 
+		tiver sido enviada atrav�s da sua conta no sourceforge.net. Uma vez que o mais prov�vel � n�s
+		n�o sermos capazes de perceber a sua tradu��o, � bom que outros utilizadores do sourceforge 
+		tenham possibilidade de contact�-lo sobre de aperfei�oamentos no caso de nova vers�o do EvidenciasSQA.
+	</p>
+	
+	
+	
+	</body>
+</html>

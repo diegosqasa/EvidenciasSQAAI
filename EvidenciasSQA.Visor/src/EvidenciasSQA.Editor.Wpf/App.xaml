@@ -1,0 +1,10 @@
+<Application x:Class="EvidenciasSQA.Editor.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--
+      NOTA (comportamiento del SDK 9.0.x): cuando App.xaml no declara StartupUri,
+      PresentationBuildTasks NO compila su BAML: las Application.Resources aquí
+      NUNCA se cargan (StaticResource falla en runtime). Por eso los estilos
+      compartidos viven en los Resources de cada Window (ver EditorWindow.xaml).
+    -->
+</Application>

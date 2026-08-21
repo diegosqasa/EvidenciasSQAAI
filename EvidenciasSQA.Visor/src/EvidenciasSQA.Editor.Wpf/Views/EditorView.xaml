@@ -1,0 +1,321 @@
+<UserControl x:Class="EvidenciasSQA.Editor.Wpf.Views.EditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:EvidenciasSQA.Editor.Wpf.Controls"
+             Background="#F0F2F5">
+
+    <UserControl.Resources>
+        <!--
+          Los estilos viven aquí (no en App.xaml): el SDK 9.0.x no compila el BAML
+          de App.xaml sin StartupUri, por lo que sus recursos nunca se cargan.
+
+          Tema replicado del editor web (editor.css): toolbar oscura #001F3F con
+          pills (border-radius 25px), herramienta activa #003060 bold blanco,
+          hover rgba(255,255,255,0.15) -> #26FFFFFF, canvas sobre #F0F2F5 con
+          padding 30px y sombra 0 0 20px rgba(0,0,0,0.2), recorte #fca311.
+        -->
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
+        <!-- Base de pill de la toolbar (border-radius 25px, texto azul claro #9BD0FF) -->
+        <Style x:Key="PillButtonBase" TargetType="Button">
+            <Setter Property="Foreground" Value="#9BD0FF" />
+            <Setter Property="Margin" Value="2,2" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                                CornerRadius="25" Padding="12,5">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.3" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#26FFFFFF" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Herramienta con estado activo: #003060, blanco bold (paridad .tool-btn.active) -->
+        <Style x:Key="ToolButton" TargetType="Button" BasedOn="{StaticResource PillButtonBase}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentTool}" Value="None">
+                    <Setter Property="Background" Value="#003060" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ToolButtonArrow" TargetType="Button" BasedOn="{StaticResource PillButtonBase}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentTool}" Value="Arrow">
+                    <Setter Property="Background" Value="#003060" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ToolButtonRect" TargetType="Button" BasedOn="{StaticResource PillButtonBase}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentTool}" Value="Rectangle">
+                    <Setter Property="Background" Value="#003060" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ToolButtonText" TargetType="Button" BasedOn="{StaticResource PillButtonBase}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentTool}" Value="Text">
+                    <Setter Property="Background" Value="#003060" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ToolButtonHighlight" TargetType="Button" BasedOn="{StaticResource PillButtonBase}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentTool}" Value="Highlight">
+                    <Setter Property="Background" Value="#003060" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ToolButtonBlur" TargetType="Button" BasedOn="{StaticResource PillButtonBase}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentTool}" Value="Blur">
+                    <Setter Property="Background" Value="#003060" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ToolButtonCrop" TargetType="Button" BasedOn="{StaticResource PillButtonBase}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentTool}" Value="Crop">
+                    <Setter Property="Background" Value="#003060" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Acción primaria del modo selección: acento naranja institucional #FF6B00 -->
+        <Style x:Key="PrimaryPillButton" TargetType="Button" BasedOn="{StaticResource PillButtonBase}">
+            <Setter Property="Background" Value="#FF6B00" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E05E00" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Separador vertical de la toolbar -->
+        <Style x:Key="ToolbarVLine" TargetType="Rectangle">
+            <Setter Property="Width" Value="1" />
+            <Setter Property="Height" Value="18" />
+            <Setter Property="Fill" Value="#2E4E7E" />
+            <Setter Property="Margin" Value="6,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <!-- ComboBox oscuro (selector color/grosor/fuente) -->
+        <Style x:Key="DarkCombo" TargetType="ComboBox">
+            <Setter Property="Background" Value="#0A1E3D" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="#2E4E7E" />
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Padding" Value="6,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
+    <DockPanel>
+
+        <!-- Toolbar (spec editor.css): fondo #001F3F, pills border-radius 25px.
+             DOS filas mutuamente excluyentes:
+             - IsSelectionMode (Seleccionar V): SOLO Cancelar | Copiar | Guardar.
+             - IsDrawingMode: toolbar completa (abrir/pegar, herramientas, estilos,
+               undo/redo, zoom, destinos). -->
+        <Border DockPanel.Dock="Top" Background="#001F3F" Padding="10,6">
+            <StackPanel>
+
+                <!-- FILA SELECCIÓN (mínima): Cancelar | Copiar | Guardar -->
+                <WrapPanel Visibility="{Binding IsSelectionMode, Converter={StaticResource BoolToVis}}"
+                           VerticalAlignment="Center">
+                    <Button Content="Cancelar" Command="{Binding ClearSelectionCommand}"
+                            Style="{StaticResource PillButtonBase}"
+                            ToolTip="Quitar la selección de todos los objetos (Escape)" />
+                    <Rectangle Style="{StaticResource ToolbarVLine}" />
+                    <Button Content="Copiar" Command="{Binding CopyCommand}"
+                            Style="{StaticResource PrimaryPillButton}"
+                            ToolTip="Copiar la imagen al portapapeles (Ctrl+C)" />
+                    <Button Content="Guardar" Command="{Binding SavePngCommand}"
+                            Style="{StaticResource PrimaryPillButton}"
+                            ToolTip="Guardar sobre el archivo original (in-place, Ctrl+S)" />
+                </WrapPanel>
+
+                <!-- FILA DIBUJO (completa) -->
+                <WrapPanel Visibility="{Binding IsDrawingMode, Converter={StaticResource BoolToVis}}"
+                           VerticalAlignment="Center">
+                    <Button Content="Abrir…" Command="{Binding LoadImageCommand}"
+                            Style="{StaticResource PillButtonBase}" />
+                    <Button Content="Pegar" Command="{Binding LoadFromClipboardCommand}"
+                            Style="{StaticResource PillButtonBase}"
+                            ToolTip="Pegar imagen del portapapeles" />
+                    <Rectangle Style="{StaticResource ToolbarVLine}" />
+
+                    <Button Content="Seleccionar (V)" Command="{Binding SelectToolCommand}"
+                            Style="{StaticResource ToolButton}" />
+                    <Button Content="Flecha (F)" Command="{Binding ArrowToolCommand}"
+                            Style="{StaticResource ToolButtonArrow}" />
+                    <Button Content="Cuadrado (C)" Command="{Binding RectangleToolCommand}"
+                            Style="{StaticResource ToolButtonRect}" />
+                    <Button Content="Texto (T)" Command="{Binding TextToolCommand}"
+                            Style="{StaticResource ToolButtonText}" />
+                    <Button Content="Resaltar (H)" Command="{Binding HighlightToolCommand}"
+                            Style="{StaticResource ToolButtonHighlight}" />
+                    <Button Content="Borrar (B)" Command="{Binding BlurToolCommand}"
+                            Style="{StaticResource ToolButtonBlur}"
+                            ToolTip="Difuminar áreas" />
+                    <Button Content="Recortar (R)" Command="{Binding CropToolCommand}"
+                            Style="{StaticResource ToolButtonCrop}" />
+                    <Rectangle Style="{StaticResource ToolbarVLine}" />
+
+                    <ComboBox ItemsSource="{Binding ColorOptions}"
+                              SelectedItem="{Binding SelectedColorOption}"
+                              Style="{StaticResource DarkCombo}"
+                              ToolTip="Color de trazo / relleno"
+                              Width="110">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Width="14" Height="14" Fill="{Binding Brush}"
+                                               Stroke="#FF808080" StrokeThickness="1"
+                                               VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding Name}" Margin="6,0,0,0"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding StrokeWidthOptions}"
+                              SelectedItem="{Binding StrokeWidth}"
+                              Style="{StaticResource DarkCombo}"
+                              ToolTip="Grosor del trazo"
+                              Width="70" />
+                    <ComboBox ItemsSource="{Binding FontSizeOptions}"
+                              SelectedItem="{Binding FontSize}"
+                              Style="{StaticResource DarkCombo}"
+                              ToolTip="Tamaño de fuente"
+                              Width="70" />
+                    <Rectangle Style="{StaticResource ToolbarVLine}" />
+
+                    <Button Content="Deshacer" Command="{Binding UndoCommand}"
+                            Style="{StaticResource PillButtonBase}"
+                            ToolTip="Deshacer (Ctrl+Z)" />
+                    <Button Content="Rehacer" Command="{Binding RedoCommand}"
+                            Style="{StaticResource PillButtonBase}"
+                            ToolTip="Rehacer (Ctrl+Y)" />
+                    <Button Content="Duplicar" Command="{Binding DuplicateSelectedCommand}"
+                            Style="{StaticResource PillButtonBase}"
+                            ToolTip="Duplicar objeto seleccionado (Ctrl+D)" />
+                    <Button Content="Eliminar" Command="{Binding DeleteSelectedCommand}"
+                            Style="{StaticResource PillButtonBase}"
+                            ToolTip="Eliminar objeto seleccionado (Supr)" />
+                    <Rectangle Style="{StaticResource ToolbarVLine}" />
+
+                    <Button Content="−" Command="{Binding ZoomOutCommand}"
+                            Style="{StaticResource PillButtonBase}" ToolTip="Zoom −0.1" />
+                    <TextBlock Text="{Binding ZoomPercentText}" Foreground="White"
+                               VerticalAlignment="Center" Margin="4,0" MinWidth="48"
+                               TextAlignment="Center" FontSize="13" FontWeight="SemiBold" />
+                    <Button Content="+" Command="{Binding ZoomInCommand}"
+                            Style="{StaticResource PillButtonBase}" ToolTip="Zoom +0.1" />
+                    <Button Content="1:1" Command="{Binding ZoomResetCommand}"
+                            Style="{StaticResource PillButtonBase}" ToolTip="Zoom 100%" />
+                    <Button Content="Ajustar" Command="{Binding ZoomFitCommand}"
+                            Style="{StaticResource PillButtonBase}" ToolTip="Ajustar al área" />
+                    <Rectangle Style="{StaticResource ToolbarVLine}" />
+
+                    <Button Content="Guardar (in-place)" Command="{Binding SavePngCommand}"
+                            Style="{StaticResource PillButtonBase}"
+                            ToolTip="Guardar sobre el archivo original (Ctrl+S)" />
+                    <Button Content="Guardar .evidenciasSqa" Command="{Binding SaveEvidenciasSqaCommand}"
+                            Style="{StaticResource PillButtonBase}" />
+                    <Button Content="Copiar" Command="{Binding CopyCommand}"
+                            Style="{StaticResource PillButtonBase}"
+                            ToolTip="Copiar la imagen al portapapeles (Ctrl+C)" />
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Área de canvas (spec .editor-canvas-area): fondo #F0F2F5, padding 30px,
+             border-radius 20px; el lienzo con sombra 0 0 20px rgba(0,0,0,0.2). -->
+        <Border DockPanel.Dock="Top" Background="#F0F2F5" Padding="30" CornerRadius="20">
+            <ScrollViewer x:Name="CanvasScroll"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalContentAlignment="Left"
+                          VerticalContentAlignment="Top">
+                <Grid>
+                    <views:EditorCanvas x:Name="EditorCanvas"
+                                        Surface="{Binding Surface}"
+                                        Zoom="{Binding Zoom}"
+                                        CropRect="{Binding CropRect}"
+                                        CropActive="{Binding CropActive}"
+                                        Cursor="{Binding Cursor}">
+                        <views:EditorCanvas.Effect>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="0"
+                                              Opacity="0.2" Color="Black" />
+                        </views:EditorCanvas.Effect>
+                    </views:EditorCanvas>
+                    <!--
+                      TextBox overlay para editar el texto de un TextDrawable:
+                      se posiciona sobre el canvas en coordenadas de pantalla
+                      (bounds × zoom) mientras la edición está activa.
+                    -->
+                    <TextBox x:Name="TextEditBox"
+                             Visibility="Collapsed"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             FontFamily="Segoe UI"
+                             FontSize="14"
+                             BorderBrush="#FF6B00"
+                             BorderThickness="2"
+                             Padding="4"
+                             Background="#FFFFFF"
+                             Foreground="#FF000000"
+                             AcceptsReturn="False" />
+                </Grid>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Barra de estado: tamaño, elementos, zoom y recorte (fondo institucional) -->
+        <StatusBar DockPanel.Dock="Bottom" Background="#001F3F" Foreground="White">
+            <StatusBarItem>
+                <TextBlock Text="{Binding StatusText}" />
+            </StatusBarItem>
+        </StatusBar>
+
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "rfKcybU5ZSE=",
+  "success": true,
+  "projectFilePath": "C:\\projects\\EvidenciasSQA\\src\\EvidenciasSQA.Visor\\src\\EvidenciasSQA.Editor.Wpf\\EvidenciasSQA.Editor.Wpf.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\documentformat.openxml\\3.1.0\\documentformat.openxml.3.1.0.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\documentformat.openxml.framework\\3.1.0\\documentformat.openxml.framework.3.1.0.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

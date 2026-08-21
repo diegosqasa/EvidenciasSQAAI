@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "VP7ACiHZevk=",
+  "success": true,
+  "projectFilePath": "C:\\projects\\EvidenciasSQA\\src\\EvidenciasSQA.BuildTasks\\EvidenciasSQA.BuildTasks.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\microsoft.build.framework\\18.3.3\\microsoft.build.framework.18.3.3.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\microsoft.build.tasks.git\\10.0.103\\microsoft.build.tasks.git.10.0.103.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\microsoft.build.utilities.core\\18.3.3\\microsoft.build.utilities.core.18.3.3.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\microsoft.sourcelink.common\\10.0.103\\microsoft.sourcelink.common.10.0.103.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\microsoft.sourcelink.github\\10.0.103\\microsoft.sourcelink.github.10.0.103.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\nerdbank.gitversioning\\3.9.50\\nerdbank.gitversioning.3.9.50.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\sixlabors.fonts\\1.0.0\\sixlabors.fonts.1.0.0.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\sixlabors.imagesharp\\2.1.13\\sixlabors.imagesharp.2.1.13.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\sixlabors.imagesharp.drawing\\1.0.0\\sixlabors.imagesharp.drawing.1.0.0.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512",
+    "C:\\Users\\DiegoFernandoMachado\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.57\\microsoft.windows.sdk.net.ref.10.0.19041.57.nupkg.sha512"
+  ],
+  "logs": []
+}
